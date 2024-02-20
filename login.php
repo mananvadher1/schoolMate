@@ -1,13 +1,13 @@
 <?php
 $login = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include("../includes/db.php");
+    include("includes/db.php");
 
     $username = $_POST['username'];
     $password = $_POST['password'];
     
     
-    $sql = "SELECT * FROM `logins`";
+    $sql = "SELECT * FROM `users`";
     $result = mysqli_query($conn, $sql);
     
     // echo "loggedin";
@@ -16,8 +16,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $u_pass = $row['password'];
            
         }
-    header("Location: http://localhost/SchoolMate/dashboard.php");
+    // header("Location: http://localhost/SchoolMate/dashboard.php");
 }
+
 
 
 ?>
@@ -84,13 +85,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <!-- `<p class="text-center fw-bold mx-3 mb-0">Or</p>` -->
                         </div>
 
+                        <!-- Role input -->
+                        <div class="dropdown">
+                            <!-- <a class="btn btn-outline-primary dropdown-toggle px-4 my-3" href="#" role="button"
+                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Role
+                            </a> -->
+
+                            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Principal</a>
+                                <a class="dropdown-item" href="#">Teacher</a>
+                                <a class="dropdown-item" href="#">Student</a>
+                            </div> -->
+                            <label for="role">Role</label>
+                            <select class="form-control mb-3" id="role" name="role" placeholder="Select a role">
+                                <option>Select a role</option>
+                                <option value="principal">Principal</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+                        <div id="show_error1" class="mb-2"></div>
+
                         <!-- Email input -->
                         <div class="form-outline mb-0">
                             <label class="form-label" for="username">Username</label>
-                            <input type="" id="username" name="username" class="form-control form-control-lg mb-2"
-                                placeholder="Enter username" />
+                            <input type="email" id="username" name="username" class="form-control form-control-lg mb-2"
+                                placeholder="Example:abc@gmail.com" />
                         </div>
-                        <div id="show_error1" class="mb-2"></div>
+                        <div id="show_error2" class="mb-2"></div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-0">
@@ -98,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="password" id="password" name="password"
                                 class="form-control form-control-lg mb-2" placeholder="Enter password" />
                         </div>
-                        <div id="show_error2" class="mb-2"></div>
+                        <div id="show_error3" class="mb-2"></div>
 
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- Checkbox
@@ -126,33 +149,67 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </section>
 
     <!-- jquery link -->
-    <script src="../dist/js/jq_min.js"></script>
+    <script src="dist/js/jq_min.js"></script>
 
     <!-- script for validation -->
     <script>
-    $(document).ready(function() 
-    {
-        $('#submit').click(function() 
-        {
+    $(document).ready(function() {
+        $('#submit').click(function() {
             // alert("success");
             var user = $('#username').val();
             var pass = $('#password').val();
+            var role = $('#role').val();
 
-            if(user == ""){
-                $('#show_error1').html('Username can not be empty!').css('color','red');
+            // ...
+            if (role == "") {
+                $('#show_error1').html('Please select a role first!').css('color', 'red');
                 return false;
-            }
-            else{
+            } else {
                 $('#show_error1').empty();
             }
 
-            if(pass == ""){
-                $('#show_error2').html('Password can not be empty!').css('color','red');
+            if (user == "") {
+                $('#show_error2').html('Username can not be empty!').css('color', 'red');
                 return false;
-            }
-            else{
+            } else {
                 $('#show_error2').empty();
             }
+
+            // ...
+            if (IsEmail(user) == false) {
+                $('#show_error2').html("Entered Email is not Valid!!").css("color", "red");
+                return false;
+            } else {
+                $('#show_error2').empty();
+            }
+
+            // ...
+            if (pass == "") {
+                $('#show_error3').html('Password can not be empty!').css('color', 'red');
+                return false;
+            } else {
+                $('#show_error3').empty();
+            }
+
+            // ...
+            if (pass.length < 8) {
+                $('#show_error3').html('Password length must be at least 8 characters!').css('color',
+                    'red');
+                return false;
+            } else {
+                $('#show_error3').empty();
+            }
+
+            // ...
+            if (pass.length > 15) {
+                $('#show_error3').html('Password length must be at most 15 characters!').css('color',
+                    'red');
+                return false;
+            } else {
+                $('#show_error3').empty();
+            }
+
+
         });
     });
     </script>

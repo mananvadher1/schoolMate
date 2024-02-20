@@ -49,11 +49,11 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="/SchoolMate/pages/login.php"><button class='btn btn-primary ml-2 text-decoration-none'
                             data-toggle='modal' data-target='#loginModal'>Login</button></a>
                     </a>
-                </li>
+                </li> -->
 
 
                 <!-- User Account: style can be found in dropdown.less -->

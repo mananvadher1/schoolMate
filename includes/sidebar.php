@@ -1,5 +1,5 @@
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="dashboard.php" class="brand-link">
       <img src="dist/img/logo.jpeg  " alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -22,35 +22,7 @@
             </a>
           </li>
            <!-- pages with radio btn -->
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Roles
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Principal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Teacher</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+           
           <!-- / -->
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -60,6 +32,7 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-image"></i>
@@ -69,37 +42,138 @@
             </a>
           </li>
 
-           <!-- pages with radio btn -->
-           <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+            <i class="nav-icon fa fa-clipboard"></i>
               <p>
-                Roles
-                <i class="right fas fa-angle-left"></i>
+                Attendence
               </p>
             </a>
-            <ul class="nav nav-treeview">
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
+              <p>
+                Exam
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Principal</p>
+                <a href="../index.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Teacher</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student</p>
+                <a href="../index2.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Grade</p>
                 </a>
               </li>
             </ul>
           </li>
-          <!--  -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
+              <p>
+                Library
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../index.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Books</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
+              <p>
+                Fees
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../index.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Education fees</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../index2.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Transportation fees</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
+              <p>
+                Transport
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../index.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Vehical</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../index2.html" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Route</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                Calender
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-globe" aria-hidden="true"></i>
+              <p>
+                Map
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">           
+            <i class="nav-icon  fa fa-cogs" aria-hidden="true"></i>
+              <p>
+                settings  
+              </p>
+            </a>
+          </li>
+
+          
+
+          
+
+           
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
