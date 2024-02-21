@@ -1,6 +1,6 @@
 <?php
 
- $conn = mysqli_connect("localhost","root","Admin@123","SchoolMate");
+ $conn = mysqli_connect("localhost","phpmyadmin","Admin@123","SchoolMate");
 //  if($conn){
 //     echo "success";
 //  }

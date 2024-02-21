@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
-                    <img src="/SchoolMate/dist/img/login.webp" class="img-fluid" alt="Sample image">
+                    <img src="dist/img/login.webp" class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -97,15 +97,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <a class="dropdown-item" href="#">Teacher</a>
                                 <a class="dropdown-item" href="#">Student</a>
                             </div> -->
-                            <label for="role">Role</label>
+                            <label for="">Role</label>
                             <select class="form-control mb-3" id="role" name="role" placeholder="Select a role">
-                                <option>Select a role</option>
+                                <option value="select">Select a role</option>
                                 <option value="principal">Principal</option>
                                 <option value="teacher">Teacher</option>
                                 <option value="student">Student</option>
                             </select>
                         </div>
                         <div id="show_error1" class="mb-2"></div>
+                        <!-- estftyhg -->
 
                         <!-- Email input -->
                         <div class="form-outline mb-0">
@@ -161,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             var role = $('#role').val();
 
             // ...
-            if (role == "") {
+            if (role === "select") {
                 $('#show_error1').html('Please select a role first!').css('color', 'red');
                 return false;
             } else {
@@ -176,12 +177,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             // ...
-            if (IsEmail(user) == false) {
-                $('#show_error2').html("Entered Email is not Valid!!").css("color", "red");
-                return false;
-            } else {
-                $('#show_error2').empty();
-            }
+            // if (IsEmail(user) == false) {
+            //     $('#show_error2').html("Entered Email is not Valid!!").css("color", "red");
+            //     return false;
+            // } else {
+            //     $('#show_error2').empty();
+            // }
 
             // ...
             if (pass == "") {
