@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 include("../includes/db.php");
 
 include("../includes/header.php");
@@ -9,5 +9,4 @@ include("../includes/sidebar.php");
 
 <?php 
 include("../includes/footer.php");
-?> -->
-
+?>
