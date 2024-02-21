@@ -118,6 +118,31 @@
             </ul>
           </li>
 
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+              <p>
+                Manage
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../SchoolMate/pages/manage_role.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Manage Role</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../SchoolMate/pages/manage_user.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Manage User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
