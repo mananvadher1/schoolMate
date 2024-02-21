@@ -1,24 +1,33 @@
 <?php
+include("includes/db.php");
 $login = false;
+$showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include("includes/db.php");
 
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
-    
-    
-    $sql = "SELECT * FROM `users`";
-    $result = mysqli_query($conn, $sql);
-    
-    // echo "loggedin";
-        while ($row = mysqli_fetch_assoc($result)) {
-            $u_name = $row['username'];
-            $u_pass = $row['password'];
-           
-        }
-    // header("Location: http://localhost/SchoolMate/dashboard.php");
-}
 
+    
+    
+    $sql = "SELECT * FROM `users` WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if($num == 1){
+        while ($row = mysqli_fetch_assoc($result)) {
+         $fname = $row['first_name'];
+         $lname = $row['last_name'];
+                $login = true;
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $email;
+                $_SESSION['fname'] = $fname;
+                $_SESSION['lname'] = $lname;
+                header("Location: dashboard.php");
+            }
+    }else{
+        $showError = "Invalid Credentials!";
+    }
+}
 
 
 ?>
@@ -67,7 +76,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
-
+    <?php
+if ($showError) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> ' . $showError . '
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>';
+  }
+?>
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -86,17 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <!-- Role input -->
-                        <div class="dropdown">
-                            <!-- <a class="btn btn-outline-primary dropdown-toggle px-4 my-3" href="#" role="button"
-                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Role
-                            </a> -->
-
-                            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Principal</a>
-                                <a class="dropdown-item" href="#">Teacher</a>
-                                <a class="dropdown-item" href="#">Student</a>
-                            </div> -->
+                        <!-- <div class="dropdown">
                             <label for="">Role</label>
                             <select class="form-control mb-3" id="role" name="role" placeholder="Select a role">
                                 <option value="select">Select a role</option>
@@ -105,13 +113,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <option value="student">Student</option>
                             </select>
                         </div>
-                        <div id="show_error1" class="mb-2"></div>
-                        <!-- estftyhg -->
+                        <div id="show_error1" class="mb-2"></div> -->
+                       
 
                         <!-- Email input -->
                         <div class="form-outline mb-0">
-                            <label class="form-label" for="username">Username</label>
-                            <input type="email" id="username" name="username" class="form-control form-control-lg mb-2"
+                            <label class="form-label" for="email">Username</label>
+                            <input type="email" id="email" name="email" class="form-control form-control-lg mb-2"
                                 placeholder="Example:abc@gmail.com" />
                         </div>
                         <div id="show_error2" class="mb-2"></div>
@@ -157,32 +165,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $(document).ready(function() {
         $('#submit').click(function() {
             // alert("success");
-            var user = $('#username').val();
+            var user = $('#email').val();
             var pass = $('#password').val();
-            var role = $('#role').val();
+            // var role = $('#role').val();
 
             // ...
-            if (role === "select") {
-                $('#show_error1').html('Please select a role first!').css('color', 'red');
-                return false;
-            } else {
-                $('#show_error1').empty();
-            }
+            // if (role === "select") {
+            //     $('#show_error1').html('Please select a role first!').css('color', 'red');
+            //     return false;
+            // } else {
+            //     $('#show_error1').empty();
+            // }
 
+            // ...
             if (user == "") {
                 $('#show_error2').html('Username can not be empty!').css('color', 'red');
                 return false;
             } else {
                 $('#show_error2').empty();
             }
-
-            // ...
-            // if (IsEmail(user) == false) {
-            //     $('#show_error2').html("Entered Email is not Valid!!").css("color", "red");
-            //     return false;
-            // } else {
-            //     $('#show_error2').empty();
-            // }
 
             // ...
             if (pass == "") {

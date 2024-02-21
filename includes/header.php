@@ -47,6 +47,7 @@
                 </li>
             </ul>
 
+
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- <li class="nav-item">
@@ -59,7 +60,7 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu my-2">
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
-                    <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                         <span>Jane Doe <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -78,7 +79,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Edit Profile</a>
                             </div>
                             <div class="float-right">
-                                <a href="#" class="btn btn-default btn-flat">Logout</a>
+                                <a href="logout.php" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>
