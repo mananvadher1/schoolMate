@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['email'] = $email;
                 $_SESSION['fname'] = $fname;
                 $_SESSION['lname'] = $lname;
-                header("Location: dashboard.php");
+                header("Location: http://localhost/SchoolMate/pages/dashboard.php");
             }
     }else{
         $showError = "Invalid Credentials!";
