@@ -16,18 +16,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         while ($row = mysqli_fetch_assoc($result)) {
          $fname = $row['first_name'];
          $lname = $row['last_name'];
+         $bg = $row['blood_group'];
+         $img = $row['profile_img'];
+         $phone = $row['phone'];
+         $gender = $row['gender'];
                 $login = true;
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['fname'] = $fname;
                 $_SESSION['lname'] = $lname;
-                header("Location: http://localhost/SchoolMate/pages/dashboard.php");
+                $_SESSION['bg'] = $bg;
+                $_SESSION['img'] = $img;
+                $_SESSION['phone'] = $phone;
+                $_SESSION['gender'] = $gender;
+                header("Location: http://localhost/schoolMate/pages/dashboard.php");
             }
     }else{
         $showError = "Invalid Credentials!";
     }
 }
+// echo var_dump($_SESSION);
 
 
 ?>
