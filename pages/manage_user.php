@@ -1,10 +1,10 @@
 <?php
 include("../includes/db.php");
 
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-//     header("location: http://localhost/SchoolMate/login.php");
-//     // echo $_SESSION['loggedin'];
-// }
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
+    header("location: http://localhost/schoolMate/login.php");
+    // echo $_SESSION['loggedin'];
+}
 
 include("../includes/header.php");
 include("../includes/sidebar.php");

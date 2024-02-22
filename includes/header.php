@@ -41,7 +41,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark fixed-top">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark sticky-top">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -57,7 +57,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- <li class="nav-item">
-                    <a href="/SchoolMate/pages/login.php"><button class='btn btn-primary ml-2 text-decoration-none'
+                    <a href="/schoolMate/pages/login.php"><button class='btn btn-primary ml-2 text-decoration-none'
                             data-toggle='modal' data-target='#loginModal'>Login</button></a>
                     </a>
                 </li> -->
