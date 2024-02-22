@@ -4,6 +4,7 @@ include("../includes/db.php");
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     header("location: http://localhost/schoolMate/login.php");
     // echo $_SESSION['loggedin'];
+    exit;
 }
 
 include("../includes/header.php");

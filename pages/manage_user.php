@@ -3,16 +3,14 @@ include("../includes/db.php");
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     header("location: http://localhost/schoolMate/login.php");
-    // echo $_SESSION['loggedin'];
+    exit;
 }
 
 include("../includes/header.php");
 include("../includes/sidebar.php");
-?>
-
-<?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     $role = $_POST['role_id'];
     $email = $_POST['email'];
     $fname = $_POST['first_name'];
@@ -24,27 +22,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bgroup = $_POST['blood_group'];
     $address = $_POST['address'];
     $city = $_POST['city'];
-    $status = $_POST['status'];
+    // Convert checkbox value to 1 or 0
+    $status = isset($_POST['status']) ? 1 : 0; 
 
     $created_by = $_SESSION['email'];
 
-    $sql = "SELECT * FROM users WHERE email = '$email' ";
-    $result = mysqli_query($conn, $sql);
-    $row_count = mysqli_num_rows($result);
-    if ($row_count > 0) {
-        echo "<script>alert('Email already exists');</script>";
-    } else {
-        $isql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','Null','$status','$created_by')";
-        $result = mysqli_query($conn, $isql);
-        if ($result) {
-            echo "<script>alert('User Added Successfully');</script>";
+    // Handle file upload
+    if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
+        $img_name = $_FILES['profile_img']['name'];
+        $img_tmp_name = $_FILES['profile_img']['tmp_name'];
+        $upload_folder = '../dist/img/user_image/';
+
+        // Move uploaded file from temporery destination to permanent destination folder
+        if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
+            // Insert data into database
+            $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('User Added Successfully');</script>";
+            } else {
+                echo "<script>alert('Error : inserting data into database');</script>";
+            }
         } else {
-            echo "<script>alert('Error');</script>";
+            echo "<script>alert('Error : moving uploaded file');</script>";
         }
+    } else {
+        echo "<script>alert('Error : uploading file');</script>";
     }
 }
-
-// echo var_dump($_SESSION);
 ?>
 
 <div class="card card-secondary">
@@ -142,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="form-group col-md-6">
                         <label for="profile_img">Profile Image:</label>
-                        <input type="file" class="form-control-file" name="profile_img" id="profile_img" accept="../dist/img/user_profile_image/">
+                        <input type="file" class="form-control-file" name="profile_img" id="profile_img">
                     </div>
                 </div>
 
