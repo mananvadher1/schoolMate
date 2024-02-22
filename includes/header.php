@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +30,8 @@
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
+
+    
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -38,7 +43,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark fixed-top">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -47,6 +52,9 @@
                 </li>
             </ul>
 
+            <div class="text-center">
+                <? echo "Welcome <b>".$_SESSION['fname']."</b>!"; ?>
+            </div>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -61,15 +69,20 @@
                 <li class="dropdown user user-menu my-2">
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
                         <i class="fas fa-user"></i>
-                        <span>Jane Doe <i class="caret"></i></span>
+                        <span><?php echo $_SESSION['fname']." ".$_SESSION['lname'];?> <i class="caret"></i></span>
                     </a>
+
                     <ul class="dropdown-menu">
                         <!-- User image -->
-                        <li class="user-header bg-secondary">
-                            <img src="dist/img/user.png" class="img-circle" alt="User Image" />
-                            <p>
-                                Jane Doe - Web Developer
-                                <small>Member since Nov. 2012</small>
+                        <li class="user-header bg-blue" style="height: 250px;">
+                            <!-- <?php echo $_SESSION['img'];?> -->
+                            <img src="../dist/img/user.png" class="img-circle" alt="User Image" />
+                            <p><b><?php echo $_SESSION['fname']." ".$_SESSION['lname']."<br>";?>
+                                    <small><?php echo "Username: ". $_SESSION['email']."<br>";?></small>
+                                    <small><?php echo "Phone: ". $_SESSION['phone']."<br>";?></small>
+                                    <small><?php echo "Gender: ". $_SESSION['gender']."<br>";?></small>
+                                    <small><?php echo "Blood Group: ". $_SESSION['bg']."<br>";?></small>
+                                </b>
                             </p>
                         </li>
 
@@ -79,7 +92,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Edit Profile</a>
                             </div>
                             <div class="float-right">
-                                <a href="logout.php" class="btn btn-default btn-flat">Logout</a>
+                                <a href="../logout.php" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>

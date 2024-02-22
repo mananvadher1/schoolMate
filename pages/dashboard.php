@@ -3,16 +3,14 @@
 session_start();
 include("../includes/db.php");
 
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
+  header("location: http://localhost/schoolMate/login.php");
+}
 include("../includes/header.php");
   
 include("../includes/sidebar.php");
 
-
-
-// checks conditions if the session is not set or(||) the session is not true = both means that you are not logged in so we redirect that page to login.php
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-  header("location: login.php");
-}
+    
 ?>
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -99,4 +97,5 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     <!-- /.content -->
 <?php 
 include("../includes/footer.php");
+
 ?>
