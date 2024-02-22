@@ -20,6 +20,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $img = $row['profile_img'];
          $phone = $row['phone'];
          $gender = $row['gender'];
+         $dob = $row['dob'];
+         $address = $row['address'];
                 $login = true;
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
@@ -29,6 +31,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['img'] = $img;
                 $_SESSION['phone'] = $phone;
                 $_SESSION['gender'] = $gender;
+                $_SESSION['dob'] = $dob;
+                $_SESSION['address'] = $address;
                 header("Location: http://localhost/schoolMate/pages/dashboard.php");
             }
     }else{

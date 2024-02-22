@@ -29,7 +29,7 @@ else {
 }
 // echo var_dump($_SESSION);
 ?>
-<div class="card card-secondary ">
+<div class="card card-secondary">
     <div class="card-header">
         <div class="row">
             <div class="col">
