@@ -4,6 +4,7 @@ include("../includes/db.php");
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     header("location: http://localhost/schoolMate/login.php");
     // echo $_SESSION['loggedin'];
+    exit;
 }
 
 include("../includes/header.php");
@@ -55,6 +56,41 @@ else {
         </div>
     </div>
 </div>
+
+<!-- data table -->
+<div class="container my-4">
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">Role Id</th>
+                    <th scope="col">Role Name</th>
+                    <th scope="col">Created By</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col"> Upadated By</th>
+                    <th scope="col">Updated Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM `roles`";
+                $result = mysqli_query($conn, $sql);
+                $sno = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $sno = $sno + 1;
+                    echo "<tr>
+                    <th scope='row'>" . $sno . "</th>
+                    <td>" . $row['role_name'] . "</td>
+                    <td>" . $row['created_by'] . "</td>
+                    <td>" . $row['created_dt'] . "</td>
+                    <td>" . $row['updated_by'] . "</td>
+                    <td>" . $row['updated_dt'] . "</td>
+                    <td><button class='edit btn btn-sm btn-primary' id=" . $row['role_id'] . ">Edit</button> <button class='delete btn btn-sm btn-primary' id=d" . $row['role_id'] . ">Delete</button></td>
+                </tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 
 <?php 
