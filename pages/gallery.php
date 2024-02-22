@@ -1,6 +1,4 @@
 <?php 
-
-session_start();
 include("../includes/db.php");
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {

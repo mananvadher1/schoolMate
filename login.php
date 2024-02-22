@@ -21,7 +21,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $phone = $row['phone'];
          $gender = $row['gender'];
                 $login = true;
-                session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['fname'] = $fname;

@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("../includes/db.php");
 
 // if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
@@ -35,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($row_count > 0){
         echo "<script>alert('Email already exists');</script>";
     }else{
-        $isql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`, `updated_by`, `updated_dt`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','Null','$status','$created_by','0','0')";
+        $isql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','Null','$status','$created_by')";
         $result = mysqli_query($conn, $isql);
         if($result){
             echo "<script>alert('User Added Successfully');</script>";
