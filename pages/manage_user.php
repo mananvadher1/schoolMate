@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <!-- data table -->
-<div class="container mx-1 my-4">
+<div class="container">
     <table class="table" id="myTable">
         <thead>
             <tr>
@@ -230,7 +230,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </tbody>
     </table>
 </div>
-
 
 <?php
 include("../includes/footer.php");
