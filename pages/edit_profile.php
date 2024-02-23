@@ -148,7 +148,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </div>
 <?php
 // fetch
-$sql = "SELECT * FROM `users`";
+
+$id= $_SESSION['id'];
+$sql = "SELECT * FROM `users` WHERE  `id`=$id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
     echo '<div class="card-body box-profile">
