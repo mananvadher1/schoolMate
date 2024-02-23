@@ -11,6 +11,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 include("../includes/header.php");
 include("../includes/sidebar.php");
 ?>
+<?php 
+    $sql = "SELECT * FROM users ";
+    $result = mysqli_query($conn, $sql);
+    $display=mysqli_num_rows($result);
+     //echo ($display);
+?>
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -34,9 +40,11 @@ include("../includes/sidebar.php");
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>
+                   <?php echo("$display");?>
+                  </h3>
 
-                  <p>New Orders</p>
+                  <p>Student</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
