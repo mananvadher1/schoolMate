@@ -41,7 +41,7 @@
         </div> -->
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark sticky-top">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark fixed-top">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -73,8 +73,7 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-blue" style="height: 250px;">
-                            <!-- <?php echo $_SESSION['img'];?> -->
-                            <img src="../dist/img/user.png" class="img-circle" alt="User Image" />
+                            <img src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" class="img-circle" alt="User Image" />
                             <p><b><?php echo $_SESSION['fname']." ".$_SESSION['lname']."<br>";?>
                                     <small><?php echo "Username: ". $_SESSION['email']."<br>";?></small>
                                     <small><?php echo "Phone: ". $_SESSION['phone']."<br>";?></small>
@@ -104,4 +103,4 @@
 
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper my-4 ">

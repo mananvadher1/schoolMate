@@ -23,31 +23,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST['address'];
     $city = $_POST['city'];
     // Convert checkbox value to 1 or 0
-    $status = isset($_POST['status']) ? 1 : 0; 
+    $status = isset($_POST['status']) ? 1 : 0;
 
     $created_by = $_SESSION['email'];
 
-    // Handle file upload
-    if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
-        $img_name = $_FILES['profile_img']['name'];
-        $img_tmp_name = $_FILES['profile_img']['tmp_name'];
-        $upload_folder = '../dist/img/user_image/';
+    //check user are already exist or not
+    $sql = "SELECT * FROM users WHERE email = '$email' ";
+    $result = mysqli_query($conn, $sql);
+    $row_count = mysqli_num_rows($result);
+    if ($row_count > 0) {
+        echo "<script>alert('User already exists');</script>";
+    } else {
+        // Handle file upload
+        if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
+            $img_name = $_FILES['profile_img']['name'];
+            $img_tmp_name = $_FILES['profile_img']['tmp_name'];
+            $upload_folder = '../dist/img/user_image/';
 
-        // Move uploaded file from temporery destination to permanent destination folder
-        if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
-            // Insert data into database
-            $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('User Added Successfully');</script>";
+            // Move uploaded file from temporery destination to permanent destination folder
+            if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
+                // Insert data into database
+                $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>alert('User Added Successfully');</script>";
+                } else {
+                    echo "<script>alert('Error : inserting data into database');</script>";
+                }
             } else {
-                echo "<script>alert('Error : inserting data into database');</script>";
+                echo "<script>alert('Error : moving uploaded file');</script>";
             }
         } else {
-            echo "<script>alert('Error : moving uploaded file');</script>";
+            echo "<script>alert('Error : uploading file');</script>";
         }
-    } else {
-        echo "<script>alert('Error : uploading file');</script>";
     }
 }
 ?>
@@ -167,38 +175,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <!-- data table -->
-<div class="mx-2.5 my-4">
-        <table class="table" id="myTable">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Role Id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">DOB</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Blood Group</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Created By</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col"> Upadated By</th>
-                    <th scope="col">Updated Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "
+<div class="container mx-1 my-4">
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Role Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created Date</th>
+                <th scope="col"> Upadated By</th>
+                <th scope="col">Updated Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "
                 SELECT id,role_id,email,password,first_name,last_name,dob,gender,phone,blood_group,address,city,status,created_by,created_dt,updated_by,updated_dt FROM `users`;";
-                $result = mysqli_query($conn, $sql);
-                $sno = 0;
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $sno = $sno + 1;
-                    echo "<tr>
+            $result = mysqli_query($conn, $sql);
+            $sno = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $sno = $sno + 1;
+                echo "<tr>
                     <th scope='row'>" . $sno . "</th>
                     <td>" . $row['id'] . "</td>
                     <td>" . $row['role_id'] . "</td>
@@ -217,11 +225,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <td>" . $row['updated_dt'] . "</td>
                     <td><button class='edit btn btn-sm btn-primary' id=" . $row['id'] . ">Edit</button> <button class='delete btn btn-sm btn-primary' id=d" . $row['id'] . ">Delete</button></td>
                 </tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 
 <?php

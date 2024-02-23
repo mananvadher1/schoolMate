@@ -151,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <div class="card-body box-profile">
     <h1 class="mb-3"><b>My Profile</b></h1>
     <div class="">
-        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user.png" alt="User profile picture">
+        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" alt="User profile picture">
     </div>
 
     <h3 class="profile-username"><?php echo $fname.' '.$lname;?> <i class="caret"></h3>
