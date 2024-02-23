@@ -78,7 +78,8 @@
         }
 
         .dataTables_paginate .paginate_button {
-            border: 1px solid #007bff;
+            border: none;
+            /* Remove border */
             border-radius: 3px;
             padding: 5px 10px;
             margin: 0 5px;
@@ -91,17 +92,13 @@
             background-color: #0056b3;
         }
 
+
         .dataTables_filter input[type="search"],
         .dataTables_length select {
             border: 1px solid #007bff;
             border-radius: 3px;
             padding: 5px;
             background-color: #fff;
-        }
-
-        .nav-link.active {
-            background-color: blue;
-            color: white;
         }
     </style>
 </head>
@@ -177,5 +174,3 @@
 
         <!-- Main Sidebar Container -->
 
-
-        <!-- Content Wrapper. Contains page content -->
