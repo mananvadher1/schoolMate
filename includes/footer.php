@@ -1,7 +1,7 @@
   <!-- /.content -->
   </div>
  <!-- /.content-wrapper -->
-  <footer class="main-footer bg-dark sticky-bottom">
+  <footer class="main-footer bg-dark fixed-bottom">
     <strong>Copyright &copy; 2024-2025 <a href="http://localhost/schoolMate/dashboard.php">SchoolMate</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
