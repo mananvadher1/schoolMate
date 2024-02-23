@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +7,7 @@
     <title>SchoolMate</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -29,29 +27,107 @@
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 
-    
+    <!-- DataTables Responsive CSS -->
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+    <!-- DataTables Responsive JavaScript -->
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+    <style>
+        table.dataTable {
+            width: 100%;
+            margin: 0 auto;
+            clear: both;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-family: 'Source Sans Pro', sans-serif;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dataTables_wrapper {
+            overflow-x: auto;
+        }
+
+        table.dataTable thead th,
+        table.dataTable tbody td {
+            white-space: nowrap;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            table.dataTable thead th,
+            table.dataTable tbody td {
+                padding: 8px;
+            }
+        }
+
+        table.dataTable thead th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table.dataTable tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .dataTables_paginate .paginate_button {
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .dataTables_paginate .paginate_button:hover {
+            background-color: #0056b3;
+        }
+
+        .dataTables_filter input[type="search"],
+        .dataTables_length select {
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        .nav-link.active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">.
+<!-- <body class="hold-transition sidebar-mini layout-fixed">. -->
+
+<body class="hold-transition sidebar-mini">
+
     <div class="wrapper">
 
         <!-- Preloader -->
-        <!-- <div class="preloader flex-column justify-content-center align-items-center">
+        <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="../dist/img/logo.jpeg" alt="AdminLTELogo" height="60" width="60">
-        </div> -->
+        </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark fixed-top">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
 
             <div class="text-center">
-                <? echo "Welcome <b>".$_SESSION['fname']."</b>!"; ?>
+                <? echo "Welcome <b>" . $_SESSION['fname'] . "</b>!"; ?>
             </div>
 
             <!-- Right navbar links -->
@@ -67,18 +143,18 @@
                 <li class="dropdown user user-menu my-2">
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
                         <i class="fas fa-user"></i>
-                        <span><?php echo $_SESSION['fname']." ".$_SESSION['lname'];?> <i class="caret"></i></span>
+                        <span><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?> <i class="caret"></i></span>
                     </a>
 
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-blue" style="height: 250px;">
                             <img src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" class="img-circle" alt="User Image" />
-                            <p><b><?php echo $_SESSION['fname']." ".$_SESSION['lname']."<br>";?>
-                                    <small><?php echo "Username: ". $_SESSION['email']."<br>";?></small>
-                                    <small><?php echo "Phone: ". $_SESSION['phone']."<br>";?></small>
-                                    <small><?php echo "Gender: ". $_SESSION['gender']."<br>";?></small>
-                                    <small><?php echo "Blood Group: ". $_SESSION['bg']."<br>";?></small>
+                            <p><b><?php echo $_SESSION['fname'] . " " . $_SESSION['lname'] . "<br>"; ?>
+                                    <small><?php echo "Username: " . $_SESSION['email'] . "<br>"; ?></small>
+                                    <small><?php echo "Phone: " . $_SESSION['phone'] . "<br>"; ?></small>
+                                    <small><?php echo "Gender: " . $_SESSION['gender'] . "<br>"; ?></small>
+                                    <small><?php echo "Blood Group: " . $_SESSION['bg'] . "<br>"; ?></small>
                                 </b>
                             </p>
                         </li>
@@ -103,4 +179,3 @@
 
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper my-4 ">
