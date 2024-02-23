@@ -146,15 +146,58 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
     </div>
 </div>
-
-<!-- show profile details -->
-<div class="card-body box-profile">
+<?php
+// fetch
+$sql = "SELECT * FROM `users`";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+    echo '<div class="card-body box-profile">
     <h1 class="mb-3"><b>My Profile</b></h1>
     <div class="">
-        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" alt="User profile picture">
+        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user_image/'.$row["profile_img"].'"
+            alt="User profile picture">
     </div>
 
-    <h3 class="profile-username"><?php echo $fname.' '.$lname;?> <i class="caret"></h3>
+    <h3 class="profile-username">'.$row['first_name'].' '.$row["last_name"].'<i class="caret"></h3>
+
+    <ul class="list-group list-group-unbordered mb-3">
+        <li class="list-group-item">
+            <b>First Name: </b>'.$row['first_name'].'
+        </li>
+        <li class="list-group-item">
+            <b>Last Name: </b>'.$row["last_name"].'
+        </li>
+        <li class="list-group-item">
+            <b>Email: </b>'.$row["email"].'
+        </li>
+        <li class="list-group-item">
+            <b>Phone: </b>'.$row["phone"].'
+        </li>
+        <li class="list-group-item">
+            <b>Date Of Birth: </b>'.$row["dob"].'
+        </li>
+        <li class="list-group-item">
+            <b>Gender: </b>'.$row["gender"].'
+        </li>
+        <li class="list-group-item">
+            <b>Blood Group: </b>'.$row["blood_group"].'
+        </li>
+        <li class="list-group-item">
+            <b>Address: </b>'.$row["address"].'
+        </li>
+    </ul>
+
+</div>';
+?>
+<!-- show profile details -->
+<!-- <div class="card-body box-profile">
+    <h1 class="mb-3"><b>My Profile</b></h1>
+    <div class="">
+        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>"
+            alt="User profile picture">
+    </div>
+
+    <h3 class="profile-username"><?php echo $fname1.' '.$lname1;?> <i class="caret"></h3>
 
     <ul class="list-group list-group-unbordered mb-3">
         <li class="list-group-item">
@@ -183,7 +226,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </li>
     </ul>
 
-</div>
+</div> -->
 
 <?php
 include("../includes/footer.php");
