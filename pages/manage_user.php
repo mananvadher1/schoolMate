@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <!-- data table -->
-<div class="container mx-1 my-4">
+<div class="container">
     <table class="table" id="myTable">
         <thead>
             <tr>
@@ -196,6 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th scope="col">Created Date</th>
                 <th scope="col"> Upadated By</th>
                 <th scope="col">Updated Date</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -203,11 +204,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "
                 SELECT id,role_id,email,password,first_name,last_name,dob,gender,phone,blood_group,address,city,status,created_by,created_dt,updated_by,updated_dt FROM `users`;";
             $result = mysqli_query($conn, $sql);
-            $sno = 0;
             while ($row = mysqli_fetch_assoc($result)) {
-                $sno = $sno + 1;
                 echo "<tr>
-                    <th scope='row'>" . $sno . "</th>
                     <td>" . $row['id'] . "</td>
                     <td>" . $row['role_id'] . "</td>
                     <td>" . $row['email'] . "</td>
@@ -216,9 +214,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <td>" . $row['last_name'] . "</td>
                     <td>" . $row['dob'] . "</td>
                     <td>" . $row['gender'] . "</td>
+                    <td>" . $row['phone'] . "</td>
+                    <td>" . $row['blood_group'] . "</td>
+                    <td>" . $row['address'] . "</td>
                     <td>" . $row['city'] . "</td>
                     <td>" . $row['status'] . "</td>
-                    <td>" . $row['address'] . "</td>
                     <td>" . $row['created_by'] . "</td>
                     <td>" . $row['created_dt'] . "</td>
                     <td>" . $row['updated_by'] . "</td>
@@ -231,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </table>
 </div>
 
-   
+
 <?php
 include("../includes/footer.php");
 ?>

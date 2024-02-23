@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $num = mysqli_num_rows($result);
     if($num == 1){
         while ($row = mysqli_fetch_assoc($result)) {
+         $id = $row['id'];
          $fname = $row['first_name'];
          $lname = $row['last_name'];
          $bg = $row['blood_group'];
@@ -25,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $login = true;
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
+                $_SESSION['id'] = $id;
                 $_SESSION['fname'] = $fname;
                 $_SESSION['lname'] = $lname;
                 $_SESSION['bg'] = $bg;
@@ -126,7 +128,7 @@ if ($showError) {
                             </select>
                         </div>
                         <div id="show_error1" class="mb-2"></div> -->
-                       
+
 
                         <!-- Email input -->
                         <div class="form-outline mb-0">
