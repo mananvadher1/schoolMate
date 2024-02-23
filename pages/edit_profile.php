@@ -7,46 +7,48 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 }
 
 include("../includes/header.php");
+
 include("../includes/sidebar.php");
 ?>
 
 <?php
 
+$update = false;
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $role = $_POST['role_id'];
-    $email = $_POST['email'];
+    $id = $_SESSION['id']; 
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
-    $password = $_POST['password'];
+    $email = $_POST['email'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $phone = $_POST['phone'];
     $bgroup = $_POST['blood_group'];
     $address = $_POST['address'];
-    $city = $_POST['city'];
-    $status = $_POST['status'];
+    // update
+    $sql = "UPDATE `users` SET `first_name` = '$fname', `last_name` = '$lname', `email` = '$email', `dob` = '$dob', `gender` = '$gender', `phone` = '$phone', `blood_group` = '$bgroup', `address` = '$address' WHERE `id` = $id";
 
-    $created_by = $_SESSION['email'];
-
-    $sql = "SELECT * FROM users WHERE email = '$email' ";
     $result = mysqli_query($conn, $sql);
-    $row_count = mysqli_num_rows($result);
-    if($row_count > 0){
-        echo "<script>alert('Email already exists');</script>";
-    }else{
-        $isql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','Null','$status','$created_by')";
-        $result = mysqli_query($conn, $isql);
-        if($result){
-            echo "<script>alert('User Added Successfully');</script>";
+
+    if ($result) {
+        $update = true;
+        // echo "done";
+        if($update){
+            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+            <strong>Success!</strong> Your records are updated successfully!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
         }
-        else{
-            echo "<script>alert('Error');</script>";
-        }
+    } else {
+        echo "Error: " . mysqli_error($conn);
     }
 }
 
-// echo var_dump($_SESSION);
+
+
 ?>
+
 
 <div class="card card-secondary">
     <div class="card-header">
@@ -62,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </div>
     <div class="card-body px-4 p-0">
         <div class="collapse mt-3" id="collapseExample">
-            <form action="manage_user.php" method="post" enctype="multipart/form-data">
+            <form action="edit_profile.php" method="post" enctype="multipart/form-data">
 
 
                 <div class="form-row">
@@ -118,7 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     </div>
                 </div>
 
-                <div class="form-row">
+                <!-- <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="city">City:</label>
                         <input type="text" class="form-control" name="city" id="city" required>
@@ -128,16 +130,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <input type="file" class="form-control-file" name="profile_img" id="profile_img"
                             accept="image/*">
                     </div>
-                </div>
+                </div> -->
 
-                <div class="form-row">
+                <!-- <div class="form-row">
                     <div class="form-group col-md-6">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="status" id="status" value="1">
                             <label class="form-check-label" for="status">Active</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -147,41 +149,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <!-- show profile details -->
 <div class="card-body box-profile">
-    <h1><b>My Profile</b></h1>
+    <h1 class="mb-3"><b>My Profile</b></h1>
     <div class="">
         <img class="profile-user-img img-fluid img-circle" src="../dist/img/user.png" alt="User profile picture">
     </div>
 
-    <h3 class="profile-username"><?php echo $_SESSION['fname']." ".$_SESSION['lname'];?> <i class="caret"></h3>
+    <h3 class="profile-username"><?php echo $fname.' '.$lname;?> <i class="caret"></h3>
 
     <ul class="list-group list-group-unbordered mb-3">
         <li class="list-group-item">
-            <b>First Name: </b><?php echo $_SESSION['fname'];?>
+            <b>First Name: </b><?php echo $fname;?>
         </li>
         <li class="list-group-item">
-            <b>Last Name: </b><?php echo $_SESSION['lname'];?>
+            <b>Last Name: </b><?php echo $lname;?>
         </li>
         <li class="list-group-item">
-            <b>Email: </b><?php echo $_SESSION['email'];?>
+            <b>Email: </b><?php echo $email;?>
         </li>
         <li class="list-group-item">
-            <b>Phone: </b><?php echo $_SESSION['phone'];?>
+            <b>Phone: </b><?php echo $phone;?>
         </li>
         <li class="list-group-item">
-            <b>Date Of Birth: </b><?php echo $_SESSION['dob'];?>
+            <b>Date Of Birth: </b><?php echo $dob;?>
         </li>
         <li class="list-group-item">
-            <b>Gender: </b><?php echo $_SESSION['gender'];?>
+            <b>Gender: </b><?php echo $gender;?>
         </li>
         <li class="list-group-item">
-            <b>Blood Group: </b><?php echo $_SESSION['bg'];?>
+            <b>Blood Group: </b><?php echo $bgroup;?>
         </li>
         <li class="list-group-item">
-            <b>Address: </b><?php echo $_SESSION['address'];?>
+            <b>Address: </b><?php echo $address;?>
         </li>
     </ul>
 
 </div>
+
 <?php
 include("../includes/footer.php");
 ?>
