@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th scope="col">Created Date</th>
                 <th scope="col"> Upadated By</th>
                 <th scope="col">Updated Date</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
