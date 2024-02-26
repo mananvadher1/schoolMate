@@ -197,7 +197,6 @@ include("../includes/sidebar.php");
     <!-- Control sidebar content goes here -->
   <!-- </aside> -->
   <!-- /.control-sidebar -->
+  <?php include("../includes/footer.php"); ?>
 </div>
 <!-- ./wrapper -->
-
-<?php include("../includes/footer.php"); ?>
