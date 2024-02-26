@@ -87,8 +87,8 @@
                     //response is output of the action file
                     if (response) {
                         alert("Deleted role_id: " + id + " successfully");
-                        // $("#id").hide();
-                        document.getElementById(id).style.display = "none";
+                        $("#id").hide();
+                        // document.getElementById(id).style.display = "none";
                     } else if (!response) {
                         alert("Data Can't be deleted");
                     }

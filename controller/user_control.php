@@ -6,6 +6,49 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     // echo $_SESSION['loggedin'];
     exit;
 }
+
+//delete button logic api calling and 
+// echo '<pre>'; print_r($_POST); exit;
+if (isset($_POST['action']) && $_POST['action'] == 'delete') {
+    delete();
+}
+
+//edit button data send thrught api with jason format
+if (isset($_POST['action']) && $_POST['action'] == 'edit') {
+    edit();
+}
+
+function edit()
+{
+    global $conn;
+    $id = $_POST['id'];
+    $role_data = array();
+
+
+    // fetch data from db 
+    $result = mysqli_query($conn, "SELECT * FROM `users` WHERE id = $id");
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($role_data, $row);
+        }
+        // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
+        header("Content-Type: application/json");
+        echo json_encode($role_data);
+        exit;
+    }
+}
+
+function delete()
+{
+    global $conn;
+    $id = $_POST['id']; // Corrected $_POST variable name
+
+    $result = mysqli_query($conn, "DELETE FROM users WHERE id = $id");
+    // echo var_dump($result);
+    echo 1;
+    exit;
+}
+
 include("../includes/header.php");
 include("../includes/sidebar.php");
 
@@ -61,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $sql_dropdown = "SELECT * FROM `roles`";
 $re_dropdown = mysqli_query($conn, $sql_dropdown);
 // sql for data table
-$sql_dt = "SELECT id,role_id,email,password,first_name,last_name,dob,gender,phone,blood_group,address,city,status,created_by,created_dt,updated_by,updated_dt FROM `users`;";
+$sql_dt = "SELECT * FROM `users`";
 $re_dt = mysqli_query($conn, $sql_dt);
 $sno = 0;
 ?>

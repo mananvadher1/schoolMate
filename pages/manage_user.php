@@ -141,7 +141,7 @@
         <tbody>
             <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
                 $sno = $sno + 1;
-                echo "<tr>
+                echo "<tr id=".$row_dt['id'].">
                     <td>" . $sno . "</td>
                     <td>" . $row_dt['role_id'] . "</td>
                     <td>" . $row_dt['email'] . "</td>
@@ -159,11 +159,64 @@
                     <td>" . $row_dt['created_dt'] . "</td>
                     <td>" . $row_dt['updated_by'] . "</td>
                     <td>" . $row_dt['updated_dt'] . "</td>
-                    <td><button class='edit btn btn-sm btn-success' id=" . $row_dt['id'] . ">Edit</button> <button class='delete btn btn-sm btn-danger' id=d" . $row_dt['id'] . ">Delete</button></td>
+                    <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit btn btn-sm btn-success' id=" . $row_dt['id'] . ">Edit</button>
+                    <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger' id=d" . $row_dt['id'] . ">Delete</button></td>
                 </tr>";
             } ?>
         </tbody>
     </table>
 </div>
 
+
+<script>
+    function deleteClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                url: '../controller/user_control.php',
+                type: 'POST',
+                data: {
+                    //get value
+                    id: id,
+                    action: "delete"
+                },
+                success: function(response) {
+                    console.log('response---->',response);
+                    //response is output of the action file
+                    if (response) {
+                        // alert("Deleted role_id: " + id + " successfully");
+                        // $('#id').hide();
+                        document.getElementById(id).style.display = "none";
+                    } else if (!response) {
+                        alert("Data Can't be deleted");
+                    }
+                }
+            });
+        });
+    }
+
+    function editClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                url: '../controller/user_control.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    action: "edit"
+                },
+                success: function(response) {
+                    console.log('response---->',response);
+                    // console.log(response);
+
+                    $.each(response, function(key, value) {
+                        // $('#edit_id').val(value['id']);
+                        // $('#edit_email').val(value['email']);
+                    });
+                    // $(".edit_form").toggle();
+                }
+            });
+        });
+    }
+</script>
 <?php include("../includes/footer.php"); ?>
