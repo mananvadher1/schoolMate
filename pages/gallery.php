@@ -4,7 +4,7 @@ include("../includes/header.php");
 include("../includes/sidebar.php");
 ?>
 
-<div class="wrapper">
+<!-- <div class="wrapper"> -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper ml-0">
@@ -187,6 +187,7 @@ include("../includes/sidebar.php");
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <?php include("../includes/footer.php"); ?>
   </div>
   <!-- /.content-wrapper -->
 
@@ -197,7 +198,4 @@ include("../includes/sidebar.php");
     <!-- Control sidebar content goes here -->
   <!-- </aside> -->
   <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<?php include("../includes/footer.php"); ?>
+<!-- </div> -->

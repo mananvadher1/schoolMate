@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $num = mysqli_num_rows($result);
     if($num == 1){
         while ($row = mysqli_fetch_assoc($result)) {
+         $role_id = $row["role_id"];
          $id = $row['id'];
          $fname = $row['first_name'];
          $lname = $row['last_name'];
@@ -35,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['gender'] = $gender;
                 $_SESSION['dob'] = $dob;
                 $_SESSION['address'] = $address;
+                $_SESSION['role_id'] = $role_id;
                 header("Location: http://localhost/schoolMate/pages/dashboard.php");
             }
     }else{

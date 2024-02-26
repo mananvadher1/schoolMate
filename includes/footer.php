@@ -81,6 +81,7 @@
     });
 
     $(document).ready(function() {
+      // $('.edit_form').hide();
       $('.nav-link').click(function() {
         $('.nav-link').removeClass('active');
         $(this).addClass('active');
