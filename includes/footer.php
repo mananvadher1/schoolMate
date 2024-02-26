@@ -1,8 +1,8 @@
   <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer bg-dark ">
-    <strong>Copyright &copy; 2024-2025 <a href="http://localhost/schoolMate/dashboard.php">SchoolMate</a>.</strong>
+  <footer class="main-footer bg-dark">
+    <strong>Copyright &copy; 2024-2025 <a href="http://localhost/schoolMate/pages/dashboard.php">SchoolMate</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
 

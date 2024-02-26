@@ -25,7 +25,7 @@
            
           <!-- / -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="notice.php" class="nav-link">
             <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Notice
@@ -47,6 +47,15 @@
             <i class="nav-icon fa fa-clipboard"></i>
               <p>
                 Attendence
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-clipboard"></i>
+              <p>
+                Class
               </p>
             </a>
           </li>
@@ -165,6 +174,15 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                Report
+              </p>
+            </a>
           </li>
 
           <li class="nav-item">
