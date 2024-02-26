@@ -1,17 +1,9 @@
 <?php 
 include("../includes/db.php");
-
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-  header("location: http://localhost/schoolMate/login.php");
-  exit;
-}
-
-include("../includes/header.php");
-  
+include("../includes/header.php"); 
 include("../includes/sidebar.php");
-
-    
 ?>
+
 <div class="wrapper">
 
   <!-- Content Wrapper. Contains page content -->
@@ -208,7 +200,4 @@ include("../includes/sidebar.php");
 </div>
 <!-- ./wrapper -->
 
-<?php 
-include("../includes/footer.php");
-?>
-
+<?php include("../includes/footer.php"); ?>

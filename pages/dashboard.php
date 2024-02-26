@@ -1,24 +1,6 @@
-<?php 
+<?php include("../controller/dashbord_control.php"); ?>
 
-include("../includes/db.php");
-
-// checks conditions if the session is not set or(||) the session is not true = both means that you are not logged in so we redirect that page to login.php
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-  header("location: http://localhost/schoolMate/login.php");
-  exit;
-}
-
-include("../includes/header.php");
-include("../includes/sidebar.php");
-?>
-<?php 
-    $sql = "SELECT * FROM users ";
-    $result = mysqli_query($conn, $sql);
-    $display=mysqli_num_rows($result);
-     //echo ($display);
-?>
-
-    <!-- Content Header (Page header) -->
+<!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -103,7 +85,4 @@ include("../includes/sidebar.php");
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-<?php 
-include("../includes/footer.php");
-
-?>
+<?php include("../includes/footer.php"); ?>

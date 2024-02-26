@@ -1,33 +1,5 @@
-<?php
-include("../includes/db.php");
+<?php include("../controller/role_control.php"); ?>
 
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-    header("location: http://localhost/schoolMate/login.php");
-    // echo $_SESSION['loggedin'];
-    exit;
-}
-
-include("../includes/header.php");
-
-include("../includes/sidebar.php");
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $role_name = $_POST["role_name"];
-    $email = $_SESSION["email"];
-
-    $sql = "INSERT INTO `roles` ( `role_name`, `created_by`, `created_dt`, `updated_by`, `updated_dt`) VALUES ( '$role_name', '$email', CURRENT_TIMESTAMP(), NULL, NULL);";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        //echo "New record created successfully";
-        $insert = true;
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-}
-// echo var_dump($_SESSION);
-?>
 <div class="card card-secondary">
     <div class="card-header">
         <div class="row">
@@ -69,28 +41,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
         </thead>
         <tbody>
-            <?php
-            $sql = "SELECT * FROM `roles`";
-            $result = mysqli_query($conn, $sql);
-            $sno = 0;
-            while ($row = mysqli_fetch_assoc($result)) {
-                $sno = $sno + 1;
-                echo "<tr>
-                    <th scope='row'>" . $sno . "</th>
-                    <td>" . $row['role_name'] . "</td>
-                    <td>" . $row['created_by'] . "</td>
-                    <td>" . $row['created_dt'] . "</td>
-                    <td>" . $row['updated_by'] . "</td>
-                    <td>" . $row['updated_dt'] . "</td>
-                    <td><button class='edit btn btn-sm btn-primary' id=" . $row['role_id'] . ">Edit</button> <button class='delete btn btn-sm btn-primary' id=d" . $row['role_id'] . ">Delete</button></td>
+            <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                echo "<tr id=" . $row_dt['role_id'] . ">
+                    <th scope='row'>" . $row_dt['role_id'] . "</th>
+                    <td>" . $row_dt['role_name'] . "</td>
+                    <td>" . $row_dt['created_by'] . "</td>
+                    <td>" . $row_dt['created_dt'] . "</td>
+                    <td>" . $row_dt['updated_by'] . "</td>
+                    <td>" . $row_dt['updated_dt'] . "</td>
+                    <td><button class='edit-button btn btn-sm btn-success' >Edit</button> 
+                    <button onClick='deleteClick(". $row_dt['role_id'] .")' class='delete btn btn-sm btn-danger'>Delete</button></td>
                 </tr>";
-            }
-            ?>
+            } ?>
         </tbody>
     </table>
 </div>
 
+<script>
+function deleteClick(id){
+    $(document).ready(function() {
+        console.log('hii')
+        $.ajax({
+            //action
+            url : '../controller/role_control.php',
+            //method
+            type : 'POST',
+            // header:{
+            //     contentType: "application/json",
+            // },
+            data : {
+                //get value
+                id: id,
+                action : "delete"
+            },
+            success:function(response){
+                // console.log('response---->',response);
+                //response is output of the action file
+                if(response){
+                    alert("Deleted role_id: " + id + " successfully");
+                    // $("#id").hide();
+                    document.getElementById(id).style.display = "none";
+                }
+                else if(response == 0){
+                    alert("Data Can't be deleted");
+                }
+            }
+        });
+    });
+}
+</script>
 
-<?php
-include("../includes/footer.php");
-?>
+<?php include("../includes/footer.php"); ?>

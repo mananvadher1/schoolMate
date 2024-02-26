@@ -1,64 +1,4 @@
-<?php
-include("../includes/db.php");
-
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-    header("location: http://localhost/schoolMate/login.php");
-    exit;
-}
-
-include("../includes/header.php");
-include("../includes/sidebar.php");
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $role = $_POST['role_id'];
-    $email = $_POST['email'];
-    $fname = $_POST['first_name'];
-    $lname = $_POST['last_name'];
-    $password = $_POST['password'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $phone = $_POST['phone'];
-    $bgroup = $_POST['blood_group'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    // Convert checkbox value to 1 or 0
-    $status = isset($_POST['status']) ? 1 : 0;
-
-    $created_by = $_SESSION['email'];
-
-    //check user are already exist or not
-    $sql = "SELECT * FROM users WHERE email = '$email' ";
-    $result = mysqli_query($conn, $sql);
-    $row_count = mysqli_num_rows($result);
-    if ($row_count > 0) {
-        echo "<script>alert('User already exists');</script>";
-    } else {
-        // Handle file upload
-        if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
-            $img_name = $_FILES['profile_img']['name'];
-            $img_tmp_name = $_FILES['profile_img']['tmp_name'];
-            $upload_folder = '../dist/img/user_image/';
-
-            // Move uploaded file from temporery destination to permanent destination folder
-            if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
-                // Insert data into database
-                $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
-                $result = mysqli_query($conn, $sql);
-                if ($result) {
-                    echo "<script>alert('User Added Successfully');</script>";
-                } else {
-                    echo "<script>alert('Error : inserting data into database');</script>";
-                }
-            } else {
-                echo "<script>alert('Error : moving uploaded file');</script>";
-            }
-        } else {
-            echo "<script>alert('Error : uploading file');</script>";
-        }
-    }
-}
-?>
+<?php include("../controller/user_control.php"); ?>
 
 <div class="card card-secondary">
     <div class="card-header">
@@ -73,21 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <div class="card-body px-4 p-0">
         <div class="collapse mt-3" id="collapseExample">
-            <form action="manage_user.php" method="post" enctype="multipart/form-data">
+            <form class="my-4" action="manage_user.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="role_id">Role:</label>
 
 
+                        
+                        <select class="form-control" name="role_id" id="role_id" required>
                         <?php
-                        $sql = "SELECT * FROM `roles`";
-                        $result = mysqli_query($conn, $sql);
-                        echo '<select class="form-control" name="role_id" id="role_id" required>';
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '  <option value="' . $row['role_id'] . '">' . $row['role_name'] . '</option>';
+                        while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
+                            echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
                         }
-                        echo "</select>";
                         ?>
+                        </select>
 
 
                     </div>
@@ -200,38 +139,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
         </thead>
         <tbody>
-            <?php
-            $sql = "
-                SELECT id,role_id,email,password,first_name,last_name,dob,gender,phone,blood_group,address,city,status,created_by,created_dt,updated_by,updated_dt FROM `users`;";
-            $result = mysqli_query($conn, $sql);
-            while ($row = mysqli_fetch_assoc($result)) {
+            <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                $sno = $sno + 1;
                 echo "<tr>
-                    <td>" . $row['id'] . "</td>
-                    <td>" . $row['role_id'] . "</td>
-                    <td>" . $row['email'] . "</td>
-                    <td>" . $row['password'] . "</td>
-                    <td>" . $row['first_name'] . "</td>
-                    <td>" . $row['last_name'] . "</td>
-                    <td>" . $row['dob'] . "</td>
-                    <td>" . $row['gender'] . "</td>
-                    <td>" . $row['phone'] . "</td>
-                    <td>" . $row['blood_group'] . "</td>
-                    <td>" . $row['address'] . "</td>
-                    <td>" . $row['city'] . "</td>
-                    <td>" . $row['status'] . "</td>
-                    <td>" . $row['created_by'] . "</td>
-                    <td>" . $row['created_dt'] . "</td>
-                    <td>" . $row['updated_by'] . "</td>
-                    <td>" . $row['updated_dt'] . "</td>
-                    <td><button class='edit btn btn-sm btn-primary' id=" . $row['id'] . ">Edit</button> <button class='delete btn btn-sm btn-primary' id=d" . $row['id'] . ">Delete</button></td>
+                    <td>" . $sno . "</td>
+                    <td>" . $row_dt['role_id'] . "</td>
+                    <td>" . $row_dt['email'] . "</td>
+                    <td>" . $row_dt['password'] . "</td>
+                    <td>" . $row_dt['first_name'] . "</td>
+                    <td>" . $row_dt['last_name'] . "</td>
+                    <td>" . $row_dt['dob'] . "</td>
+                    <td>" . $row_dt['gender'] . "</td>
+                    <td>" . $row_dt['phone'] . "</td>
+                    <td>" . $row_dt['blood_group'] . "</td>
+                    <td>" . $row_dt['address'] . "</td>
+                    <td>" . $row_dt['city'] . "</td>
+                    <td>" . $row_dt['status'] . "</td>
+                    <td>" . $row_dt['created_by'] . "</td>
+                    <td>" . $row_dt['created_dt'] . "</td>
+                    <td>" . $row_dt['updated_by'] . "</td>
+                    <td>" . $row_dt['updated_dt'] . "</td>
+                    <td><button class='edit btn btn-sm btn-success' id=" . $row_dt['id'] . ">Edit</button> <button class='delete btn btn-sm btn-danger' id=d" . $row_dt['id'] . ">Delete</button></td>
                 </tr>";
-            }
-            ?>
+            } ?>
         </tbody>
     </table>
 </div>
 
-
-<?php
-include("../includes/footer.php");
-?>
+<?php include("../includes/footer.php"); ?>
