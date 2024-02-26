@@ -23,6 +23,14 @@
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
         </div>
+        <form class="form-inline edit_form" method="post" style="display: none;">
+            <div class="form-group mx-sm-3 mb-2 my-2">
+                <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+                <label class="form-label mx-3" for="edit_name">Role Name</label>
+                <input type="text" class="form-control" id="edit_name" name="edit_name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Update</button>
+        </form>
     </div>
 </div>
 
@@ -49,8 +57,8 @@
                     <td>" . $row_dt['created_dt'] . "</td>
                     <td>" . $row_dt['updated_by'] . "</td>
                     <td>" . $row_dt['updated_dt'] . "</td>
-                    <td><button class='edit-button btn btn-sm btn-success' >Edit</button> 
-                    <button onClick='deleteClick(". $row_dt['role_id'] .")' class='delete btn btn-sm btn-danger'>Delete</button></td>
+                    <td><button onClick='editClick(" . $row_dt['role_id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
+                    <button onClick='deleteClick(" . $row_dt['role_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
                 </tr>";
             } ?>
         </tbody>
@@ -58,37 +66,60 @@
 </div>
 
 <script>
-function deleteClick(id){
-    $(document).ready(function() {
-        console.log('hii')
-        $.ajax({
-            //action
-            url : '../controller/role_control.php',
-            //method
-            type : 'POST',
-            // header:{
-            //     contentType: "application/json",
-            // },
-            data : {
-                //get value
-                id: id,
-                action : "delete"
-            },
-            success:function(response){
-                // console.log('response---->',response);
-                //response is output of the action file
-                if(response){
-                    alert("Deleted role_id: " + id + " successfully");
-                    // $("#id").hide();
-                    document.getElementById(id).style.display = "none";
+    function deleteClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                //action
+                url: '../controller/role_control.php',
+                //method
+                type: 'POST',
+                // header:{
+                //     contentType: "application/json",
+                // },
+                data: {
+                    //get value
+                    id: id,
+                    action: "delete"
+                },
+                success: function(response) {
+                    // console.log('response---->',response);
+                    //response is output of the action file
+                    if (response) {
+                        alert("Deleted role_id: " + id + " successfully");
+                        // $("#id").hide();
+                        document.getElementById(id).style.display = "none";
+                    } else if (!response) {
+                        alert("Data Can't be deleted");
+                    }
                 }
-                else if(response == 0){
-                    alert("Data Can't be deleted");
-                }
-            }
+            });
         });
-    });
-}
+    }
+
+    function editClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                url: '../controller/role_control.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    action: "edit"
+                },
+                success: function(response) {
+                    // console.log('response---->',response);
+                    // console.log(response);
+
+                    $.each(response, function(key, value) {
+                        $('#edit_id').val(value['role_id']);
+                        $('#edit_name').val(value['role_name']);
+                    });
+                    $(".edit_form").toggle();
+                }
+            });
+        });
+    }
 </script>
 
 <?php include("../includes/footer.php"); ?>
