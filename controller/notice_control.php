@@ -51,6 +51,8 @@ function delete()
   echo 0;
   exit;
 }
+include("../includes/header.php");
+include("../includes/sidebar.php");
 
 $insert = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -116,5 +118,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $cardsql = "SELECT * FROM `notices`";
 $cardresult = mysqli_query($conn, $cardsql);
 
-include("../includes/header.php");
-include("../includes/sidebar.php");
+
