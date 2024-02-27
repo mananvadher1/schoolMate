@@ -53,51 +53,95 @@ include("../includes/header.php");
 include("../includes/sidebar.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $role = $_POST['role_id'];
-    $email = $_POST['email'];
-    $fname = $_POST['first_name'];
-    $lname = $_POST['last_name'];
-    $password = $_POST['password'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $phone = $_POST['phone'];
-    $bgroup = $_POST['blood_group'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    // Convert checkbox value to 1 or 0
-    $status = isset($_POST['status']) ? 1 : 0;
 
-    $created_by = $_SESSION['email'];
-
-    //check user are already exist or not
-    $sql = "SELECT * FROM users WHERE email = '$email' ";
-    $result = mysqli_query($conn, $sql);
-    $row_count = mysqli_num_rows($result);
-    if ($row_count > 0) {
-        echo "<script>alert('User already exists');</script>";
-    } else {
-        // Handle file upload
-        if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
-            $img_name = $_FILES['profile_img']['name'];
-            $img_tmp_name = $_FILES['profile_img']['tmp_name'];
-            $upload_folder = '../dist/img/user_image/';
-
-            // Move uploaded file from temporery destination to permanent destination folder
-            if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
-                // Insert data into database
-                $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
-                $result = mysqli_query($conn, $sql);
-                if ($result) {
-                    echo "<script>alert('User Added Successfully');</script>";
+    if(isset($_POST['email'])){
+        $role = $_POST['role_id'];
+        $email = $_POST['email'];
+        $fname = $_POST['first_name'];
+        $lname = $_POST['last_name'];
+        $password = $_POST['password'];
+        $dob = $_POST['dob'];
+        $gender = $_POST['gender'];
+        $phone = $_POST['phone'];
+        $bgroup = $_POST['blood_group'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        // Convert checkbox value to 1 or 0
+        $status = isset($_POST['status']) ? 1 : 0;
+    
+        $created_by = $_SESSION['email'];
+    
+        //check user are already exist or not
+        $sql = "SELECT * FROM users WHERE email = '$email' ";
+        $result = mysqli_query($conn, $sql);
+        $row_count = mysqli_num_rows($result);
+        if ($row_count > 0) {
+            echo "<script>alert('User already exists');</script>";
+        } else {
+            // Handle file upload
+            if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
+                $img_name = $_FILES['profile_img']['name'];
+                $img_tmp_name = $_FILES['profile_img']['tmp_name'];
+                $upload_folder = '../dist/img/user_image/';
+    
+                // Move uploaded file from temporery destination to permanent destination folder
+                if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
+                    // Insert data into database
+                    $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        echo "<script>alert('User Added Successfully');</script>";
+                    } else {
+                        echo "<script>alert('Error : inserting data into database');</script>";
+                    }
                 } else {
-                    echo "<script>alert('Error : inserting data into database');</script>";
+                    echo "<script>alert('Error : moving uploaded file');</script>";
                 }
             } else {
-                echo "<script>alert('Error : moving uploaded file');</script>";
+                echo "<script>alert('Error : uploading file');</script>";
             }
-        } else {
-            echo "<script>alert('Error : uploading file');</script>";
         }
+    }
+
+    if(isset($_POST['edit_email'])){
+        $id = $_POST['edit_id'];
+        $email = $_POST['edit_email'];
+        $fname = $_POST['edit_fname'];
+        $lname = $_POST['edit_lname'];
+        $password = $_POST['edit_pass'];
+        $dob = $_POST['edit_dob'];
+        $gender = $_POST['edit_gender'];
+        $phone = $_POST['edit_phone'];
+        $bgroup = $_POST['edit_bg'];
+        $address = $_POST['edit_add'];
+        $city = $_POST['edit_city'];
+        // Convert checkbox value to 1 or 0
+        $status = isset($_POST['edit_status']) ? 1 : 0;
+    
+        $updated_by = $_SESSION['email'];
+
+        $sql = "UPDATE `users` SET 
+            `email`='$email',
+            `first_name`='$fname',
+            `last_name`='$lname',
+            `password`='$password',
+            `dob`='$dob',
+            `gender`='$gender',
+            `phone`='$phone',
+            `blood_group`='$bgroup',
+            `address`='$address',
+            `city`='$city',
+            `status`='$status',
+            `updated_by`='$updated_by',
+            `updated_dt`=CURRENT_TIMESTAMP() 
+        WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $update = true;
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
     }
 }
 // sql for form in dropdown

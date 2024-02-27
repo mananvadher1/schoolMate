@@ -1,5 +1,31 @@
 <?php include("../controller/role_control.php"); ?>
 
+<!-- edit modal -->
+<div class="modal" id="edit_role" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-inline edit_form" method="post">
+                    <div class="form-group mx-sm-3 mb-2 my-2">
+                        <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+                        <label class="form-label mx-3" for="edit_name">Role Name</label>
+                        <input type="text" class="form-control" id="edit_name" name="edit_name">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary mb-2">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="card card-secondary">
     <div class="card-header">
         <div class="row">
@@ -23,14 +49,6 @@
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
         </div>
-        <form class="form-inline edit_form" method="post" style="display: none;">
-            <div class="form-group mx-sm-3 mb-2 my-2">
-                <input type="hidden" class="form-control" id="edit_id" name="edit_id">
-                <label class="form-label mx-3" for="edit_name">Role Name</label>
-                <input type="text" class="form-control" id="edit_name" name="edit_name">
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Update</button>
-        </form>
     </div>
 </div>
 
@@ -87,8 +105,8 @@
                     //response is output of the action file
                     if (response) {
                         alert("Deleted role_id: " + id + " successfully");
-                        $("#id").hide();
-                        // document.getElementById(id).style.display = "none";
+                        // $("#id").hide();
+                        document.getElementById(id).style.display = "none";
                     } else if (!response) {
                         alert("Data Can't be deleted");
                     }
@@ -115,7 +133,7 @@
                         $('#edit_id').val(value['role_id']);
                         $('#edit_name').val(value['role_name']);
                     });
-                    $(".edit_form").toggle();
+                    $("#edit_role").modal('show');
                 }
             });
         });
