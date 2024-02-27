@@ -49,6 +49,9 @@ function delete()
     exit;
 }
 
+include("../includes/header.php");
+include("../includes/sidebar.php");
+
 //form and page related data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //for update the sql
@@ -88,5 +91,4 @@ $sql_dt = "SELECT * FROM `roles`";
 $re_dt = mysqli_query($conn, $sql_dt);
 
 
-include("../includes/header.php");
-include("../includes/sidebar.php");
+

@@ -23,6 +23,30 @@
           </li>
            <!-- pages with radio btn -->
            
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+              <p>
+                Manage
+                <i class=" nav-icon right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../pages/manage_role.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Manage Role</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../pages/manage_user.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Manage User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+              
           <!-- / -->
           <li class="nav-item">
             <a href="notice.php" class="nav-link">
@@ -122,31 +146,6 @@
                 <a href="../index2.html" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Transportation fees</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
-              <p>
-                Manage
-                <i class=" nav-icon right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-                <a href="../pages/manage_role.php" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Manage Role</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../pages/manage_user.php" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Manage User</p>
                 </a>
               </li>
             </ul>
