@@ -159,7 +159,7 @@ echo '</div>';
           // console.log(response);
 
           $.each(response, function(key, value) {
-            $('#edit_id').val(value['noticeid']);
+            $('#edit_id').val(value['notice_id']);
             $('#edit_title').val(value['notice_title']);
             $('#edit_desc').val(value['notice_desc']);
           });
