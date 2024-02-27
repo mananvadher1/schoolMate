@@ -10,7 +10,11 @@ include("../includes/header.php");
 include("../includes/sidebar.php");
 
 
-    $sql = "SELECT * FROM users ";
+    $sql = "SELECT * FROM users where role_id=1";
     $result = mysqli_query($conn, $sql);
-    $display=mysqli_num_rows($result);
+    $display_student=mysqli_num_rows($result);
+
+    $sql = "SELECT * FROM users where role_id=2";
+    $result = mysqli_query($conn, $sql);
+    $display_teacher=mysqli_num_rows($result);
 ?>
