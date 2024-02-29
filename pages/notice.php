@@ -34,7 +34,7 @@
   <div class="card-header">
     <div class="row">
       <div class="col">
-        <h3 class="card-title my-2">Add Notice</h3>
+        <h3 class="card-title my-2">Notice</h3>
       </div>
       <div class="col-auto">
         <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Now</a>
@@ -99,10 +99,10 @@
 <!-- notice cards -->
 <?php
 $sno = 0;
-echo '<div class="row">';
+echo '<div class="row justify-content-center">';
 while ($row = mysqli_fetch_array($cardresult)) {
   $sno = $sno + 1;
-  echo '<div class="col-md-4 mx-3 card text-white" style="max-width: 18rem;" id="c' . $row['notice_id'] . '">
+  echo '<div class="col-md-4 mx-3 card text-white" style="max-width: 48rem;" id="c' . $row['notice_id'] . '">
   <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
   <div class="card-body bg-primary">
     <p class="card-text">' . $row["notice_desc"] . '</p>
