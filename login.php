@@ -43,9 +43,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $showError = "Invalid Credentials!";
     }
 }
-// echo var_dump($_SESSION);
-
-
 ?>
 
 <!doctype html>
@@ -119,19 +116,6 @@ if ($showError) {
                             <!-- `<p class="text-center fw-bold mx-3 mb-0">Or</p>` -->
                         </div>
 
-                        <!-- Role input -->
-                        <!-- <div class="dropdown">
-                            <label for="">Role</label>
-                            <select class="form-control mb-3" id="role" name="role" placeholder="Select a role">
-                                <option value="select">Select a role</option>
-                                <option value="principal">Principal</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="student">Student</option>
-                            </select>
-                        </div>
-                        <div id="show_error1" class="mb-2"></div> -->
-
-
                         <!-- Email input -->
                         <div class="form-outline mb-0">
                             <label class="form-label" for="email">Username</label>
@@ -156,11 +140,11 @@ if ($showError) {
                                     Remember me
                                 </label>
                             </div> -->
-                            <a href="#!">Forgot password?</a>
+                            <a href="pages/recover_mail.php">Forgot password?</a>
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" id="submit" class="btn btn-primary btn-lg"
+                            <button type="submit" id="submit" class="btn btn-primary btn-lg float-left"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                             <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
                                     class="link-danger">Register</a></p> -->
