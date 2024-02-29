@@ -19,7 +19,7 @@
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
+    <!-- jQuery UI 1.11.4 -->
   <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
@@ -51,6 +51,8 @@
   <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+  <!-- jQuery Knob -->
+  <script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.js"></script>
   <!-- AdminLTE for demo purposes -->
