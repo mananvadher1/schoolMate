@@ -1,5 +1,5 @@
 <?php 
-include("../controller/recover_mail_controller.php");
+include("../controller/generate_password_controller.php");
 ?>
 
 <!doctype html>
@@ -46,8 +46,6 @@ include("../controller/recover_mail_controller.php");
 </head>
 
 <body>
-
-
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">

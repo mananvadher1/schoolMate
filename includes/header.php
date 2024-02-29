@@ -144,13 +144,11 @@
 
                     <ul class="dropdown-menu">
                         <!-- User image -->
-                        <li class="user-header bg-blue" style="height: 250px;">
+                        <li class="user-header bg-blue" style="height: 210px;">
                             <img src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" class="img-circle" alt="User Image" />
                             <p><b><?php echo $_SESSION['fname'] . " " . $_SESSION['lname'] . "<br>"; ?>
-                                    <small><?php echo "Username: " . $_SESSION['email'] . "<br>"; ?></small>
+                                    <small><?php echo "Email: " . $_SESSION['email'] . "<br>"; ?></small>
                                     <small><?php echo "Phone: " . $_SESSION['phone'] . "<br>"; ?></small>
-                                    <small><?php echo "Gender: " . $_SESSION['gender'] . "<br>"; ?></small>
-                                    <small><?php echo "Blood Group: " . $_SESSION['bg'] . "<br>"; ?></small>
                                 </b>
                             </p>
                         </li>

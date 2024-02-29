@@ -1,49 +1,55 @@
 <?php
 include("includes/db.php");
+if(isset($_SESSION['toast_message'])) {
+    echo $_SESSION['toast_message'];
+    // Unset the session variable to prevent displaying the toast message again on subsequent visits
+    unset($_SESSION['toast_message']);
+}
 $login = false;
 $showError = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    
-    
+
+
     $sql = "SELECT * FROM `users` WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
-    if($num == 1){
+    if ($num == 1) {
         while ($row = mysqli_fetch_assoc($result)) {
-         $role_id = $row["role_id"];
-         $id = $row['id'];
-         $fname = $row['first_name'];
-         $lname = $row['last_name'];
-         $bg = $row['blood_group'];
-         $img = $row['profile_img'];
-         $phone = $row['phone'];
-         $gender = $row['gender'];
-         $dob = $row['dob'];
-         $address = $row['address'];
-                $login = true;
-                $_SESSION['loggedin'] = true;
-                $_SESSION['email'] = $email;
-                $_SESSION['id'] = $id;
-                $_SESSION['fname'] = $fname;
-                $_SESSION['lname'] = $lname;
-                $_SESSION['bg'] = $bg;
-                $_SESSION['img'] = $img;
-                $_SESSION['phone'] = $phone;
-                $_SESSION['gender'] = $gender;
-                $_SESSION['dob'] = $dob;
-                $_SESSION['address'] = $address;
-                $_SESSION['role_id'] = $role_id;
-                header("Location: http://localhost/schoolMate/pages/dashboard.php");
-            }
-    }else{
+            $role_id = $row["role_id"];
+            $id = $row['id'];
+            $fname = $row['first_name'];
+            $lname = $row['last_name'];
+            $bg = $row['blood_group'];
+            $img = $row['profile_img'];
+            $phone = $row['phone'];
+            $gender = $row['gender'];
+            $dob = $row['dob'];
+            $address = $row['address'];
+            $login = true;
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $email;
+            $_SESSION['id'] = $id;
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;
+            $_SESSION['bg'] = $bg;
+            $_SESSION['img'] = $img;
+            $_SESSION['phone'] = $phone;
+            $_SESSION['gender'] = $gender;
+            $_SESSION['dob'] = $dob;
+            $_SESSION['address'] = $address;
+            $_SESSION['role_id'] = $role_id;
+            header("Location: http://localhost/schoolMate/pages/dashboard.php");
+        }
+    } else {
         $showError = "Invalid Credentials!";
     }
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -90,15 +96,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
     <?php
-if ($showError) {
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    if ($showError) {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error!</strong> ' . $showError . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>';
-  }
-?>
+    }
+    ?>
+
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -106,7 +113,7 @@ if ($showError) {
                     <img src="dist/img/login.webp" class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                             <p class="lead fw-normal mb-0 me-3">Login with <em><span>SchoolMate</span></em></p>
 
@@ -140,7 +147,7 @@ if ($showError) {
                                     Remember me
                                 </label>
                             </div> -->
-                            <a href="pages/recover_mail.php">Forgot password?</a>
+                            <a href="pages/generate_password.php">Forgot password?</a>
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
@@ -156,6 +163,8 @@ if ($showError) {
         </div>
 
     </section>
+
+
 
     <!-- jquery link -->
     <script src="dist/js/jq_min.js"></script>
@@ -215,6 +224,7 @@ if ($showError) {
         });
     });
     </script>
+   
 
 
     <!-- Optional JavaScript; choose one of the two! -->
