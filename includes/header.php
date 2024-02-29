@@ -37,9 +37,9 @@
             clear: both;
             border-collapse: collapse;
             border-spacing: 0;
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;  
             border-collapse: collapse;
-            background-color: #fff;
+            background-color: lightcyan;
             border-radius: 5px;
             overflow: hidden;
         }
@@ -63,20 +63,20 @@
         }
 
         table.dataTable thead th {
-            background-color: #007bff;
-            color: #fff;
-            font-weight: bold;
+            background-color: #66b3ff;
+            color: blue;
+            font-weight:bolder;
         }
 
         table.dataTable tbody tr:hover {
-            background-color: #f9f9f9;
+            background-color: lightblue;
         }
 
         .dataTables_paginate .paginate_button {
             border: none;
             /* Remove border */
             border-radius: 3px;
-            padding: 5px 10px;
+            padding: 2px 2px 2px 3px;
             margin: 0 5px;
             background-color: #007bff;
             color: #fff;
@@ -94,6 +94,10 @@
             border-radius: 3px;
             padding: 5px;
             background-color: #fff;
+        }
+
+        #myTable_first, #myTable_last{
+            display : none;
         }
     </style>
 </head>
