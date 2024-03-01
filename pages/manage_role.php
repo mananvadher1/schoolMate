@@ -76,44 +76,44 @@
                     <td>" . $row_dt['updated_by'] . "</td>
                     <td>" . $row_dt['updated_dt'] . "</td>
                     <td><button onClick='editClick(" . $row_dt['role_id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
-                    <button onClick='deleteClick(" . $row_dt['role_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
                 </tr>";
             } ?>
         </tbody>
+        <!-- <button onClick='deleteClick(" . $row_dt['role_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
     </table>
 </div>
 
 <script>
-    function deleteClick(id) {
-        $(document).ready(function() {
-            // console.log('hii')
-            $.ajax({
-                //action
-                url: '../controller/role_control.php',
-                //method
-                type: 'POST',
-                // header:{
-                //     contentType: "application/json",
-                // },
-                data: {
-                    //get value
-                    id: id,
-                    action: "delete"
-                },
-                success: function(response) {
-                    // console.log('response---->',response);
-                    //response is output of the action file
-                    if (response) {
-                        alert("Deleted role_id: " + id + " successfully");
-                        // $("#id").hide();
-                        document.getElementById(id).style.display = "none";
-                    } else if (!response) {
-                        alert("Data Can't be deleted");
-                    }
-                }
-            });
-        });
-    }
+    // function deleteClick(id) {
+    //     $(document).ready(function() {
+    //         // console.log('hii')
+    //         $.ajax({
+    //             //action
+    //             url: '../controller/role_control.php',
+    //             //method
+    //             type: 'POST',
+    //             // header:{
+    //             //     contentType: "application/json",
+    //             // },
+    //             data: {
+    //                 //get value
+    //                 id: id,
+    //                 action: "delete"
+    //             },
+    //             success: function(response) {
+    //                 // console.log('response---->',response);
+    //                 //response is output of the action file
+    //                 if (response) {
+    //                     alert("Deleted role_id: " + id + " successfully");
+    //                     // $("#id").hide();
+    //                     document.getElementById(id).style.display = "none";
+    //                 } else if (!response) {
+    //                     alert("Data Can't be deleted");
+    //                 }
+    //             }
+    //         });
+    //     });
+    // }
 
     function editClick(id) {
         $(document).ready(function() {

@@ -63,8 +63,8 @@
         }
 
         table.dataTable thead th {
-            background-color: #66b3ff;
-            color: blue;
+            background-color: #67b3ff;
+            color: white;
             font-weight:bolder;
         }
 
