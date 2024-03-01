@@ -76,10 +76,10 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../pages/subject.php" class="nav-link">
             <i class="nav-icon fa fa-clipboard"></i>
               <p>
-                Class
+                Subject
               </p>
             </a>
           </li>
@@ -161,7 +161,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="../index.html" class="nav-link">
+                <a href="../pages/vehical.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Vehical</p>
                 </a>
@@ -169,7 +169,13 @@
               <li class="nav-item">
                 <a href="../index2.html" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Route</p>
+                  <p>Area</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../pages/driver.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Driver</p>
                 </a>
               </li>
             </ul>
