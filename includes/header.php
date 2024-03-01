@@ -63,8 +63,13 @@
         }
 
         table.dataTable thead th {
+<<<<<<< HEAD
             background-color: #66b3ff;
             color:white;
+=======
+            background-color: #67b3ff;
+            color: white;
+>>>>>>> c79f2c6e9787fd022fd1f4e6b5c2b8864535d0fb
             font-weight:bolder;
         }
 

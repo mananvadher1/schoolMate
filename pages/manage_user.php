@@ -113,6 +113,11 @@
                         <select class="form-control" name="role_id" id="role_id" required>
                             <?php
                             while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
+
+                                // Skip the record if role_id is 4(Driver)
+                                if ($row_dropdowm['role_id'] == 4) {
+                                    continue; 
+                                }
                                 echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
                             }
                             ?>
