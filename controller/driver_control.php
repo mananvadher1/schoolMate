@@ -18,36 +18,36 @@ if (isset($_POST['action']) && $_POST['action'] == 'edit') {
     edit();
 }
 
-// function edit()
-// {
-//     global $conn;
-//     $id = $_POST['id'];
-//     $role_data = array();
+function edit()
+{
+    global $conn;
+    $id = $_POST['id'];
+    $role_data = array();
 
 
-//     // fetch data from db 
-//     $result = mysqli_query($conn, "SELECT * FROM `users` WHERE id = $id");
-//     if (mysqli_num_rows($result) > 0) {
-//         while ($row = mysqli_fetch_array($result)) {
-//             array_push($role_data, $row);
-//         }
-//         // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
-//         header("Content-Type: application/json");
-//         echo json_encode($role_data);
-//         exit;
-//     }
-// }
+    // fetch data from db 
+    $result = mysqli_query($conn, "SELECT * FROM `driver` WHERE driver_id = $id");
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($role_data, $row);
+        }
+        // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
+        header("Content-Type: application/json");
+        echo json_encode($role_data);
+        exit;
+    }
+}
 
-// function delete()
-// {
-//     global $conn;
-//     $id = $_POST['id']; // Corrected $_POST variable name
+function delete()
+{
+    global $conn;
+    $id = $_POST['id']; // Corrected $_POST variable name
 
-//     $result = mysqli_query($conn, "DELETE FROM users WHERE id = $id");
-//     // echo var_dump($result);
-//     echo 1;
-//     exit;
-// }
+    $result = mysqli_query($conn, "DELETE FROM driver WHERE driver_id = $id");
+    // echo var_dump($result);
+    echo 1;
+    exit;
+}
 
 include("../includes/header.php");
 include("../includes/sidebar.php");
@@ -96,46 +96,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // if(isset($_POST['edit_email'])){
-    //     $id = $_POST['edit_id'];
-    //     $email = $_POST['edit_email'];
-    //     $fname = $_POST['edit_fname'];
-    //     $lname = $_POST['edit_lname'];
-    //     $password = $_POST['edit_pass'];
-    //     $dob = $_POST['edit_dob'];
-    //     $gender = $_POST['edit_gender'];
-    //     $phone = $_POST['edit_phone'];
-    //     $bgroup = $_POST['edit_bg'];
-    //     $address = $_POST['edit_add'];
-    //     $city = $_POST['edit_city'];
-    //     // Convert checkbox value to 1 or 0
-    //     $status = isset($_POST['edit_status']) ? 1 : 0;
-    
-    //     $updated_by = $_SESSION['email'];
+    if(isset($_POST['edit_email'])){
+        $id = $_POST['edit_id'];
+        $fname = $_POST['edit_fname'];
+        $lname = $_POST['edit_lname'];
+        $phone = $_POST['edit_phone'];
+        $email = $_POST['edit_email'];
+        $dob = $_POST['edit_dob'];
+        $address = $_POST['edit_add'];
+        $updated_by = $_SESSION['email'];
 
-    //     $sql = "UPDATE `users` SET 
-    //         `email`='$email',
-    //         `first_name`='$fname',
-    //         `last_name`='$lname',
-    //         `password`='$password',
-    //         `dob`='$dob',
-    //         `gender`='$gender',
-    //         `phone`='$phone',
-    //         `blood_group`='$bgroup',
-    //         `address`='$address',
-    //         `city`='$city',
-    //         `status`='$status',
-    //         `updated_by`='$updated_by',
-    //         `updated_dt`=CURRENT_TIMESTAMP() 
-    //     WHERE id = $id";
-    //     $result = mysqli_query($conn, $sql);
-    //     if ($result) {
-    //         $update = true;
-    //     } else {
-    //         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    //     }
+        $sql = "UPDATE `driver` SET `fname` = '$fname', `lname` = '$lname', `phone_no` = '$phone', `email` = '$email', `dob` = '$dob', `address` = '$address',`updated_by`='$updated_by',`updated_dt`=CURRENT_TIMESTAMP() WHERE driver_id = $id";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $update = true;
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
 
-    // }
+    }
 }
 // sql for form in dropdown
 $sql_dropdown = "SELECT * FROM `vehical`";
