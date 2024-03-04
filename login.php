@@ -1,5 +1,10 @@
 <?php
 include("includes/db.php");
+if (isset($_SESSION["loggedin"]) && $_SESSION['loggedin'] == true) {
+    header("location: http://localhost/schoolMate/pages/dashboard.php");
+    // echo $_SESSION['loggedin'];
+    exit;
+}
 if(isset($_SESSION['toast_message'])) {
     echo $_SESSION['toast_message'];
     // Unset the session variable to prevent displaying the toast message again on subsequent visits
