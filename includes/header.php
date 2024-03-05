@@ -65,7 +65,7 @@
         table.dataTable thead th {
             background-color: #67b3ff;
             color: white;
-            font-weight:bolder;
+            font-weight: bolder;
         }
 
         table.dataTable tbody tr:hover {
@@ -98,40 +98,35 @@
 
         /* for chat room */
         body {
-            background-color: #f8f9fa;
+            background-color: #f4f4f4;
+            /* Light grey background */
         }
 
-        .chat-container {
-            height: 400px;
-            overflow-y: auto;
+        .card {
+            border: 2px solid black;
+            /* Black border for the chat card */
         }
 
-        .header {
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
+        .list-group-item {
+            border: 1px solid black;
+            /* Black border for list items */
+            background-color: #d9edf7;
+            /* Light blue background for list items */
         }
 
-        .user-list {
-            background-color: lightblue;
-            border-radius: 10px;
-            padding: 10px;
+        .card-header,
+        .card-footer {
+            background-color: #dff0d8;
+            /* Light green background for header and footer */
         }
 
-        .chat-section {
-            background-color: lightblue;
-            border-radius: 10px;
-            padding: 10px;
+        .input-group {
+            border: 1px solid black;
+            /* Black border for the input group */
+            background-color: #fcf8e3;
+            /* Light yellow background for input area */
         }
-
-        .message-input {
-            border-top: 1px solid #dee2e6;
-            padding-top: 10px;
-        }
-        h3{
-            color:lightseagreen
-        }
+        
     </style>
 </head>
 
