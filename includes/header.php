@@ -63,9 +63,9 @@
         }
 
         table.dataTable thead th {
-            background-color: #66b3ff;
+            background-color: #67b3ff;
             color: white;
-            font-weight: bolder;
+            font-weight:bolder;
         }
 
         table.dataTable tbody tr:hover {

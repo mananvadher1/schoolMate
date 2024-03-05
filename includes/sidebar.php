@@ -76,10 +76,10 @@
           </li>
 
           <li class="nav-item">
-            <a href="../pages/subject.php" class="nav-link">
+            <a href="../pages/class.php" class="nav-link">
             <i class="nav-icon fa fa-clipboard"></i>
               <p>
-                Subject
+                Class
               </p>
             </a>
           </li>
@@ -94,15 +94,15 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="../index.html" class="nav-link">
+                <a href="../pages/manage_exam.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Schedule</p>
+                  <p>Manage Exam</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
+                <a href="#" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Grade</p>
+                  <p>Attend Exam</p>
                 </a>
               </li>
             </ul>
@@ -167,7 +167,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
+                <a href="../pages/area.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Area</p>
                 </a>

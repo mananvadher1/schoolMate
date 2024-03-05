@@ -18,8 +18,8 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+          <!-- small box -->
           <div class="col-lg-3 col-6">
-              <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3>
@@ -34,8 +34,9 @@
               </div>
             </div>
             <!-- ./col -->
+            
+            <!-- small box -->
             <div class="col-lg-3 col-6">
-              <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3>

@@ -12,17 +12,7 @@
             <div class="modal-body">
                 <form class="my-4" action="driver.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="form-control" id="edit_id" name="edit_id">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="edit_email" id="edit_email" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="edit_pass" id="edit_pass" required>
-                        </div>
-                    </div>
-
+                    
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="first_name">First Name:</label>
@@ -33,58 +23,27 @@
                             <input type="text" class="form-control" name="edit_lname" id="edit_lname" required>
                         </div>
                     </div>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="dob">Date of Birth:</label>
-                            <input type="date" class="form-control" name="edit_dob" id="edit_dob" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="gender">Gender:</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="edit_gender" id="edit_gender-male" value="male" required>
-                                <label class="form-check-label" for="gender-male">Male</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="edit_gender" id="edit_gender-female" value="female" required>
-                                <label class="form-check-label" for="gender-female">Female</label>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="phone">Phone Number:</label>
                             <input type="tel" class="form-control" name="edit_phone" id="edit_phone" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="blood_group">Blood Group:</label>
-                            <input type="text" class="form-control" name="edit_bg" id="edit_bg" required>
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="edit_email" id="edit_email" required>
                         </div>
                     </div>
-
                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" class="form-control" name="edit_dob" id="edit_dob" required>
+                             </div>
                         <div class="form-group col-md-6">
                             <label for="address">Address:</label>
                             <textarea class="form-control" name="edit_add" id="edit_add" required></textarea>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="city">City:</label>
-                            <input type="text" class="form-control" name="edit_city" id="edit_city" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="edit_status" id="edit_status" value="1">
-                                <label class="form-check-label" for="status">Active</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>    
+                <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -98,7 +57,7 @@
                 <h3 class="card-title my-2">Manage Driver</h3>
             </div>
             <div class="col-auto">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add User</a>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Driver</a>
             </div>
         </div>
     </div>
@@ -208,73 +167,58 @@
 
 
 <script>
-    // function deleteClick(id) {
-    //     $(document).ready(function() {
-    //         // console.log('hii')
-    //         $.ajax({
-    //             url: '../controller/driver_control.php',
-    //             type: 'POST',
-    //             data: {
-    //                 //get value
-    //                 id: id,
-    //                 action: "delete"
-    //             },
-    //             success: function(response) {
-    //                 console.log('response---->', response);
-    //                 //response is output of the action file
-    //                 if (response) {
-    //                     // alert("Deleted role_id: " + id + " successfully");
-    //                     // $('#id').hide();
-    //                     document.getElementById(id).style.display = "none";
-    //                 } else if (!response) {
-    //                     alert("Data Can't be deleted");
-    //                 }
-    //             }
-    //         });
-    //     });
-    // }
+    function deleteClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                url: '../controller/driver_control.php',
+                type: 'POST',
+                data: {
+                    //get value
+                    id: id,
+                    action: "delete"
+                },
+                success: function(response) {
+                    console.log('response---->', response);
+                    //response is output of the action file
+                    if (response) {
+                        // alert("Deleted role_id: " + id + " successfully");
+                        // $('#id').hide();
+                        document.getElementById(id).style.display = "none";
+                    } else if (!response) {
+                        alert("Data Can't be deleted");
+                    }
+                }
+            });
+        });
+    }
 
-    // function editClick(id) {
-    //     $(document).ready(function() {
-    //         // console.log('hii')
-    //         $.ajax({
-    //             url: '../controller/driver_control.php',
-    //             type: 'POST',
-    //             data: {
-    //                 id: id,
-    //                 action: "edit"
-    //             },
-    //             success: function(response) {
-    //                 // console.log(response);
+    function editClick(id) {
+        $(document).ready(function() {
+            // console.log('hii')
+            $.ajax({
+                url: '../controller/driver_control.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    action: "edit"
+                },
+                success: function(response) {
+                    // console.log(response);
 
-    //                 $.each(response, function(key, value) {
-    //                     $('#edit_id').val(value['id']);
-    //                     $('#edit_email').val(value['email']);
-    //                     $('#edit_fname').val(value['first_name']);
-    //                     $('#edit_lname').val(value['last_name']);
-    //                     $('#edit_pass').val(value['password']);
-    //                     $('#edit_dob').val(value['dob']);
-    //                     $('#edit_phone').val(value['phone']);
-    //                     $('#edit_bg').val(value['blood_group']);
-    //                     $('#edit_add').val(value['address']);
-    //                     $('#edit_city').val(value['city']);
-    //                     // // image default value
-    //                     // $('#edit_profile_img').attr('src', '../dist/img/user_image/' + value['profile_img']);
-
-    //                     if (value['gender'] === 'male') {
-    //                         $('#edit_gender-male').prop('checked', true);
-    //                         // document.getElementById('edit_gender-male').checked = true;
-    //                     } else if (value['gender'] === 'female') {
-    //                         document.getElementById('edit_gender-female').checked = true;
-    //                         // $('#edit_gender-female').prop('checked', true);
-    //                     }
-    //                     // for active status
-    //                     $('#edit_status').prop('checked', value['status'] == 1);
-    //                 });
-    //                 $('#edit_user').modal('show');
-    //             }
-    //         });
-    //     });
-    // }
+                    $.each(response, function(key, value) {
+                        $('#edit_id').val(value['driver_id']);
+                        $('#edit_fname').val(value['fname']);
+                        $('#edit_lname').val(value['lname']);
+                        $('#edit_phone').val(value['phone_no']);
+                        $('#edit_email').val(value['email']);
+                        $('#edit_dob').val(value['dob']);
+                        $('#edit_add').val(value['address']);
+                    });
+                    $('#edit_user').modal('show');
+                }
+            });
+        });
+    }
 </script>
 <?php include("../includes/footer.php"); ?>
