@@ -37,7 +37,7 @@
             clear: both;
             border-collapse: collapse;
             border-spacing: 0;
-            font-family: 'Source Sans Pro', sans-serif;  
+            font-family: 'Source Sans Pro', sans-serif;
             border-collapse: collapse;
             background-color: lightcyan;
             border-radius: 5px;
@@ -63,14 +63,9 @@
         }
 
         table.dataTable thead th {
-<<<<<<< HEAD
             background-color: #66b3ff;
-            color:white;
-=======
-            background-color: #67b3ff;
             color: white;
->>>>>>> c79f2c6e9787fd022fd1f4e6b5c2b8864535d0fb
-            font-weight:bolder;
+            font-weight: bolder;
         }
 
         table.dataTable tbody tr:hover {
@@ -101,8 +96,41 @@
             background-color: #fff;
         }
 
-        #myTable_first, #myTable_last{
-            display : none;
+        /* for chat room */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .user-list {
+            background-color: lightblue;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .chat-section {
+            background-color: lightblue;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .message-input {
+            border-top: 1px solid #dee2e6;
+            padding-top: 10px;
+        }
+        h3{
+            color:lightseagreen
         }
     </style>
 </head>
@@ -142,6 +170,12 @@
 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu my-2">
+                    <!-- chat -->
+                    <a href="../pages/chat.php" class="">
+                        <i class="fa fa-envelope"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
                         <i class="fas fa-user"></i>
                         <span><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?> <i class="caret"></i></span>
@@ -175,4 +209,3 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-

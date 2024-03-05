@@ -316,7 +316,6 @@
                         $('#edit_city').val(value['city']);
                         // // image default value
                         // $('#edit_profile_img').attr('src', '../dist/img/user_image/' + value['profile_img']);
-
                         if (value['gender'] === 'male') {
                             $('#edit_gender-male').prop('checked', true);
                             // document.getElementById('edit_gender-male').checked = true;

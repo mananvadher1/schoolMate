@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
 
-    if ($num) {
+    if ($num==1) {
 
         $row = mysqli_fetch_assoc($result);
 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body .= "<a href='http://localhost/schoolMate/login.php'>https://example.com/login</a><br><br>";
             $mail->Body .= "Thank you,<br>SchoolMate";
             // // Success sent message alert
-            if ($mail->send()) {
+            if ($mail->send() && mysqli_query($conn, "UPDATE `users` SET `password`='$randomPassword' WHERE `email`='$email'")) {
                 // echo "<script> 
                 //     document.location.href = '../login.php';
                 // </script>";
@@ -70,8 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </button>
               </div>';
                 header('Location: ../login.php');
-                mysqli_query($conn, "UPDATE `users` SET `password`='$randomPassword' WHERE email ='{$_SESSION['email']}'");
-                
             }else {
                 echo "Something is wrong, Mail is not sent!";
             }
