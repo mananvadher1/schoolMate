@@ -1,5 +1,5 @@
 <?php 
-include("../controller/generate_password_controller.php");
+include("../controller/generate_password_control.php");
 ?>
 
 <!doctype html>
