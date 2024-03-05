@@ -167,7 +167,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
+                <a href="../pages/area.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Area</p>
                 </a>

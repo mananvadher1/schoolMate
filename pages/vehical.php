@@ -34,7 +34,7 @@
             </div>
             <div class="col-auto">
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Add Role
+                    Add Vehical
                 </a>
             </div>
         </div>
