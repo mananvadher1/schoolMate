@@ -8,9 +8,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 }
 include("../includes/header.php");
 include("../includes/sidebar.php");
-?>
 
-<?php
+
 $update = false;
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id = $_SESSION['id']; 
@@ -46,4 +45,5 @@ $id= $_SESSION['id'];
 $sql_edit = "SELECT * FROM `users` WHERE  `id`=$id";
 $re_edit = mysqli_query($conn, $sql_edit);
 $row_edit = mysqli_fetch_assoc($re_edit);
+
 ?>
