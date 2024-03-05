@@ -50,23 +50,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             //Content
             $mail->isHTML(true);                                         //Set email format to HTML
-            $mail->Subject = "Reset Password";                            // email subject headings
-            $mail->Body = "Hi " . $fname . "! Your new generated new password is " . $randomPassword . "."; //email message
-
+            $mail->Subject = "Your New Password";
+            $mail->Body = "Hi " . $fname . ",<br><br>";
+            $mail->Body .= "We've generated a new password for you:<br><br>";
+            $mail->Body .= "New Password: " . $randomPassword . "<br><br>";
+            $mail->Body .= "Please keep this password secure and do not share it with anyone.<br><br>";
+            $mail->Body .= "You can login using the following link:<br>";
+            $mail->Body .= "<a href='http://localhost/schoolMate/login.php'>https://example.com/login</a><br><br>";
+            $mail->Body .= "Thank you,<br>SchoolMate";
             // // Success sent message alert
             if ($mail->send()) {
                 // echo "<script> 
                 //     document.location.href = '../login.php';
                 // </script>";
                 $_SESSION['toast_message'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success! </strong>Check your email to get new generated password.
+                <strong>Success! </strong>Check your email to get new generated password. Now you can login.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>';
                 header('Location: ../login.php');
-
-            } else {
+                mysqli_query($conn, "UPDATE `users` SET `password`='$randomPassword' WHERE email ='{$_SESSION['email']}'");
+                
+            }else {
                 echo "Something is wrong, Mail is not sent!";
             }
 
