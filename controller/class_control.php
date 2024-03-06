@@ -12,17 +12,19 @@ include("../includes/sidebar.php");
 // fetch data from class table
 $sql_fetch = "SELECT * FROM `classes`";
 $result = mysqli_query($conn, $sql_fetch);
-
 // cen not use result variable 2 times in class page so stored data in array and then
 $data = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $data[] = $row;
 }
 
-// table join to fetch teacher name
-// $fetch_tsql = "SELECT * FROM teachers INNER JOIN class ON teachers.teacher_id = class.teacher_id";
-// $result_tname = mysqli_query($conn, $fetch_tsql);
+// fetch from sections
+$sql_fetch2 = "SELECT * FROM `sections`";
+$result2 = mysqli_query($conn,$sql_fetch2);
 
+// fetch from teachers
+$sql_fetch3 = "SELECT * FROM `teachers`";
+$result3 = mysqli_query($conn,$sql_fetch3);
 
 ?>
 
