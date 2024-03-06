@@ -7,40 +7,66 @@
             <div class="card-body" id="form-container">
                 <form action="" id="student-registration" method="post">
                     <fieldset class="border border-secondary p-3 form-group">
-                        <legend class="d-inline w-auto h6">Add Class</legend>
+                        <legend class="d-inline w-auto h6">Add Section</legend>
                         <div class="row">
+
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="addclass">Class</label>
-                                    <input type="text" required class="form-control" placeholder="Add Class..."
-                                    name="addclass">
-                                </div>
-                                <div class="form-group">
-                                <label for="addclass">Section</label>
                                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                         <option selected>Choose...</option>
-                                        <option value="1">Section A</option>
-                                        <option value="2">Section B</option>
-                                        <option value="3">Section C</option>
-                                        <option value="3">Section D</option>
+                                        <?php
+                                    foreach ($data as $row) {
+                                        $name = $row['class_name'];
+                                        echo '<option value="1">'.$name.'</option>';
+                                    }
+                                    ?>
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="addclass">Section</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                        <option selected>Choose...</option>
+                                        <?php
+                                    while($row = mysqli_fetch_assoc($result2)) {
+                                        $name = $row['sec_name'];
+                                        echo '<option value="1">'.$name.'</option>';
+                                    }
+                                    ?>
+                                    </select>
                                 </div>
                             </div>
-                            <button name="submit" class="btn btn-primary">
-                                Submit
-                            </button>
 
+                            <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="addclass">Teachers</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                            <option selected>Choose...</option>
+                                            <?php
+                                    while($row = mysqli_fetch_assoc($result3)){
+                                        $name = $row['teacher_name'];
+                                        echo '<option value="1">'.$name.'</option>';
+                                    }
+                                    ?>
+                                        </select>
+                                    </div>
+                                </div>
                         </div>
-                    </fieldset>
-                </form>
+                        <button name="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+
+            </div>
+            </fieldset>
+            </form>
 </section>
 
 
 <div class="container">
-                <h2 class="text-center my-4"><b>My Class</b></h2>
-                <div class="row mb-4">
-                    <?php
+    <h2 class="text-center my-4"><b>My Class</b></h2>
+    <div class="row mb-4">
+        <?php
                     // Loop through the fetched data to display small boxes
                     foreach ($data as $row) {
                         $sno = $row['class_id'];
@@ -76,9 +102,9 @@
 
                     }
                     ?>
-                </div>
-            </div>
-            
+    </div>
+</div>
+
 
 
 

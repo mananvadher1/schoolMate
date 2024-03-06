@@ -64,7 +64,7 @@
                 Gallery
               </p>
             </a>
-          </li>
+          </li> 
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -77,16 +77,26 @@
 
           <li class="nav-item">
             <a href="../pages/class.php" class="nav-link">
-            <i class="nav-icon fa fa-clipboard"></i>
+            <i class="nav-icon fa fa-users"></i>
               <p>
                 Class
               </p>
             </a>
           </li>
 
+
+          <li class="nav-item">
+            <a href="../pages/subject.php" class="nav-link">
+            <i class="nav-icon fa fa-book"></i>
+              <p>
+                Subjects
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
+            <i class="nav-icon fa fa-id-badge"></i>
               <p>
                 Exam
                 <i class=" nav-icon right fas fa-angle-left"></i>
@@ -110,7 +120,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
+            <i class="nav-icon fa fa-list-alt"></i>
               <p>
                 Library
                 <i class=" nav-icon right fas fa-angle-left"></i>
@@ -191,7 +201,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../pages/calender.php" class="nav-link">
             <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Calender
