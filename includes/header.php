@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
     <!-- DataTables Responsive CSS -->
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-
-
+    <!-- full calender -->
+    <link rel="stylesheet" href="../plugins/fullcalendar/main.css" rel="stylesheet">
+    <script src="../plugins/fullcalendar/main.js"></script>
     <style>
         table.dataTable {
             width: 100%;
@@ -95,6 +96,7 @@
             padding: 5px;
             background-color: #fff;
         }
+        
 
         /* for chat room */
         body {
@@ -126,7 +128,6 @@
             background-color: #fcf8e3;
             /* Light yellow background for input area */
         }
-        
     </style>
 </head>
 
