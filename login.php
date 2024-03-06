@@ -5,7 +5,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION['loggedin'] == true) {
     // echo $_SESSION['loggedin'];
     exit;
 }
-if(isset($_SESSION['toast_message'])) {
+if (isset($_SESSION['toast_message'])) {
     echo $_SESSION['toast_message'];
     // Unset the session variable to prevent displaying the toast message again on subsequent visits
     unset($_SESSION['toast_message']);
@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-
 
     $sql = "SELECT * FROM `users` WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
@@ -54,8 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
 <!doctype html>
 <html lang="en">
 
@@ -65,33 +61,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <title>Login</title>
     <style>
-    .divider:after,
-    .divider:before {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: #eee;
-    }
-
-    .h-custom {
-        height: calc(100% - 73px);
-    }
-
-    @media (max-width: 450px) {
-        .h-custom {
-            height: 100%;
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
         }
-    }
 
-    span {
-        font-weight: 1000;
-        color: #0d6efd;
-    }
+        .h-custom {
+            height: calc(100% - 73px);
+        }
+
+        @media (max-width: 450px) {
+            .h-custom {
+                height: 100%;
+            }
+        }
+
+        span {
+            font-weight: 1000;
+            color: #0d6efd;
+        }
     </style>
 
 
@@ -131,16 +126,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <!-- Email input -->
                         <div class="form-outline mb-0">
                             <label class="form-label" for="email">Username</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg mb-2"
-                                placeholder="Example:abc@gmail.com" />
+                            <input type="email" id="email" name="email" class="form-control form-control-lg mb-2" placeholder="Example:abc@gmail.com" />
                         </div>
                         <div id="show_error2" class="mb-2"></div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-0">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password"
-                                class="form-control form-control-lg mb-2" placeholder="Enter password" />
+                            <input type="password" id="password" name="password" class="form-control form-control-lg mb-2" placeholder="Enter password">
                         </div>
                         <div id="show_error3" class="mb-2"></div>
 
@@ -156,8 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" id="submit" class="btn btn-primary btn-lg float-left"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-lg float-left" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                             <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
                                     class="link-danger">Register</a></p> -->
                         </div>
@@ -176,70 +168,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- script for validation -->
     <script>
-    $(document).ready(function() {
-        $('#submit').click(function() {
-            // alert("success");
-            var user = $('#email').val();
-            var pass = $('#password').val();
-            // var role = $('#role').val();
+        $(document).ready(function() {
+            //query for a socket creation and get latest messages
+            // var conn = new WebSocket('ws://localhost:8080');
+            // conn.onopen = function(e) {
+            //     console.log("Connection established!");
+            // };
 
-            // ...
-            // if (role === "select") {
-            //     $('#show_error1').html('Please select a role first!').css('color', 'red');
-            //     return false;
-            // } else {
-            //     $('#show_error1').empty();
-            // }
+            // conn.onmessage = function(e) {
+            //     console.log(e.data);
+            // };
 
-            // ...
-            if (user == "") {
-                $('#show_error2').html('Username can not be empty!').css('color', 'red');
-                return false;
-            } else {
-                $('#show_error2').empty();
-            }
+            $('#submit').click(function() {
+                // alert("success");
+                var user = $('#email').val();
+                var pass = $('#password').val();
+                // var role = $('#role').val();
 
-            // ...
-            if (pass == "") {
-                $('#show_error3').html('Password can not be empty!').css('color', 'red');
-                return false;
-            } else {
-                $('#show_error3').empty();
-            }
+                // ...
+                // if (role === "select") {
+                //     $('#show_error1').html('Please select a role first!').css('color', 'red');
+                //     return false;
+                // } else {
+                //     $('#show_error1').empty();
+                // }
 
-            // ...
-            if (pass.length < 8) {
-                $('#show_error3').html('Password length must be at least 8 characters!').css('color',
-                    'red');
-                return false;
-            } else {
-                $('#show_error3').empty();
-            }
+                // ...
+                if (user == "") {
+                    $('#show_error2').html('Username can not be empty!').css('color', 'red');
+                    return false;
+                } else {
+                    $('#show_error2').empty();
+                }
 
-            // ...
-            if (pass.length > 15) {
-                $('#show_error3').html('Password length must be at most 15 characters!').css('color',
-                    'red');
-                return false;
-            } else {
-                $('#show_error3').empty();
-            }
+                // ...
+                if (pass == "") {
+                    $('#show_error3').html('Password can not be empty!').css('color', 'red');
+                    return false;
+                } else {
+                    $('#show_error3').empty();
+                }
+
+                // ...
+                if (pass.length < 8) {
+                    $('#show_error3').html('Password length must be at least 8 characters!').css('color',
+                        'red');
+                    return false;
+                } else {
+                    $('#show_error3').empty();
+                }
+
+                // ...
+                if (pass.length > 15) {
+                    $('#show_error3').html('Password length must be at most 15 characters!').css('color',
+                        'red');
+                    return false;
+                } else {
+                    $('#show_error3').empty();
+                }
 
 
+            });
         });
-    });
     </script>
-   
+
 
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS

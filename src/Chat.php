@@ -21,6 +21,13 @@ class Chat implements MessageComponentInterface {
         $numRecv = count($this->clients) - 1;
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
+            
+        $data = json_decode($msg,true);
+        $userId = $data['userId'];
+        $conn = mysqli_connect("localhost","phpmyadmin","Admin@123","SchoolMate");
+        $sql_user =  "SELECT * FROM `users` WHERE id = '$userId'";
+        $result_user = mysqli_query($conn, $sql_user);
+        $user = mysqli_fetch_assoc($result_user);
 
         foreach ($this->clients as $client) {
             if ($from !== $client) {

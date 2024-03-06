@@ -7,5 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
     exit;
 }
 
+$re_user = mysqli_query($conn, "SELECT * FROM users");
+
 include("../includes/header.php");
 include("../includes/sidebar.php");
