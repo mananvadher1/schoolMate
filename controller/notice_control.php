@@ -104,9 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         WHERE `notice_id`='$id'";
 
     $result = mysqli_query($conn, $sql);
-    echo var_dump($result);
+    // echo var_dump($result);
     if ($result) {
-      echo "manan";
+      // echo "manan";
       $update = true;
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);

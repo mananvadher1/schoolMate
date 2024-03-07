@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = mysqli_fetch_assoc($result)) {
             $role_id = $row["role_id"];
             $id = $row['id'];
+            mysqli_query($conn, "UPDATE `users` SET `loggedin`='1' WHERE id = '$id'");
             $fname = $row['first_name'];
             $lname = $row['last_name'];
             $bg = $row['blood_group'];
