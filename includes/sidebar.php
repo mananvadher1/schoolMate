@@ -44,6 +44,12 @@
                   <p>Manage User</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="../pages/manage_exam.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Manage Exam</p>
+                </a>
+              </li>
             </ul>
           </li>
               
@@ -95,6 +101,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="../pages/exam.php" class="nav-link">
+            <i class="nav-icon fa fa-id-badge"></i>
+              <p>
+                Exam
+              </p>
+            </a>
+          </li>
+
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-id-badge"></i>
               <p>
@@ -116,7 +131,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a href="#" class="nav-link">

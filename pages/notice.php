@@ -37,7 +37,8 @@
         <h3 class="card-title my-2">Notice</h3>
       </div>
       <div class="col-auto">
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Now</a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+          aria-controls="collapseExample">Add Now</a>
       </div>
     </div>
   </div>
@@ -119,7 +120,7 @@ echo '</div>';
 
 <script>
   function deleteClick(id) {
-    $(document).ready(function() {
+    $(document).ready(function () {
       // console.log('hii')
       $.ajax({
         url: '../controller/notice_control.php',
@@ -129,11 +130,12 @@ echo '</div>';
           id: id,
           action: "delete"
         },
-        success: function(response) {
+        success: function (response) {
           console.log('response---->', response);
           //response is output of the action file
           if (response == 1) {
             // alert("Deleted role_id: " + id + " successfully");
+            confirm("Are you sure you want to delete the record?");
             document.getElementById(id).style.display = "none";
             document.getElementById('c' + id).style.display = "none";
           } else if (response == 0) {
@@ -145,7 +147,7 @@ echo '</div>';
   }
 
   function editClick(id) {
-    $(document).ready(function() {
+    $(document).ready(function () {
       // console.log('hii')
       $.ajax({
         url: '../controller/notice_control.php',
@@ -154,11 +156,11 @@ echo '</div>';
           id: id,
           action: "edit"
         },
-        success: function(response) {
+        success: function (response) {
           console.log('response---->', response);
           // console.log(response);
 
-          $.each(response, function(key, value) {
+          $.each(response, function (key, value) {
             $('#edit_id').val(value['notice_id']);
             $('#edit_title').val(value['notice_title']);
             $('#edit_desc').val(value['notice_desc']);

@@ -83,15 +83,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $sql = "INSERT INTO `driver` ( `role_id`, `vehical_id`, `fname`, `lname`, `phone_no`, `email`, `dob`, `address`, `profile_img`, `created_by`, `created_dt`, `updated_by`, `updated_dt`) VALUES ('4', '$vehical_id', '$fname', '$lname', '$phone', '$email', '$dob', '$address', '$img_name', '$created_by', CURRENT_TIMESTAMP, NULL, NULL);";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
-                        echo "<script>alert('User Added Successfully');</script>";
+                        echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+                        <strong>Success!</strong> Your record has been inserted successfully!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>';
                     } else {
-                        echo "<script>alert('Error : inserting data into database');</script>";
+                        echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                        <strong>Error!</strong> Something is wrong inserting data into database!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>';
                     }
                 } else {
-                    echo "<script>alert('Error : moving uploaded file');</script>";
+                    echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                    <strong>Error!</strong> Something is wrong in moving upload file!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>';
                 }
             } else {
-                echo "<script>alert('Error : uploading file');</script>";
+                echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                    <strong>Error!</strong> File isn\'t uploaded successfully!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>';
             }
         }
     }
@@ -110,6 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $sql);
         if ($result) {
             $update = true;
+            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+                    <strong>Success!</strong> Your record has been updated successfully!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>';
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

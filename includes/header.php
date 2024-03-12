@@ -64,7 +64,7 @@
         }
 
         table.dataTable thead th {
-            background-color: #67b3ff;
+            background-color: #2196F3;
             color: white;
             font-weight: bolder;
         }
@@ -204,8 +204,8 @@
                 <li class="dropdown user user-menu my-2">
                     <!-- chat -->
                     <a href="../pages/chat.php" class="">
-                        <i class="fa fa-envelope"></i>
-                        <span class="label label-danger">4</span>
+                        <i class="fa fa-envelope" style="color:white"></i>
+                        <span class="label label-danger" style="color:white">4 Messages</span>
                     </a>
 
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">

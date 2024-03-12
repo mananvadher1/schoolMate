@@ -103,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    // edit user
     if(isset($_POST['edit_email'])){
         $id = $_POST['edit_id'];
         $email = $_POST['edit_email'];
@@ -138,6 +139,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $sql);
         if ($result) {
             $update = true;
+            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+            <strong>Success!</strong> User has been updated successfully!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

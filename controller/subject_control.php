@@ -8,8 +8,47 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 }
 include("../includes/header.php");
 include("../includes/sidebar.php");
+if (isset($_POST['action']) && $_POST['action'] == 'delete') {
+  delete();
+}
 
-$update = false;
+//edit button data send thrught api with jason format
+if (isset($_POST['action']) && $_POST['action'] == 'edit') {
+  edit();
+}
+
+function edit()
+{
+  global $conn;
+  $id = $_POST['id'];
+  $role_data = array();
+
+
+  // fetch data from db 
+  $result = mysqli_query($conn, "SELECT * FROM `roles` WHERE role_id = $id;");
+  if (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_array($result)) {
+          array_push($role_data, $row);
+      }
+      // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
+      header("Content-Type: application/json");
+      echo json_encode($role_data);
+      exit;
+  }
+}
+
+function delete()
+{
+  global $conn;
+  $id = $_POST['id']; // Corrected $_POST variable name
+
+  $result = mysqli_query($conn, "DELETE FROM roles WHERE role_id = $id");
+  // echo var_dump($result);
+  echo 1;
+  exit;
+}
+
+$insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $c_name = $_POST['class_name'];
@@ -22,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $sql_insert);
 
         if($result){
-            $update = true;
+            $insert = true;
         // echo "done";
         if($update){
             echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
