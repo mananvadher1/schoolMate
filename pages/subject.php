@@ -158,9 +158,9 @@
 
     function editClick(id) {
         $(document).ready(function () {
-            // console.log('hii')
+             console.log('hii')
             $.ajax({
-                url: '../controller/role_control.php',
+                url: '../controller/subject_control.php',
                 type: 'POST',
                 data: {
                     id: id,

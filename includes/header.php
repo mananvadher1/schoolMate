@@ -64,7 +64,7 @@
         }
 
         table.dataTable thead th {
-            background-color: #67b3ff;
+            background-color: #2196F3;
             color: white;
             font-weight: bolder;
         }
@@ -103,31 +103,67 @@
             /* Light grey background */
         }
 
-        .card {
-            border: 2px solid black;
-            /* Black border for the chat card */
+        /* css for chat-app */
+        * {
+            font-family: "Roboto", sans-serif;
         }
 
-        .list-group-item {
-            border: 1px solid black;
-            /* Black border for list items */
-            background-color: #d9edf7;
-            /* Light blue background for list items */
+        .chat-app .container {
+            margin: 20px;
+            padding: 10px;
         }
 
-        .card-header,
-        .card-footer {
-            background-color: #dff0d8;
-            /* Light green background for header and footer */
+        .chat-app .card {
+            border: 1.5px solid #67b3ff;
+            background-color: lightcyan;
         }
 
-        .input-group {
-            border: 1px solid black;
-            /* Black border for the input group */
-            background-color: #fcf8e3;
-            /* Light yellow background for input area */
+        .chat-app .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .chat-app input,
+        img,
+        #user-list {
+            border: 0.5px solid lightsteelblue;
+        }
+
+        .chat-app #user-list li {
+            border-bottom: 0.5px solid lightsteelblue;
+        }
+
+        .chat-app #user-list>li:last-child {
+            border-bottom: none;
+        }
+
+        .chat-app .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-app .btn {
+            color: white;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .chat-app .btn:hover {
+            background-color: #0069d9;
+        }
+
+        .chat-app .card-body .text-end {
+            text-align: left;
+        }
+
+        .chat-app .card-body .text-start {
+            text-align: right;
         }
     </style>
+    <script src="../plugins/jquery/jquery.min.js"></script>
 </head>
 
 <!-- <body class="hold-transition sidebar-mini layout-fixed">. -->
@@ -167,8 +203,8 @@
                 <li class="dropdown user user-menu my-2">
                     <!-- chat -->
                     <a href="../pages/chat.php" class="">
-                        <i class="fa fa-envelope"></i>
-                        <span class="label label-success">4</span>
+                        <i class="fa fa-envelope" style="color:white"></i>
+                        <span class="label label-danger" style="color:white">4 Messages</span>
                     </a>
 
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
