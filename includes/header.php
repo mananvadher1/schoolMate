@@ -97,7 +97,6 @@
             background-color: #fff;
         }
         
-
         /* for chat room */
         body {
             background-color: #f4f4f4;

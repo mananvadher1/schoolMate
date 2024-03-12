@@ -201,7 +201,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="../pages/calender.php" class="nav-link">
+            <a href="../pages/calendar.php" class="nav-link">
             <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Calender
