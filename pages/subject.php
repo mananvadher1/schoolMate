@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label class="form-label mx-2" for="sub_name">Enter Subject Name</label>
-                    <input type="text" class="form-control" id="sub_name" name="sub_name" placeholder="Enter Role Name">
+                    <input type="text" class="form-control" id="sub_name" name="sub_name" placeholder="Enter Subject Name">
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label class="form-label mx-2" for="sub_code">Enter Subject Code</label>

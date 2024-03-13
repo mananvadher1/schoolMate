@@ -1,100 +1,7 @@
 <?php include("../controller/manage_exam_control.php"); ?>
 
 <!-- edit modal -->
-<!-- <div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Update Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form class="my-4" action="manage_user.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" id="edit_id" name="edit_id">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="edit_email" id="edit_email" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="edit_pass" id="edit_pass" required>
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="first_name">First Name:</label>
-                            <input type="text" class="form-control" name="edit_fname" id="edit_fname" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="last_name">Last Name:</label>
-                            <input type="text" class="form-control" name="edit_lname" id="edit_lname" required>
-                        </div>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="dob">Date of Birth:</label>
-                            <input type="date" class="form-control" name="edit_dob" id="edit_dob" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="gender">Gender:</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="edit_gender" id="edit_gender-male"
-                                    value="male" required>
-                                <label class="form-check-label" for="gender-male">Male</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="edit_gender" id="edit_gender-female"
-                                    value="female" required>
-                                <label class="form-check-label" for="gender-female">Female</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" class="form-control" name="edit_phone" id="edit_phone" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="blood_group">Blood Group:</label>
-                            <input type="text" class="form-control" name="edit_bg" id="edit_bg" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="address">Address:</label>
-                            <textarea class="form-control" name="edit_add" id="edit_add" required></textarea>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="city">City:</label>
-                            <input type="text" class="form-control" name="edit_city" id="edit_city" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="edit_status" id="edit_status"
-                                    value="1">
-                                <label class="form-check-label" for="status">Active</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <!-- add exam form -->
 <div class="card card-secondary">
@@ -116,7 +23,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="class">Class</label>
-                        <select class="custom-select mr-sm-2" id="class" name="class" required>
+                        <select class="custom-select mr-sm-2" id="class" name="class" onchange="fetchSubjects()" required>
+
                             <option selected>Choose Class...</option>
                             <?php
                                 while($row = mysqli_fetch_assoc($result_classes)){
@@ -130,14 +38,10 @@
                         <label for="subject">Subject</label>
                         <select class="custom-select mr-sm-2" id="subject" name="subject" required>
                             <option selected>Choose Subject...</option>
-                            <?php
-                                while($row = mysqli_fetch_assoc($result_subjects)){
-                                $sub = $row['subject_name'];
-                                echo '<option value="'.$sub.'">'.$sub.'</option>';
-                                }
-                            ?>
+                           
                         </select>
                     </div>
+
                 </div>
 
                 <div class="form-row">
@@ -156,18 +60,8 @@
                             <option value="30 min">30 min</option>
                             <option value="60 min">60 min</option>
                             <option value="80 min">80 min</option>
+                            <option value="80 min">100 min</option>
                         </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="correct_ans">Marks for correct answer</label>
-                        <input type="text" required class="form-control" id="correct_ans" name="correct_ans" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="wrong_ans">Marks for Wrong answer</label>
-                        <input type="text" required class="form-control" id="wrong_ans" name="wrong_ans" required>
                     </div>
                 </div>
 
@@ -207,13 +101,13 @@
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
                 <th scope="col">Add Questions</th>
-                <th scope="col">Marks for correct answer</th>
-                <th scope="col">Marks for wrong answer</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($result_exams)) {
                 $sno = $sno + 1;
+                $class_name = $row['class_name'];
+                $subject_name =$row['subject_name'];
                 echo "<tr id=" . $row['id'] . ">
                     <td>" . $row['id'] . "</td>
                     <td>" . $row['class_name'] . "</td>
@@ -225,14 +119,34 @@
                     <td>" . $row['duration'] . "</td>
                     <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
                     <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
-                    <td><button class='edit btn btn-sm btn-warning'>Add Questions</button></td>
-                    <td>" . $row['c_ans'] . "</td>
-                    <td>" . $row['w_ans'] . "</td>
+                    <td><a href='questions.php?cname=".$class_name."sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
                 </tr>";
             } ?>
         </tbody>
     </table>
 </div>
+
+
+
+<!-- script to fetch class subjects of selected class -->
+<script>
+    function fetchSubjects(){
+    
+        var selectedClass = $("#class").val();
+        console.log(selectedClass);
+        $.ajax({
+            url: '../controller/manage_exam_control.php',
+            type: 'POST',
+            data: { class: selectedClass },
+            success:function(response){
+                $('#subject').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText); 
+            }
+        });
+    }
+</script>
 
 
 <script>

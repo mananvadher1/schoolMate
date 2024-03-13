@@ -63,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($result){
             $insert = true;
         // echo "done";
-        if($update){
+        if($insert){
             echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-            <strong>Success!</strong> Your records are inserted successfully!
+            <strong>Success!</strong> Your subject is inserted successfully!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Get unique class names from the subjects table
 // query to fetch distinct class to loop through each class and show content of that class  
-$sql_classes = "SELECT DISTINCT class_name FROM subjects";
+$sql_classes = "SELECT DISTINCT class_name FROM subjects ORDER BY class_name";
 $result_classes = mysqli_query($conn, $sql_classes);
 
 // for fetching classes in select tag
