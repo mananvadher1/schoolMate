@@ -97,7 +97,6 @@
             background-color: #fff;
         }
         
-
         /* for chat room */
         body {
             background-color: #f4f4f4;
@@ -230,7 +229,7 @@
                                 <a href="../pages/edit_profile.php" class="btn btn-default btn-flat">Edit Profile</a>
                             </div>
                             <div class="float-right">
-                                <a href="../logout.php" class="btn btn-default btn-flat">Logout</a>
+                                <a href="../logout.php?id=<?php echo $_SESSION['id']; ?>" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>
