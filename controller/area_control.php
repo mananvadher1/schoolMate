@@ -65,6 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($updateResult) {
             $update = true;
+            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+            <strong>Success!</strong> Your record has been updated successfully!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
         } else {
             echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
         }
@@ -80,8 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $addsql = "INSERT INTO `area` (`area_name`, `vehical_id`, `pincode`, `city`) VALUES ( '$area', '$vehical_id', '$pincode', '$city');";
         $addResult = mysqli_query($conn, $addsql);
         if ($addResult) {
-            //echo "New record created successfully";
             $insert = true;
+            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+            <strong>Success!</strong> Your record has been inserted successfully!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
         } else {
             echo "Error: " . $addsql . "<br>" . mysqli_error($conn);
         }

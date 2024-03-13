@@ -138,6 +138,7 @@
                 },
                 success: function(response) {
                     console.log('response---->', response);
+                    confirm("Are you sure you want to delete the record?");
                     //response is output of the action file
                     if (response) {
                         // alert("Deleted role_id: " + id + " successfully");

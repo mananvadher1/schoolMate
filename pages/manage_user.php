@@ -1,5 +1,6 @@
 <?php include("../controller/user_control.php"); ?>
 
+<!-- edit modal -->
 <div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -281,6 +282,7 @@
                     if (response) {
                         // alert("Deleted role_id: " + id + " successfully");
                         // $('#id').hide();
+                        confirm("Are you sure you want to delete the user?");
                         document.getElementById(id).style.display = "none";
                     } else if (!response) {
                         alert("Data Can't be deleted");

@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert = true;
         if ($insert) {
           echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-              <strong>Success!</strong> Your notice has been inserted seccessfully!
+              <strong>Success!</strong> Your notice has been inserted successfully!
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
               </button>
@@ -90,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
+  // edit notice
   if (isset($_POST['edit_title'])) {
     $id = $_POST['edit_id'];
     $title = $_POST["edit_title"];
@@ -106,8 +107,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($conn, $sql);
     // echo var_dump($result);
     if ($result) {
-      // echo "manan";
       $update = true;
+      echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+      <strong>Success!</strong> Your notice has been updated successfully!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      </div>';
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
