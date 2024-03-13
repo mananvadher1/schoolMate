@@ -1,67 +1,12 @@
 <?php
-// Define session save handlers
-function my_session_start()
-{
-  session_start();
-}
-
-function my_session_open($savePath, $sessionName)
-{
-  // Custom session open logic
-  return true;
-}
-
-function my_session_close()
-{
-  // Custom session close logic
-  return true;
-}
-
-
-function my_session_write($session_id, $session_data)
-{
-  // Custom session write function if needed
-  return true;
-}
-
-function my_session_read($session_id)
-{
-  // Custom session read function if needed
-  return true;
-}
-
-function my_session_destroy($session_id)
-{
-  // Code to execute before session is destroyed
-  $conn = mysqli_connect("localhost", "phpmyadmin", "Admin@123", "SchoolMate");
-  $uid = $_SESSION['id'];
-  mysqli_query($conn, "UPDATE `users` SET `loggedin`='0' WHERE id = '$uid'");
-}
-
-function my_session_gc($max_lifetime)
-{
-  // Custom session garbage collection function if needed
-  return true;
-}
-
-// Set custom session save handlers
-session_set_save_handler(
-  'my_session_open',
-  'my_session_close',
-  'my_session_read',
-  'my_session_write',
-  'my_session_destroy',
-  'my_session_gc'
-);
-
-
-// Start the session
 session_start();
+$conn = mysqli_connect("localhost", "phpmyadmin", "Admin@123", "SchoolMate");
+$id = (int) $_GET['id'];
+$query = "UPDATE `users` SET `loggedin`='0' WHERE id = $id";
+mysqli_query($conn, $query);
 session_unset();
 session_destroy();
-
 header("location: login.php");
-
 ?>
 
 <!doctype html>

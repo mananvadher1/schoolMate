@@ -12,15 +12,19 @@
             <div class="card-body overflow-auto pt-0" style="height: 63vh;">
                 <ul class="list-group" id="user-list">
                     <input type="hidden" id="userId" name="userId" value="<?php echo $_SESSION['id']; ?>">
-                    <?php while ($row = mysqli_fetch_assoc($re_user)) {
-                        echo '<li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="d-flex flex-column">
-                                        <strong>' . $row['first_name'] . ' ' . $row['last_name'] . '</strong>
-                                        <small class="text-muted">' . $row['email'] . '</small>
-                                    </span>
-                                    <span class="badge bg-primary rounded-pill">Online</span>
-                                </li>';
-                    } ?>
+                    <?php while ($row = mysqli_fetch_assoc($re_user)) : ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex flex-column">
+                                <strong><?= $row['first_name'] . ' ' . $row['last_name'] ?></strong>
+                                <small class="text-muted"><?= $row['email'] ?></small>
+                            </span>
+                            <?php if ($row['loggedin'] == 1) : ?>
+                            <span class="badge bg-primary rounded-pill">Online</span>
+                            <?php else : ?>
+                                <span class="badge bg-danger rounded-pill">Offline</span>
+                            <?php endif;?>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
             </div>
         </div>
@@ -37,7 +41,8 @@
                             <div class="mb-3 d-flex justify-content-between align-items-center">
                                 <span class="badge bg-secondary mr-1"><?= date("d/m/Y h:i:s A", strtotime($row["msg_time"])) ?></span>
                                 <div class="d-flex flex-row align-items-center">
-                                    <strong>You:</strong>&nbsp;<?= $row["msg"] ?>&nbsp;
+                                    <strong>You:</strong>&nbsp;
+                                    <div class="d-flex wrap"><?= $row["msg"] ?></div>&nbsp;
                                     <img src="../dist/img/user_image/<?= $row["profile_img"] ?>" class="rounded-circle mt-2" width="40" height="40" />
                                 </div>
                             </div>
@@ -45,14 +50,14 @@
                             <div class="mb-3 d-flex justify-content-between align-items-center">
                                 <div class="d-flex flex-row align-items-center">
                                     <img src="../dist/img/user_image/<?= $row["profile_img"] ?>" class="rounded-circle" width="40" height="40" mr-1>&nbsp;
-                                    <strong><?= $row["first_name"] ?> <?= $row["last_name"] ?>:</strong>&nbsp;<?= $row["msg"] ?>
+                                    <strong><?= $row["first_name"] ?> <?= $row["last_name"] ?>:</strong>&nbsp;
+                                    <div class="message-wrap"><?= $row["msg"] ?></div>
                                 </div>
                                 <span class="badge bg-secondary ml-1"><?= date("d/m/Y h:i:s A", strtotime($row["msg_time"])) ?></span>
                             </div>
                         <?php endif; ?>
                     <?php endwhile; ?>
                 </div>
-
             </div>
 
             <div class="card-footer">
