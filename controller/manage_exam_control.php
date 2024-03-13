@@ -33,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $edate = $_POST['edate'];
   $etime = $_POST['etime'];
   $duration = $_POST['duration'];
-  $c_ans = $_POST['correct_ans'];
-  $w_ans = $_POST['wrong_ans'];
   $rdate = $_POST['rdate'];
   $status = $_POST['status'];
   

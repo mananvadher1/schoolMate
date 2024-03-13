@@ -114,12 +114,12 @@
                     <td>" . $row['subject_name'] . "</td>
                     <td>" . $row['exam_date'] . "</td>
                     <td>" . $row['exam_time'] . "</td>
+                    <td>" . $row['duration'] . "</td>
                     <td>" . $row['result_date'] . "</td>
                     <td>" . $row['status'] . "</td>
-                    <td>" . $row['duration'] . "</td>
                     <td><button class='edit btn btn-sm btn-success'>Edit</button>
                     <button class='delete btn btn-sm btn-danger'>Delete</button></td>
-                    <td><a href='questions.php?cname=".$class_name."sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
+                    <td><a href='questions.php?cname=".$class_name."&sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
                 </tr>";
             } ?>
         </tbody>

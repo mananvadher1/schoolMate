@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
 }
 
 $insert = false;
-// $class_name = $_GET["cname"];
+$class_name = $_GET["cname"];
 // echo var_dump($_GET["cname"]);
 $subject_name = $_GET["sname"];
 // echo var_dump($_GET["sname"]);
@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $optionD = $_POST['optionD'];
     $right_option = $_POST['right_option'];
     
-    $sql = "INSERT INTO `questions`(`question`, `mark`, `optionA`, `optionB`, `optionC`, `optionD`, `right_option`, `class_name`, `subject_name`, `created_by`) VALUES ('$question','$mark','$optionA','$optionB','$optionC','$optionD','$right_option','".$_GET["cname"]."','$subject_name','$created_by')";
+    $sql = "INSERT INTO `questions`(`question`, `mark`, `optionA`, `optionB`, `optionC`, `optionD`, `right_option`, `class_name`, `subject_name`, `created_by`) VALUES ('$question','$mark','$optionA','$optionB','$optionC','$optionD','$right_option','$subject_name','$created_by')";
     $result = mysqli_query($conn, $sql);
 
     if($result){
