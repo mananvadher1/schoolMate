@@ -1,12 +1,6 @@
 <?php
 include("../includes/db.php");
 
-// checks conditions if the session is not set or(||) the session is not true = both means that you are not logged in so we redirect that page to login.php
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-  header("location: http://localhost/schoolMate/login.php");
-  exit;
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Insert event into the database
   $event_name = $_POST['event_name'];
@@ -70,5 +64,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo json_encode($data);
 }
 
-
+mysqli_close($conn);
 ?>

@@ -1,12 +1,5 @@
 <?php 
 include("../includes/db.php");
-
-// Check if the user is logged in
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-    header("location: http://localhost/schoolMate/login.php");
-    exit;
-}
-
 include("../includes/header.php"); 
 include("../includes/sidebar.php");
 ?>

@@ -32,18 +32,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
+            <?php if ($_SESSION['role_id'] == 1): ?>
               <li class="nav-item">
                 <a href="../pages/manage_role.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Manage Role</p>
                 </a>
               </li>
+              <?php endif; ?>
+              <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id']==2) : ?>
               <li class="nav-item">
                 <a href="../pages/manage_user.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
                   <p>Manage User</p>
                 </a>
               </li>
+              <?php endif; ?>
               <li class="nav-item">
                 <a href="../pages/manage_exam.php" class="nav-link">
                 <i class=" nav-icon fas fa-angle-right"></i>
