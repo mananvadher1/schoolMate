@@ -19,10 +19,10 @@
                                 <small class="text-muted"><?= $row['email'] ?></small>
                             </span>
                             <?php if ($row['loggedin'] == 1) : ?>
-                            <span class="badge bg-primary rounded-pill">Online</span>
+                                <span class="badge bg-primary rounded-pill">Online</span>
                             <?php else : ?>
                                 <span class="badge bg-danger rounded-pill">Offline</span>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </li>
                     <?php endwhile; ?>
                 </ul>
@@ -56,7 +56,7 @@
                                 <span class="badge bg-secondary ml-1"><?= date("d/m/Y h:i:s A", strtotime($row["msg_time"])) ?></span>
                             </div>
                         <?php endif; ?>
-                    <?php endwhile; ?>
+                        <?php endwhile; ?>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <script>
     $(document).ready(function() {
@@ -77,7 +77,7 @@
         conn.onopen = function(e) {
             console.log("Connection established!");
         };
-
+        
         conn.onmessage = function(e) {
             console.log(e.data);
             var data = JSON.parse(e.data);
@@ -90,7 +90,7 @@
             $('#chat_box').append(row);
             addMessageAndScroll();
         };
-
+        
         function sendMessage() {
             var userId = $('#userId').val();
             var msg = $('#msg').val();
@@ -107,7 +107,7 @@
             container.scrollTop(container[0].scrollHeight);
         }
         addMessageAndScroll();
-
+        
         $('#send').click(function() {
             sendMessage();
         });
@@ -120,15 +120,15 @@
     });
     // // jQuery function to filter users based on search input
     // function filterUsers() {
-    //     // Get the search input value and convert it to uppercase
-    //     var filter = $("#user-search").val().toUpperCase();
-    //     // Get the user list items
-    //     var li = $("#user-list li");
-    //     // Loop through the user list items and hide those that don't match the search input
-    //     li.each(function() {
-    //         var user = $(this).text();
-    //         if (user.toUpperCase().indexOf(filter) > -1) {
-    //             $(this).show();
+        //     // Get the search input value and convert it to uppercase
+        //     var filter = $("#user-search").val().toUpperCase();
+        //     // Get the user list items
+        //     var li = $("#user-list li");
+        //     // Loop through the user list items and hide those that don't match the search input
+        //     li.each(function() {
+            //         var user = $(this).text();
+            //         if (user.toUpperCase().indexOf(filter) > -1) {
+                //             $(this).show();
     //         } else {
     //             $(this).hide();
     //         }
