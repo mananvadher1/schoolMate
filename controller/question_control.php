@@ -46,9 +46,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
 }
 
-$sql_fetch = "SELECT questions.*, classes.class_name 
+$sql_fetch = 'SELECT questions.*, classes.class_name 
 FROM questions 
-INNER JOIN classes ON questions.class_id = classes.class_id";
+INNER JOIN classes ON questions.class_id = classes.class_id';
+// WHERE questions.class_id = '.$_GET["class_id"].'
 $result_fetch = mysqli_query($conn, $sql_fetch);
 
 include("../includes/header.php");
