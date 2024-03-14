@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo "<script>alert('Error : inserting data into database');</script>";
                     }
                 } else {
+                    // echo move_uploaded_file($img_tmp_name, $upload_folder . $img_name);
                     echo "<script>alert('Error : moving uploaded file');</script>";
                 }
             } else {

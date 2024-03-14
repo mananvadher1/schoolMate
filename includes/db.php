@@ -2,7 +2,6 @@
 session_start();
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] != true) {
-    
     header("location: http://localhost/schoolMate/login.php");
     exit;
 }
