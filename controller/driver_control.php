@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>';
                     } else {
                         echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-                        <strong>Error!</strong> Something is wrong inserting data into database!
+                        <strong>Error!</strong> Something\'s wrong with inserting data into database!
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 } else {
                     echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-                    <strong>Error!</strong> Something is wrong in moving upload file!
+                    <strong>Error!</strong> Something\'s wrong with moving uploaded file!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
