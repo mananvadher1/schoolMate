@@ -22,7 +22,7 @@
             </a>
           </li>
            <!-- pages with radio btn -->
-           
+           <?php if ($_SESSION['role_id'] != 3): ?>
            <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-users" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
               </li>
             </ul>
           </li>
-              
+          <?php endif; ?>   
           <!-- / -->
           <li class="nav-item">
             <a href="notice.php" class="nav-link">
@@ -137,25 +137,7 @@
             </ul>
           </li> -->
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-list-alt"></i>
-              <p>
-                Library
-                <i class=" nav-icon right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-                <a href="../index.html" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Books</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
+         
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>

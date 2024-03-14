@@ -1,5 +1,5 @@
 <?php include("../controller/notice_control.php"); ?>
-
+<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
 <!-- edit notice modal  -->
 <div class="modal" id="edit_notice" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -96,6 +96,7 @@
 
 </div>
 
+<?php endif; ?>
 <h1 class="text-primary text-center my-3"><b>Notice Board</b></h1>
 <!-- notice cards -->
 <?php

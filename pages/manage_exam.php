@@ -105,7 +105,7 @@
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($result_exams)) {
-                $sno = $sno + 1;
+                // $sno = $sno + 1;
                 $class_name = $row['class_name'];
                 $subject_name =$row['subject_name'];
                 echo "<tr id=" . $row['id'] . ">
