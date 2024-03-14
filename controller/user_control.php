@@ -85,15 +85,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
-                        echo "<script>alert('User Added Successfully');</script>";
+                        echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+                        <strong>Success!</strong> User added successfully!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>';
                     } else {
-                        echo "<script>alert('Error : inserting data into database');</script>";
+                        echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                        <strong>Error!</strong> Something\'s wrong with inserting data into database!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>';
+                        echo mysqli_error($conn);
                     }
                 } else {
-                    echo "<script>alert('Error : moving uploaded file');</script>";
+                    echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                    <strong>Error!</strong> Something\'s wrong with moving uploaded file!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>';
                 }
             } else {
-                echo "<script>alert('Error : uploading file');</script>";
+                echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
+                <strong>Error!</strong> File isn\'t uploaded successfully!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>';
             }
         }
     }

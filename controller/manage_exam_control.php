@@ -1,26 +1,80 @@
 <?php
 include("../includes/db.php");
 
-// condition of fetching subjects through ajax
-if (isset($_POST['class']) && $_POST['class'] != NULL) {
-  $selectedClass = $_POST['class'];
-  $subjects = '';
+if (isset($_POST['action']) && $_POST['action'] == 'delete') {
+  delete();
+}
 
-  $sql_fetch_subject = "SELECT * FROM subjects WHERE `class_name` = '$selectedClass'";
-  $result_fetch_subject = mysqli_query($conn, $sql_fetch_subject);
+//edit button data send thrught api with jason format
+if (isset($_POST['action']) && $_POST['action'] == 'edit') {
+  edit();
+}
 
-  while ($row = mysqli_fetch_assoc($result_fetch_subject)) {
-    $sub = $row['subject_name'];
-    $subjects .= '<option value="' . $sub . '">' . $sub . '</option>';
+function edit()
+{
+  global $conn;
+  $id = $_POST['id'];
+  $role_data = array();
+
+
+  // fetch data from db 
+  $result = mysqli_query($conn, "SELECT * FROM `exams` WHERE id = $id");
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_array($result)) {
+      array_push($role_data, $row);
+    }
+    // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
+    header("Content-Type: application/json");
+    echo json_encode($role_data);
+    exit;
   }
-  // for returning result as response
-  echo $subjects;
+}
+
+// update exam 
+$update = false;
+if (isset($_POST['edit_id'])) {
+  $id = $_POST['edit_id'];
+  $edate = $_POST["edit_edate"];
+  $etime = $_POST["edit_etime"];
+  $duration = $_POST['edit_duration'];
+  $rdate = $_POST['edit_rdate'];
+  $status = $_POST['edit_status'];
+  // $updated_by = $_SESSION['email'];
+  // $created_by = $_SESSION['email'];
+
+  $sql = "UPDATE `exams` SET `exam_date`='$edate',`exam_time`='$etime',`duration`= '$duration',`result_date`= '$rdate',`status`= '$status' WHERE `id` = '$id'";
+
+  $result = mysqli_query($conn, $sql);
+  // echo var_dump($result);
+  if ($result) {
+    $update = true;
+    
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
 }
 
 
+
+
+
+function delete()
+{
+  global $conn;
+  $id = $_POST['id']; // Corrected $_POST variable name
+
+  $result = mysqli_query($conn, "DELETE FROM `exams` WHERE id = $id");
+  if ($result == true) {
+    echo 1;
+    exit;
+  }
+  echo 0;
+  exit;
+}
+
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+if(isset($_POST['class'])){
   $class = $_POST['class'];
   $sub = $_POST['subject'];
   $edate = $_POST['edate'];
@@ -30,20 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $status = $_POST['status'];
   
   // insert data into exams
-  $sql = "INSERT INTO `exams`(`class_name`, `subject_name`, `exam_date`, `exam_time`, `duration`, `result_date`, `status`) VALUES ('$class','$sub','$edate','$etime','$duration','$rdate','$status')";
+  $sql = "INSERT INTO `exams` (`class_id`, `subject_name`, `exam_date`, `exam_time`, `duration`, `result_date`, `status`) VALUES ('$class', '$sub', '$edate', '$etime', '$duration', '$rdate', '$status')";
   $result = mysqli_query($conn, $sql);
+
   
   if ($result) {
     $insert = true;
     // echo "done";
-    if ($insert) {
-      echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-      <strong>Success!</strong> Exam is scheduled successfully!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-              </div>';
-            }
+    
           } else {
             echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
             <strong>Error!</strong>  ' . mysqli_error($conn) . '!
@@ -53,10 +101,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>';
           }
 }
+}
+
 
 
 // fetch from exams
-$sql_exams = "SELECT * FROM `exams`";
+// join two tables classes and exams to fetch class_name
+$sql_exams = "SELECT exams.*, classes.class_name 
+FROM exams 
+INNER JOIN classes ON exams.class_id = classes.class_id";
 $result_exams = mysqli_query($conn, $sql_exams);
 
 $sql_classes = "SELECT * FROM `classes`";
@@ -68,4 +121,27 @@ $result_subjects = mysqli_query($conn, $sql_subjects);
 
 include("../includes/header.php");
 include("../includes/sidebar.php");
+
+if ($insert) {
+  echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+  <strong>Success!</strong> Exam is scheduled successfully!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>';
+        }
+
+        if($update){
+          echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+    <strong>Success!</strong> Your notice has been updated successfully!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
+        }
 ?>
+
+
+<!-- SELECT exams.*, classes.class_name 
+FROM exams 
+INNER JOIN classes ON exams.class_id = classes.class_id -->
