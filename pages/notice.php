@@ -83,7 +83,7 @@
       $sno = 0;
       while ($row = mysqli_fetch_array($result)) {
         $sno = $sno + 1;
-        echo "  <tr id='" . $row['notice_id'] . "'>
+        echo "  <tr id='" . $sno . "'>
                 <th scope='row'>" . $sno . "</th>
                 <td>" . $row["notice_title"] . "</td>
                 <td><button onClick='editClick(" . $row['notice_id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
@@ -121,32 +121,51 @@ echo '</div>';
 
 
 <script>
-  function deleteClick(id) {
-    $(document).ready(function () {
-      // console.log('hii')
-      $.ajax({
-        url: '../controller/notice_control.php',
-        type: 'POST',
-        data: {
-          //get value
-          id: id,
-          action: "delete"
-        },
-        success: function (response) {
-          console.log('response---->', response);
-          //response is output of the action file
-          if (response == 1) {
-            // alert("Deleted role_id: " + id + " successfully");
-            confirm("Are you sure you want to delete the record?");
-            document.getElementById(id).style.display = "none";
-            document.getElementById('c' + id).style.display = "none";
-          } else if (response == 0) {
-            alert("Data Can't be deleted");
-          }
+ function deleteClick(id) {
+    // Use SweetAlert for confirmation before deleting
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this record!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with deletion
+            $.ajax({
+                url: '../controller/notice_control.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    action: "delete"
+                },
+                success: function(response) {
+                    if (response) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Notice deleted successfully.",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6'
+                        }).then(() => {
+                            // Reload or update the page after deletion
+                            // location.reload();
+                        });
+                        // Optional: Hide the deleted row without refreshing the page
+                        $("#" + id).hide();
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to delete the record.",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
         }
-      });
     });
-  }
+}
 
   function editClick(id) {
     $(document).ready(function () {

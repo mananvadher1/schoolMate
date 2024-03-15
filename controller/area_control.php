@@ -46,6 +46,7 @@ function delete()
 include("../includes/header.php");
 include("../includes/sidebar.php");
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //for update the sql
     if (isset($_POST['edit_id'])) {
@@ -59,12 +60,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($updateResult) {
             $update = true;
-            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-            <strong>Success!</strong> Your record has been updated successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div>';
+            if ($update) {
+                echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Area updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
+            }
+
         } else {
             echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
         }
@@ -72,26 +79,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //for the insert
     if (isset($_POST['area_name'])) {
-       
+
         $vehical_id = $_POST["vehical_id"];
         $area = $_POST["area_name"];
-        $pincode = $_POST["pincode"];                
-        $city = $_POST["city"];                
+        $pincode = $_POST["pincode"];
+        $city = $_POST["city"];
         $addsql = "INSERT INTO `area` (`area_name`, `vehical_id`, `pincode`, `city`) VALUES ( '$area', '$vehical_id', '$pincode', '$city');";
         $addResult = mysqli_query($conn, $addsql);
         if ($addResult) {
             $insert = true;
-            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-            <strong>Success!</strong> Your record has been inserted successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div>';
+            if ($insert) {
+                echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Area inserted successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
+            }
         } else {
+            echo "<script>
+                    Swal.fire({
+                    title: 'Error!',
+                    text: 'Area can't be inserted!',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+      </script>";
             echo "Error: " . $addsql . "<br>" . mysqli_error($conn);
         }
     }
-   
+
 }
 // sql for form in dropdown
 $sql_dropdown = "SELECT * FROM `vehical`";

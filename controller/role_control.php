@@ -60,6 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($updateResult) {
             $update = true;
+            if($update){
+                echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Role updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
+              }
         } else {
             echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
         }
@@ -76,7 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($addResult) {
             //echo "New record created successfully";
             $insert = true;
+            if($insert){
+                echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Role inserted successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
+              }
         } else {
+            echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'Role can't be inserted!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
             echo "Error: " . $addsql . "<br>" . mysqli_error($conn);
         }
     }

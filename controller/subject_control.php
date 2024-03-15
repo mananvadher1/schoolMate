@@ -41,6 +41,7 @@ function delete()
   exit;
 }
 //form and page related data
+$update = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //for update the sql
   if (isset($_POST['subject_id'])) {
@@ -55,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       if ($updateResult) {
           $update = true;
+      
       } else {
           echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
       }
@@ -62,14 +64,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 include("../includes/header.php");
 include("../includes/sidebar.php");
+
 if($update){
-  echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-  <strong>Success!</strong> Your subject is updated successfully!
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
+  echo "<script>
+  Swal.fire({
+      title: 'Success!',
+      text: 'Subject updated successfully!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#3085d6'
+  });
+  </script>";
 }
+
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['sub_code'])) {
@@ -86,20 +93,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insert = true;
         // echo "done";
         if($insert){
-            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-            <strong>Success!</strong> Your subject is inserted successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>';
+          echo "<script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Subject inserted successfully!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#3085d6'
+          });
+          </script>";
         }
     } else {
-        echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
-        <strong>Error!</strong>  '. mysqli_error($conn).'!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
+      echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'Subject can't be inserted!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
     }
   }
     }

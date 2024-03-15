@@ -1,7 +1,8 @@
 <?php include("../controller/subject_control.php"); ?>
 
 <!-- edit modal -->
-<div class="modal fade" id="edit_subject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="edit_subject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,9 +24,9 @@
                             <input type="text" class="form-control" name="edit_code" id="edit_code" required>
                             <label class="form-label mx-2" for="sub_ref">Enter Reference</label>
                             <input type="text" class="form-control" id="edit_sub_ref" name="edit_sub_ref"
-                         placeholder="Enter Reference Link">
+                                placeholder="Enter Reference Link">
                         </div>
-                    </div>      
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -67,7 +68,8 @@
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label class="form-label mx-2" for="sub_name">Enter Subject Name</label>
-                    <input type="text" class="form-control" id="sub_name" name="sub_name" placeholder="Enter Subject Name">
+                    <input type="text" class="form-control" id="sub_name" name="sub_name"
+                        placeholder="Enter Subject Name">
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label class="form-label mx-2" for="sub_code">Enter Subject Code</label>
@@ -89,8 +91,8 @@
 <h1 class="text-center my-3"><b>Subject Reference</b></h1>
 <!-- data table -->
 <div class="container">
-    
-        <?php
+
+    <?php
         while ($row = mysqli_fetch_assoc($result_classes)) {
     
             $c_name = $row['class_name'];
@@ -120,7 +122,7 @@
                     
                     <td>" . $row_dt['subject_name'] . "</td>
                     <td>" . $row_dt['subject_code'] . "</td>
-                    <td>" . $row_dt['subject_ref'] . "</td>
+                    <td><a href='" . $row_dt['subject_ref'] . "'>click here to see the reference</a></td>
                     
                     <td><button onClick='editClick(" . $row_dt['subject_id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
                     <button onClick='deleteClick(" . $row_dt['subject_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
@@ -135,64 +137,79 @@
 
 
 <script>
-    function deleteClick(id) {
-        $(document).ready(function() {
-            // console.log('hii')
+function deleteClick(id) {
+    // Use SweetAlert for confirmation before deleting
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this record!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with deletion
             $.ajax({
-                //action
                 url: '../controller/subject_control.php',
-                //method
                 type: 'POST',
-                // header:{
-                //     contentType: "application/json",
-                // },
                 data: {
-                    //get value
                     id: id,
                     action: "delete"
                 },
                 success: function(response) {
-                    // console.log('response---->',response);
-                    //response is output of the action file
                     if (response) {
-                        alert("Deleted role_id: " + id + " successfully");
-                        // $("#id").hide();
-                        document.getElementById(id).style.display = "none";
-                    } else if (!response) {
-                        alert("Data Can't be deleted");
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Subject deleted successfully.",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6'
+                        }).then(() => {
+                            // Reload or update the page after deletion
+                            // location.reload();
+                        });
+                        // Optional: Hide the deleted row without refreshing the page
+                        $("#" + id).hide();
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to delete the record.",
+                            icon: "error"
+                        });
                     }
                 }
             });
-        });
-    }
+        }
+    });
+}
 
-    function editClick(id) {
-        $(document).ready(function () {
-             console.log('hii')
-            $.ajax({
-                url: '../controller/subject_control.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    action: "edit"
-                },
-                success: function (response) {
-                    // console.log('response---->',response);
-                    // console.log(response);
+function editClick(id) {
+    $(document).ready(function() {
+        console.log('hii')
+        $.ajax({
+            url: '../controller/subject_control.php',
+            type: 'POST',
+            data: {
+                id: id,
+                action: "edit"
+            },
+            success: function(response) {
+                // console.log('response---->',response);
+                // console.log(response);
+                // Use setTimeout to delay SweetAlert
+                $.each(response, function(key, value) {
+                    $('#subject_id').val(value['subject_id']);
+                    //$('#edit_name').val(value['subject_name']);
+                    $('#edit_code').val(value['subject_code']);
+                    $('#edit_sub_ref').val(value['subject_ref']);
+                });
+                $("#edit_subject").modal('show');
+            },
 
-                    $.each(response, function (key, value) {
-                        $('#subject_id').val(value['subject_id']);
-                        //$('#edit_name').val(value['subject_name']);
-                        $('#edit_code').val(value['subject_code']);
-                        $('#edit_sub_ref').val(value['subject_ref']);
-                    });
-                    $("#edit_subject").modal('show');
-                }
-            });
         });
-    }
+    });
+}
 </script>
-
 
 
 <?php include("../includes/footer.php"); ?>

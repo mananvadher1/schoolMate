@@ -59,12 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $created_by = $_SESSION['email'];
 
     if (empty($title) || empty($description)) {
-      echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-          <strong>Error!</strong> You should fill empty fields first!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-          </div>';
+      echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'You should fill empty fields first!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
     } else {
       // insert query
       $sql = "INSERT INTO `notices` (`notice_title`, `notice_desc`, `created_by`, `created_dt`) VALUES ( '$title', '$description', '$created_by', CURRENT_TIMESTAMP())";
@@ -73,15 +76,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($result) {
         //   echo "The data has been recorded successfully!<br>";
         $insert = true;
-        if ($insert) {
-          echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-              <strong>Success!</strong> Your notice has been inserted successfully!
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-              </div>';
+        if($insert){
+          echo "<script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Notice inserted successfully!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#3085d6'
+          });
+          </script>";
         }
       } else {
+        echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'Notice can't be inserted!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
         echo "Error:<br>" . mysqli_error($conn);
       }
     }
@@ -105,12 +120,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // echo var_dump($result);
     if ($result) {
       $update = true;
-      echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-      <strong>Success!</strong> Your notice has been updated successfully!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>';
+      if($update){
+        echo "<script>
+        Swal.fire({
+            title: 'Success!',
+            text: 'Notice updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6'
+        });
+        </script>";
+      }
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -120,5 +140,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //notice cards
 $cardsql = "SELECT * FROM `notices`";
 $cardresult = mysqli_query($conn, $cardsql);
-
-
