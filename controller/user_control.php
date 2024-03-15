@@ -101,29 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo mysqli_error($conn);
                     }
                 } else {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    // echo move_uploaded_file($img_tmp_name, $upload_folder . $img_name);
-                    echo "<script>alert('Error : moving uploaded file');</script>";
-=======
-=======
->>>>>>> 3b2748f1bdc0e1256d7dcbcc30a284d1f9676a04
-=======
->>>>>>> 3b2748f1bdc0e1256d7dcbcc30a284d1f9676a04
                     echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
                     <strong>Error!</strong> Something\'s wrong with moving uploaded file!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                     </div>';
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 3b2748f1bdc0e1256d7dcbcc30a284d1f9676a04
-=======
->>>>>>> 3b2748f1bdc0e1256d7dcbcc30a284d1f9676a04
-=======
->>>>>>> 3b2748f1bdc0e1256d7dcbcc30a284d1f9676a04
                 }
             } else {
                 echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
