@@ -42,7 +42,7 @@ class Chat implements MessageComponentInterface
         $send_sql = "INSERT INTO `chat`(`user_id`,`to_user_id`, `msg`) VALUES ($from_id, $to_id,'$msg')";
         $send_result = mysqli_query($conn, $send_sql);
         if ($send_result) {
-            $userId = $data['toUserId'];
+            $userId = $data['formUserId'];
             $sql_user =  "SELECT * FROM `users` WHERE id = '$userId'";
             $result_user = mysqli_query($conn, $sql_user);
             $user = mysqli_fetch_assoc($result_user);

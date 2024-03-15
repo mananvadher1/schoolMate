@@ -107,7 +107,7 @@
         conn.onmessage = function(e) {
             console.log(e.data);
             var data = JSON.parse(e.data);
-            var isSelfMessage = data.userId === $('#userId').val();
+            var isSelfMessage = data.toUserId === $('#userId').val();
             if (!isSelfMessage) {
                 var row = '<div class="mb-3 d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><img src="../dist/img/user_image/' + data.img + '" class="rounded-circle" width="40" height="40" mr-1>&nbsp;<strong>' + data.from + ':</strong>&nbsp;' + data.msg + '</div><span class="badge bg-secondary ml-1">' + data.dt + '</span></div>';
             } else {
