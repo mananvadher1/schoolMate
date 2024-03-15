@@ -1,6 +1,63 @@
 <?php include("../controller/manage_exam_control.php"); ?>
 
-<!-- edit modal -->
+<!-- edit notice modal  -->
+<div class="modal" id="edit_exam" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Exam Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="my-4" action="manage_exam.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+          
+          <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="edit_edate">Exam Date</label>
+                        <input type="date"  class="form-control" id="edit_edate" name="edit_edate">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="edit_etime">Exam Time</label>
+                        <input type="time"  class="form-control" id="edit_etime" name="edit_etime">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="edit_duration">Duration</label>
+                        <select class="custom-select mr-sm-2" id="edit_duration" name="edit_duration">
+                            <option value="20 min">20 min</option>
+                            <option value="30 min">30 min</option>
+                            <option value="60 min">60 min</option>
+                            <option value="80 min">80 min</option>
+                            <option value="80 min">100 min</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="edit_rdate">Result Date</label>
+                        <input type="date" class="form-control" id="edit_rdate" name="edit_rdate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="edit_status">Status</label>
+                        <select class="custom-select mr-sm-2" id="edit_status" name="edit_status">
+                            <option selected>Choose...</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Update Exam Details</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 <!-- add exam form -->
@@ -28,7 +85,7 @@
                             <option selected>Choose Class...</option>
                             <?php
                                 while($row = mysqli_fetch_assoc($result_classes)){
-                                $class = $row['class_name'];
+                                $class = $row['class_id'];
                                 echo '<option value="'.$class.'">'.$class.'</option>';
                                 }
                             ?>
@@ -104,22 +161,24 @@
             </tr>
         </thead>
         <tbody>
-            <?php while ($row = mysqli_fetch_assoc($result_exams)) {
+            <?php
+            $sno = 0; 
+            while ($row = mysqli_fetch_assoc($result_exams)) {
                 $sno = $sno + 1;
-                $class_name = $row['class_name'];
+                $class_id = $row['class_id'];
                 $subject_name =$row['subject_name'];
                 echo "<tr id=" . $row['id'] . ">
-                    <td>" . $row['id'] . "</td>
+                    <td>" . $sno . "</td>
                     <td>" . $row['class_name'] . "</td>
                     <td>" . $row['subject_name'] . "</td>
                     <td>" . $row['exam_date'] . "</td>
                     <td>" . $row['exam_time'] . "</td>
+                    <td>" . $row['duration'] . "</td>
                     <td>" . $row['result_date'] . "</td>
                     <td>" . $row['status'] . "</td>
-                    <td>" . $row['duration'] . "</td>
-                    <td><button class='edit btn btn-sm btn-success'>Edit</button>
-                    <button class='delete btn btn-sm btn-danger'>Delete</button></td>
-                    <td><a href='questions.php?cname=".$class_name."&sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
+                    <td><button onClick='editClick(" . $row['id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
+                    <button onClick='deleteClick(" . $row['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
+                    <td><a href='questions.php?cid=".$class_id."&sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
                 </tr>";
             } ?>
         </tbody>
@@ -135,7 +194,7 @@
         var selectedClass = $("#class").val();
         console.log(selectedClass);
         $.ajax({
-            url: '../controller/manage_exam_control.php',
+            url: '../APIs/manage_exam_api.php',
             type: 'POST',
             data: { class: selectedClass },
             success:function(response){
@@ -164,11 +223,13 @@ function deleteClick(id) {
             success: function(response) {
                 console.log('response---->', response);
                 //response is output of the action file
-                if (response) {
+                if (response == 1) {
                     // alert("Deleted role_id: " + id + " successfully");
+                    confirm("Are you sure you want to delete the record?");
                     // $('#id').hide();
                     document.getElementById(id).style.display = "none";
-                } else if (!response) {
+                    document.getElementById('c' + id).style.display = "none";
+                } else if (!response == 0) {
                     alert("Data Can't be deleted");
                 }
             }
@@ -191,28 +252,17 @@ function editClick(id) {
 
                 $.each(response, function(key, value) {
                     $('#edit_id').val(value['id']);
-                    $('#edit_email').val(value['email']);
-                    $('#edit_fname').val(value['first_name']);
-                    $('#edit_lname').val(value['last_name']);
-                    $('#edit_pass').val(value['password']);
-                    $('#edit_dob').val(value['dob']);
-                    $('#edit_phone').val(value['phone']);
-                    $('#edit_bg').val(value['blood_group']);
-                    $('#edit_add').val(value['address']);
-                    $('#edit_city').val(value['city']);
-                    // // image default value
-                    // $('#edit_profile_img').attr('src', '../dist/img/user_image/' + value['profile_img']);
-                    if (value['gender'] === 'male') {
-                        $('#edit_gender-male').prop('checked', true);
-                        // document.getElementById('edit_gender-male').checked = true;
-                    } else if (value['gender'] === 'female') {
-                        document.getElementById('edit_gender-female').checked = true;
-                        // $('#edit_gender-female').prop('checked', true);
-                    }
+                    $('#edit_edate').val(value['exam_date']);
+                    $('#edit_etime').val(value['exam_time']);
+                    $('#edit_duration').val(value['duration']);
+                    $('#edit_rdate').val(value['result_date']);
+                    $('#edit_status').val(value['status']);
+                
                     // for active status
-                    $('#edit_status').prop('checked', value['status'] == 1);
+                    // $('#edit_status').prop('checked', value['status'] == 1);
                 });
-                $('#edit_user').modal('show');
+                $('#edit_exam').modal('show');
+                console.log("clicked");
             }
         });
     });

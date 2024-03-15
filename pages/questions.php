@@ -6,7 +6,8 @@
     <div class="row mb-2">
 
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"><b>Manage Questions</b></h1>
+        <h1 class="m-0 text-dark"><b>Manage Questions - Class <?echo $_GET["cid"]?> </b></h1>
+        <h4 class="mt-2 text-dark">Subject: <?echo $_GET["sname"]?></h4>
       </div><!-- /.col -->
 
     </div><!-- /.row -->
@@ -31,7 +32,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive bg-white">
-              <table class="table table-bordered">
+              <table class="table" id="myTable">
                 <thead>
                   <tr>
                     <th>Sno</th>
@@ -89,7 +90,7 @@
             </h3>
           </div>
           <div class="card-body">
-            <form action="questions.php" method="post">
+            <form action="questions.php?cid=<? echo $class_id?>&sname=<? echo $subject_name?>" method="post">
               <div class="form-group">
                 <label for="title">Question</label>
                 <input type="text" id="question" name="question" placeholder="Write your question here..." required
@@ -118,7 +119,7 @@
               </div>
               <div class="form-group">
                 <label for="right_option">Right Option</label>
-                <select name="right_option" id="right_option">
+                <select name="right_option" id="right_option" required>
                   <option selected>Choose...</option>
                   <option value="Option A">Option A</option>
                   <option value="Option B">Option B</option>
@@ -140,48 +141,5 @@
 </section>
 <!-- /.content -->
 
-<!-- <div class="container">
-    <h2 class="text-center my-3"><b>Manage Questions</b></h2>
-    <form action="questions.php" method="post">
-        <div class="form-group">
-            <label for="title">Question</label>
-            <input type="text" id="question" name="question" placeholder="Write your question here..." required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="mark">Mark</label>
-            <input type="number" id="mark" name="mark" placeholder="Write mark of the question here..." required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="optionA">Option A</label>
-            <input type="text" id="optionA" name="optionA" placeholder="Option A" required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="optionB">Option B</label>
-            <input type="text" id="optionB" name="optionB" placeholder="Option B" required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="optionC">Option C</label>
-            <input type="text" id="optionC" name="optionC" placeholder="Option C" required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="optionD">Option D</label>
-            <input type="text" id="optionD" name="optionD" placeholder="Option D" required class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="right_option">Right Option</label>
-            <select name="right_option" id="right_option">
-                <option selected>Choose...</option>
-                <option value="Option A">Option A</option>
-                <option value="Option B">Option B</option>
-                <option value="Option C">Option C</option>
-                <option value="Option D">Option D</option>
-            </select>
-        </div>
-
-        <button name="submit" class="btn btn-primary float-right">
-            Submit
-        </button>
-    </form>
-</div> -->
 
 <?php include("../includes/footer.php"); ?>

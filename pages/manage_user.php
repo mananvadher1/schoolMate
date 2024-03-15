@@ -290,8 +290,10 @@
                         if (response) {
                             // alert("Deleted role_id: " + id + " successfully");
                             // $('#id').hide();
-                            confirm("Are you sure you want to delete the user?");
+                            if(confirm("Are you sure you want to delete the user?")){
+                                
                             document.getElementById(id).style.display = "none";
+                            }
                         } else if (!response) {
                             alert("Data Can't be deleted");
                         }

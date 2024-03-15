@@ -1,11 +1,11 @@
 <?php include("../controller/notice_control.php"); ?>
-
+<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
 <!-- edit notice modal  -->
 <div class="modal" id="edit_notice" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Update Notice</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -30,6 +30,7 @@
   </div>
 </div>
 
+<!-- add notice -->
 <div class="card card-secondary">
   <div class="card-header">
     <div class="row">
@@ -96,6 +97,7 @@
 
 </div>
 
+<?php endif; ?>
 <h1 class="text-primary text-center my-3"><b>Notice Board</b></h1>
 <!-- notice cards -->
 <?php
@@ -174,9 +176,3 @@ echo '</div>';
 
 
 <?php include("../includes/footer.php"); ?>
-<!-- <div class="jumbotron jumbotron-fluid py-2 text-blue">
-              <div class="container">
-                <h3 class="display-6">' . $row["notice_title"] . '</h3>
-                <p class="lead">'. $row["notice_desc"] .'</p>
-              </div>
-            </div> -->

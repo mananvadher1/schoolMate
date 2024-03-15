@@ -13,3 +13,5 @@ $conn = mysqli_connect("localhost", "phpmyadmin", "Admin@123", "SchoolMate");
 if (mysqli_connect_error()) {
     echo "can not connect";
 }
+
+error_reporting(E_ALL);

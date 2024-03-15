@@ -1,6 +1,7 @@
 <?php
 include("../includes/db.php");
 
+
 //delete button logic api calling and 
 // echo '<pre>'; print_r($_POST); exit;
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
@@ -31,6 +32,8 @@ function edit()
     exit;
   }
 }
+
+
 
 function delete()
 {
