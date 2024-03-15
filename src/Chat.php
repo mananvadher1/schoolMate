@@ -36,13 +36,13 @@ class Chat implements MessageComponentInterface
         $data = json_decode($msg, true);
         $conn = mysqli_connect("localhost", "phpmyadmin", "Admin@123", "SchoolMate");
         $from_id = $data['formUserId'];
-        $uid = $data['userId'];
+        $to_id = $data['toUserId'];
         
         $msg = $data['msg'];
-        $send_sql = "INSERT INTO `chat`(`user_id`,`to_user_id`, `msg`) VALUES ($from_id, $uid,'$msg')";
+        $send_sql = "INSERT INTO `chat`(`user_id`,`to_user_id`, `msg`) VALUES ($from_id, $to_id,'$msg')";
         $send_result = mysqli_query($conn, $send_sql);
         if ($send_result) {
-            $userId = $data['userId'];
+            $userId = $data['toUserId'];
             $sql_user =  "SELECT * FROM `users` WHERE id = '$userId'";
             $result_user = mysqli_query($conn, $sql_user);
             $user = mysqli_fetch_assoc($result_user);

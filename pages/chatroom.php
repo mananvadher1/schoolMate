@@ -16,7 +16,7 @@
             <div class="input-group px-2">
                 <input type="search" id="user-search" class="form-control my-3" placeholder="Search users..." onkeyup="filterUsers()">
             </div>
-            <div class="card-body overflow-auto pt-0" style="height: 63vh;">
+            <div class="card-body overflow-auto pt-0" style="height: 50vh;">
                 <ul class="list-group" id="user-list">
                     <?php
                     if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -118,12 +118,12 @@
         };
 
         function sendMessage() {
-            var userId = $('#userId').val();
+            var toUserId = $('#userId').val();
             var formUserId = "<?php echo $_SESSION['id']; ?>";
             var msg = $('#msg').val();
             var data = {
                 formUserId: formUserId,
-                userId: userId,
+                toUserId: toUserId,
                 msg: msg
             };
             conn.send(JSON.stringify(data));

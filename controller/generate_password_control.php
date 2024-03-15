@@ -1,5 +1,11 @@
 <?php
-include("../includes/db.php");
+session_start();
+$conn = mysqli_connect("localhost", "phpmyadmin", "Admin@123", "SchoolMate");
+if (mysqli_connect_error()) {
+    echo "can not connect";
+}
+
+error_reporting(E_ALL);
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function

@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $sql_dropdown = "SELECT * FROM `roles`";
 $re_dropdown = mysqli_query($conn, $sql_dropdown);
 // sql for data table
-$sql_dt = "SELECT * FROM `users`";
+$sql_dt = "SELECT users.*,roles.role_name FROM `users` JOIN `roles` ON users.role_id = roles.role_id";
 $re_dt = mysqli_query($conn, $sql_dt);
 $sno = 0;
 ?>

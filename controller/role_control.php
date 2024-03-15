@@ -1,6 +1,5 @@
 <?php
 include("../includes/db.php");  
-if($_SESSION['role_id'] == 1){
 
 //delete button logic api calling and 
 // echo '<pre>'; print_r($_POST); exit;
@@ -18,8 +17,8 @@ function edit()
     global $conn;
     $id = $_POST['id'];
     $role_data = array();
-
-
+    
+    
     // fetch data from db 
     $result = mysqli_query($conn, "SELECT * FROM `roles` WHERE role_id = $id;");
     if (mysqli_num_rows($result) > 0) {
@@ -37,13 +36,14 @@ function delete()
 {
     global $conn;
     $id = $_POST['id']; // Corrected $_POST variable name
-
+    
     $result = mysqli_query($conn, "DELETE FROM roles WHERE role_id = $id");
     // echo var_dump($result);
     echo 1;
     exit;
 }
 
+if($_SESSION['role_id'] == 1){
 include("../includes/header.php");
 include("../includes/sidebar.php");
 

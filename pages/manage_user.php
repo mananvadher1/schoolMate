@@ -222,8 +222,8 @@
         <table class="table" id="myTable">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Role Id</th>
+                    <th scope="col">Sr no</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">First Name</th>
@@ -247,7 +247,7 @@
                     $sno = $sno + 1;
                     echo "<tr id=" . $row_dt['id'] . ">
                     <td>" . $sno . "</td>
-                    <td>" . $row_dt['role_id'] . "</td>
+                    <td>" . $row_dt['role_name'] . "</td>
                     <td>" . $row_dt['email'] . "</td>
                     <td>" . $row_dt['password'] . "</td>
                     <td>" . $row_dt['first_name'] . "</td>

@@ -17,8 +17,8 @@ $sql_fetch2 = "SELECT * FROM `sections`";
 $result2 = mysqli_query($conn,$sql_fetch2);
 
 // fetch from teachers
-$sql_fetch3 = "SELECT * FROM `teachers`";
-$result3 = mysqli_query($conn,$sql_fetch3);
+// $sql_fetch3 = "SELECT * FROM `teachers`";
+// $result3 = mysqli_query($conn,$sql_fetch3);
 
 ?>
 
