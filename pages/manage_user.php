@@ -293,6 +293,7 @@
                             if(confirm("Are you sure you want to delete the user?")){
                                 
                             document.getElementById(id).style.display = "none";
+                            $(".child").hide();
                             }
                         } else if (!response) {
                             alert("Data Can't be deleted");

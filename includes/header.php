@@ -204,7 +204,7 @@
                     <!-- chat -->
                     <a href="../pages/chatroom.php" class="">
                         <i class="fa fa-envelope" style="color:white"></i>
-                        <span class="label label-danger" style="color:white">4 Messages</span>
+                        <span class="label label-danger" style="color:white">&nbsp;Messages</span>
                     </a>
 
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">

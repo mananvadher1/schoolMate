@@ -6,10 +6,9 @@
             <div class="card-header">
                 <?php while ($row = mysqli_fetch_assoc($re_me)) : ?>
                     <div class="mb-3 d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <img src="../dist/img/user_image/<?= $row["profile_img"] ?>" class="rounded-circle" width="40" height="40" mr-1>
+                        <div class="d-flex flex-column align-items-center mx-auto">
+                            <img src="../dist/img/user_image/<?= $row["profile_img"] ?>" class="rounded-circle" width="70" height="70" mr-1>
                                 <strong><?= $row['first_name'] . ' ' . $row['last_name'] ?></strong>
-                                <small class="d-flex align-items-center"><?= $row['email'] ?></small>
                         </div>
                     </div>
                 <?php endwhile; ?>

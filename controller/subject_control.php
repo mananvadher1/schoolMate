@@ -62,6 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 include("../includes/header.php");
 include("../includes/sidebar.php");
+if($update){
+  echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+  <strong>Success!</strong> Your subject is updated successfully!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+}
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['sub_code'])) {

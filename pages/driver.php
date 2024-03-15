@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <form class="my-4" action="driver.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="form-control" id="edit_id" name="edit_id">
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="first_name">First Name:</label>
@@ -34,16 +34,16 @@
                         </div>
                     </div>
                     <div class="form-row">
-                    <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="dob">Date of Birth:</label>
                             <input type="date" class="form-control" name="edit_dob" id="edit_dob" required>
-                             </div>
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="address">Address:</label>
                             <textarea class="form-control" name="edit_add" id="edit_add" required></textarea>
                         </div>
-                    </div>    
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -185,6 +185,7 @@
                         // alert("Deleted role_id: " + id + " successfully");
                         // $('#id').hide();
                         document.getElementById(id).style.display = "none";
+                        $(".child").hide();
                     } else if (!response) {
                         alert("Data Can't be deleted");
                     }

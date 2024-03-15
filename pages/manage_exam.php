@@ -194,7 +194,7 @@
         var selectedClass = $("#class").val();
         console.log(selectedClass);
         $.ajax({
-            url: '../APIs/manage_exam_api.php',
+            url: '../api/manage_exam_api.php',
             type: 'POST',
             data: { class: selectedClass },
             success:function(response){
