@@ -24,14 +24,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $update = true;
         // echo "done";
         if($update){
-            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-            <strong>Success!</strong> Your records are updated successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>';
+          echo "<script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Profile updated successfully!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#3085d6'
+          });
+          </script>";
         }
     } else {
+      echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'Record can't be inserted!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
         echo "Error: " . mysqli_error($conn);
     }
 }

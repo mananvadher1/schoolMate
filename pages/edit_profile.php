@@ -240,7 +240,56 @@ h6 {
 </div>
 
 <!-- profile ui -->
-<div class="page-content page-container" id="page-content">
+<div class="container">
+    <h1 class="m-b-20 p-b-5 b-b-default f-w-600 text-center"><b>My Profile</b></h1>
+    <div class="main-container d-flex">
+        <div class="row">
+
+            <div class="col-md-6" style="margin-left:100px">
+                <img class="profile-user-img img-fluid mt-2" style="width:400px"
+                    src="../dist/img/user_image/<?php echo $row_edit["profile_img"]; ?>" alt="User profile picture">
+                <h4 class="mt-4 ml-4"><b><?php echo $row_edit['first_name'];?>
+                        <?php echo $row_edit['last_name']; ?></b></h4>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Email</p>
+                <p class="text-muted f-w-400"><?php echo $row_edit['email'];?></p>
+            </div>
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Phone</p>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['phone'];?></h6>
+            </div>
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Gender</p>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['gender'];?></h6>
+            </div>
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Date Of Birth</p>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['dob'];?></h6>
+            </div>
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Address</p>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['address'];?></h6>
+            </div>
+            <div class="col-sm-6">
+                <p class="m-b-10 f-w-600">Blood Group</p>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group'];?></h6>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- profile ui -->
+<!-- <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
             <div class="col-xl-6 col-md-12">
@@ -252,8 +301,9 @@ h6 {
                                     <img class="profile-user-img img-fluid mt-5"
                                         src="../dist/img/user_image/<?php echo $row_edit["profile_img"]; ?>"
                                         alt="User profile picture">
-                                        <br><br>
-                                        <h5><b><?php echo $row_edit['first_name'];?> <?php echo $row_edit['last_name']; ?></b></h5>
+                                    <br><br>
+                                    <h5><b><?php echo $row_edit['first_name'];?>
+                                            <?php echo $row_edit['last_name']; ?></b></h5>
                                 </div>
                                 <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                             </div>
@@ -261,42 +311,42 @@ h6 {
                         <div class="col-sm-8">
                             <div class="card-block">
                                 <h3 class="m-b-20 p-b-5 b-b-default f-w-600"><b>My Profile</b></h3>
-                            
 
-                                <!-- <div class="row"> -->
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Email</p>
-                                        <p class="text-muted f-w-400"><?php echo $row_edit['email'];?></p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $row_edit['phone'];?></h6>
-                                    </div>
-                                <!-- </div> -->
 
-                                <!-- <div class="row"> -->
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Gender</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $row_edit['gender'];?></h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Date Of Birth</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $row_edit['dob'];?></h6>
-                                    </div>
-                                <!-- </div> -->
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <p class="text-muted f-w-400"><?php echo $row_edit['email'];?></p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Phone</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['phone'];?></h6>
+                                </div>
+                                </div>
 
-                                <!-- <div class="row"> -->
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Address</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $row_edit['address'];?></h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Blood Group</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group'];?></h6>
-                                    </div>
-                                <!-- </div> -->
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Gender</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['gender'];?></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Date Of Birth</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['dob'];?></h6>
+                                </div>
+                                </div>
 
-                                
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Address</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['address'];?></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Blood Group</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group'];?></h6>
+                                </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -304,6 +354,6 @@ h6 {
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <?php include("../includes/footer.php"); ?>

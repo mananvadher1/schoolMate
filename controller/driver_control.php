@@ -46,18 +46,19 @@ function delete()
 include("../includes/header.php");
 include("../includes/sidebar.php");
 
+$insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    if(isset($_POST['email'])){
+    if (isset($_POST['email'])) {
         $vehical_id = $_POST['vehical_id'];
         $fname = $_POST['first_name'];
         $lname = $_POST['last_name'];
         $phone = $_POST['phone'];
-        $email=$_POST['email'];
+        $email = $_POST['email'];
         $dob = $_POST['dob'];
-        $address = $_POST['address'];   
+        $address = $_POST['address'];
         $created_by = $_SESSION['email'];
-    
+
         //check user are already exist or not
         $sql = "SELECT * FROM `driver` WHERE email = '$email' AND phone_no = '$phone'";
         $result = mysqli_query($conn, $sql);
@@ -70,47 +71,63 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $img_name = $_FILES['profile_img']['name'];
                 $img_tmp_name = $_FILES['profile_img']['tmp_name'];
                 $upload_folder = '../dist/img/user_image/';
-    
+
                 // Move uploaded file from temporery destination to permanent destination folder
                 if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
                     // Insert data into database
                     $sql = "INSERT INTO `driver` ( `role_id`, `vehical_id`, `fname`, `lname`, `phone_no`, `email`, `dob`, `address`, `profile_img`, `created_by`, `created_dt`, `updated_by`, `updated_dt`) VALUES ('4', '$vehical_id', '$fname', '$lname', '$phone', '$email', '$dob', '$address', '$img_name', '$created_by', CURRENT_TIMESTAMP, NULL, NULL);";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
-                        echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-                        <strong>Success!</strong> Your record has been inserted successfully!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>';
+                        $insert = true;
+                        if ($insert) {
+                            echo "<script>
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Driver inserted successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                                confirmButtonColor: '#3085d6'
+                            });
+                            </script>";
+                        }
+
                     } else {
-                        echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-                        <strong>Error!</strong> Something\'s wrong with inserting data into database!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>';
+                        echo "<script>
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Driver can't be inserted!',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
+                        </script>";
                     }
                 } else {
-                    echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-                    <strong>Error!</strong> Something\'s wrong with moving uploaded file!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>';
+                    echo "<script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Something\'s wrong with moving uploaded file!',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#3085d6'
+                    });
+                    </script>";
                 }
             } else {
-                echo '<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
-                    <strong>Error!</strong> File isn\'t uploaded successfully!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>';
+                echo "<script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'File isn\'t uploaded successfully!',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
             }
         }
     }
 
-    if(isset($_POST['edit_email'])){
+    if (isset($_POST['edit_email'])) {
         $id = $_POST['edit_id'];
         $fname = $_POST['edit_fname'];
         $lname = $_POST['edit_lname'];
@@ -124,12 +141,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $sql);
         if ($result) {
             $update = true;
-            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-                    <strong>Success!</strong> Your record has been updated successfully!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>';
+
+            if ($update) {
+                echo "<script>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Driver updated successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
+                    </script>";
+            }
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

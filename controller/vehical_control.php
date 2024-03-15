@@ -46,6 +46,7 @@ function delete()
 include("../includes/header.php");
 include("../includes/sidebar.php");
 
+
 //form and page related data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //for update the sql
@@ -60,12 +61,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($updateResult) {
             $update = true;
-            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-            <strong>Success!</strong> Vehicle number has been updated successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div>';
+            if ($update) {
+                echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Vehical updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3085d6'
+                });
+                </script>";
+            }
         } else {
             echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
         }
@@ -81,13 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($addResult) {
             $insert = true;
-            echo '<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
-            <strong>Success!</strong> Vehicle has been inserted successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div>';
+            if ($insert) {
+                echo "<script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Vehical inserted successfully!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#3085d6'
+          });
+          </script>";
+            }
         } else {
+            echo "<script>
+      Swal.fire({
+          title: 'Error!',
+          text: 'Vehical can't be inserted!',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3085d6'
+      });
+      </script>";
             echo "Error: " . $addsql . "<br>" . mysqli_error($conn);
         }
     }
@@ -95,6 +115,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //sql for datatable
 $sql_dt = "SELECT * FROM `vehical`";
 $re_dt = mysqli_query($conn, $sql_dt);
-
-
-

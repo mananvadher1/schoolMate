@@ -1,6 +1,7 @@
 <?php include("../controller/area_control.php"); ?>
 
-<div class="modal fade" id="edit_area" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="edit_area" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,24 +12,24 @@
             </div>
             <div class="modal-body">
                 <form class="my-4" action="area.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" class="form-control" id="edit_id" name="edit_id">
-                <div class="form-row">
+                    <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="area_name">Area Name:</label>
                             <input type="text" class="form-control" name="edit_area_name" id="edit_area_name" required>
                         </div>
-                    <div class="form-group col-md-6">
-                        <label for="edit_vehical_id">Vehical Id:</label>
-                        <select class="form-control" name="edit_vehical_id" id="edit_vehical_id" required>
-                            <?php
+                        <div class="form-group col-md-6">
+                            <label for="edit_vehical_id">Vehical Id:</label>
+                            <select class="form-control" name="edit_vehical_id" id="edit_vehical_id" required>
+                                <?php
                             while ($row_dropdowm = mysqli_fetch_assoc($re_edit_dropdown)) {
                                 echo '  <option value="' . $row_dropdowm['vehical_id'] . '">' . $row_dropdowm['vehical_no'] . '</option>';
                             }
                             ?>
-                        </select>
-                    </div>  
-                </div>
-                <div class="form-row">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="pincode">Pincode:</label>
                             <input type="text" class="form-control" name="edit_pincode" id="edit_pincode" required>
@@ -53,7 +54,8 @@
                 <h3 class="card-title my-2">Manage Area</h3>
             </div>
             <div class="col-auto">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Area</a>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">Add Area</a>
             </div>
         </div>
     </div>
@@ -61,7 +63,7 @@
         <div class="collapse mt-3" id="collapseExample">
             <form class="my-4" action="area.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">
-                <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="area_name">Area Name:</label>
                         <input type="text" class="form-control" name="area_name" id="area_name" required>
                     </div>
@@ -74,7 +76,7 @@
                             }
                             ?>
                         </select>
-                    </div>  
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -103,7 +105,7 @@
                 <th scope="col">City</th>
                 <th scope="col">Vehical No</th>
                 <th scope="col">Action</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -125,58 +127,77 @@
 
 
 <script>
-    function deleteClick(id) {
-        $(document).ready(function() {
-            // console.log('hii')
+function deleteClick(id) {
+    // Use SweetAlert for confirmation before deleting
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this record!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with deletion
             $.ajax({
                 url: '../controller/area_control.php',
                 type: 'POST',
                 data: {
-                    //get value
                     id: id,
                     action: "delete"
                 },
                 success: function(response) {
-                    console.log('response---->', response);
-                    confirm("Are you sure you want to delete the record?");
-                    //response is output of the action file
                     if (response) {
-                        // alert("Deleted role_id: " + id + " successfully");
-                        // $('#id').hide();
-                        document.getElementById(id).style.display = "none";
-                    } else if (!response) {
-                        alert("Data Can't be deleted");
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Area deleted successfully.",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6'
+                        }).then(() => {
+                            // Reload or update the page after deletion
+                            // location.reload();
+                        });
+                        // Optional: Hide the deleted row without refreshing the page
+                        $("#" + id).hide();
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to delete the record.",
+                            icon: "error"
+                        });
                     }
                 }
             });
-        });
-    }
+        }
+    });
+}
 
-    function editClick(id) {
-        $(document).ready(function() {
-            // console.log('hii')
-            $.ajax({
-                url: '../controller/area_control.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    action: "edit"
-                },
-                success: function(response) {
-                    // console.log(response);
+function editClick(id) {
+    $(document).ready(function() {
+        // console.log('hii')
+        $.ajax({
+            url: '../controller/area_control.php',
+            type: 'POST',
+            data: {
+                id: id,
+                action: "edit"
+            },
+            success: function(response) {
+                // console.log(response);
 
-                    $.each(response, function(key, value) {
-                        $('#edit_id').val(value['area_id']);
-                        $('#edit_area_name').val(value['area_name']);
-                        //$('#edit_vehical_id').val(value['vehical_no']);
-                        $('#edit_pincode').val(value['pincode']);
-                        $('#edit_city').val(value['city']);
-                        
-                    });
-                    $('#edit_area').modal('show');
-                }
-            });
+                $.each(response, function(key, value) {
+                    $('#edit_id').val(value['area_id']);
+                    $('#edit_area_name').val(value['area_name']);
+                    //$('#edit_vehical_id').val(value['vehical_no']);
+                    $('#edit_pincode').val(value['pincode']);
+                    $('#edit_city').val(value['city']);
+
+                });
+                $('#edit_area').modal('show');
+            }
         });
-    }
+    });
+}
 </script>
 <?php include("../includes/footer.php"); ?>

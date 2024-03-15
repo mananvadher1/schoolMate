@@ -168,31 +168,51 @@
 
 <script>
     function deleteClick(id) {
-        $(document).ready(function() {
-            // console.log('hii')
+    // Use SweetAlert for confirmation before deleting
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this record!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with deletion
             $.ajax({
                 url: '../controller/driver_control.php',
                 type: 'POST',
                 data: {
-                    //get value
                     id: id,
                     action: "delete"
                 },
                 success: function(response) {
-                    console.log('response---->', response);
-                    //response is output of the action file
                     if (response) {
-                        // alert("Deleted role_id: " + id + " successfully");
-                        // $('#id').hide();
-                        document.getElementById(id).style.display = "none";
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Driver deleted successfully.",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6'
+                        }).then(() => {
+                            // Reload or update the page after deletion
+                            // location.reload();
+                        });
+                        // Optional: Hide the deleted row without refreshing the page
+                        $("#" + id).hide();
                         $(".child").hide();
-                    } else if (!response) {
-                        alert("Data Can't be deleted");
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to delete the record.",
+                            icon: "error"
+                        });
                     }
                 }
             });
-        });
-    }
+        }
+    });
+}
 
     function editClick(id) {
         $(document).ready(function() {
