@@ -118,12 +118,12 @@
 
                                     // Skip the record if role_id is 4(Driver)
                                     if ($_SESSION['role_id'] == 2) {
-                                        if ($row_dropdowm['role_id'] != 3 ) {
+                                        if ($row_dropdowm['role_id'] != 3) {
                                             continue;
                                         }
                                     }
                                     if ($_SESSION['role_id'] == 1) {
-                                        if ($row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1 ) {
+                                        if ($row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1) {
                                             continue;
                                         }
                                     }
@@ -274,50 +274,52 @@
 
     <script>
         function deleteClick(id) {
-    // Use SweetAlert for confirmation before deleting
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Proceed with deletion
-            $.ajax({
-                url: '../controller/user_control.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    action: "delete"
-                },
-                success: function(response) {
-                    if (response) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "User deleted successfully.",
-                            icon: "success",
-                            confirmButtonColor: '#3085d6'
-                        }).then(() => {
-                            // Reload or update the page after deletion
-                            // location.reload();
-                        });
-                        // Optional: Hide the deleted row without refreshing the page
-                        $("#" + id).hide();
-                    } else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Failed to delete the record.",
-                            icon: "error"
-                        });
-                    }
+            // Use SweetAlert for confirmation before deleting
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this record!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Proceed with deletion
+                    $.ajax({
+                        url: '../controller/user_control.php',
+                        type: 'POST',
+                        data: {
+                            id: id,
+                            action: "delete"
+                        },
+                        success: function(response) {
+                            if (response) {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "User deleted successfully.",
+                                    icon: "success",
+                                    confirmButtonColor: '#3085d6'
+                                }).then(() => {
+                                    // Reload or update the page after deletion
+                                    // location.reload();
+                                });
+                                // Optional: Hide the deleted row without refreshing the page
+                                $("#" + id).hide();
+                                $(".child").hide();
+
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: "Failed to delete the record.",
+                                    icon: "error"
+                                });
+                            }
+                        }
+                    });
                 }
             });
         }
-    });
-}
 
         function editClick(id) {
             $(document).ready(function() {
