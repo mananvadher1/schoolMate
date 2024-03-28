@@ -1,68 +1,67 @@
 <?php
+// Include your database connection file here
 include("../includes/db.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Insert event into the database
-  $event_name = $_POST['event_name'];
-  $event_start_date = date("Y-m-d", strtotime($_POST['event_start_date'])); 
-  $event_end_date = date("Y-m-d", strtotime($_POST['event_end_date'])); 
-  
-  $insert_query = "INSERT INTO `calendar`(`event_name`, `event_start_date`, `event_end_date`) VALUES ('$event_name', '$event_start_date', '$event_end_date')";
-  
-  if(mysqli_query($conn, $insert_query)) {
-    $data = array(
-      'status' => true,
-      'msg' => 'Event added successfully!'
-    );
-  } else {
-    $data = array(
-      'status' => false,
-      'msg' => 'Sorry, Event not added.'
-    );
-  }
-  
-  // Set content type and return JSON response
-  header('Content-Type: application/json');
-  echo json_encode($data);
-} else {
-  // Fetch events from the database
-  $display_query = "SELECT event_id, event_name, event_start_date, event_end_date FROM calendar";
-  $results = mysqli_query($conn, $display_query);
-  
-  if ($results) {
-    $data_arr = array();
-    while ($data_row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
-      $event_id = $data_row['event_id'];
-      $title = $data_row['event_name'];
-      $start = date("Y-m-d", strtotime($data_row['event_start_date']));
-      $end = date("Y-m-d", strtotime($data_row['event_end_date']));
-      $color = '#' . substr(uniqid(), -6); // Random color
-      
-      $data_arr[] = array(
-        'event_id' => $event_id,
-        'title' => $title,
-        'start' => $start,
-        'end' => $end,
-        'color' => $color
-      );
-    }
-    
-    $data = array(
-      'status' => true,
-      'msg' => 'Events fetched successfully!',
-      'data' => $data_arr
-    );
-  } else {
-    $data = array(
-      'status' => false,
-      'msg' => 'Error fetching events!'
-    );
-  }
-  
-  // Set content type and return JSON response
-  header('Content-Type: application/json');
-  echo json_encode($data);
-}
+// Check if the action parameter is set
+if(isset($_POST['action'])) {
+    // Insert event
+    if ($_POST['action'] == 'add_event') {
+        $title = $_POST['title'];
+        $start = $_POST['start'];
+        $end = $_POST['end'];
 
-mysqli_close($conn);
+        // Perform database insert
+        $sql = "INSERT INTO `calendar` (event_name, event_start_date, event_end_date) VALUES ('$title', '$start', '$end')";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            echo json_encode(array('status' => 'success', 'message' => 'Event added successfully.'));
+        } else {
+            echo json_encode(array('status' => 'error', 'message' => 'Failed to add event.'));
+        }
+    }
+
+    // Delete event
+    if ($_POST['action'] == 'delete_event') {
+        // Check if the ID parameter is set
+        if(isset($_POST['id'])) {
+            $id = $_POST['id'];
+        
+            // Perform database delete
+            $sql = "DELETE FROM `calendar` WHERE event_id='$id'";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                echo json_encode(array('status' => 'success', 'message' => 'Event deleted successfully.'));
+            } else {
+                echo json_encode(array('status' => 'error', 'message' => 'Failed to delete event.'));
+            }
+        } else {
+            echo json_encode(array('status' => 'error', 'message' => 'Missing event ID for delete action.'));
+        }
+    }
+
+    // Fetch events
+    if ($_POST['action'] == 'fetch_events') {
+        // Perform database query to fetch events
+        $sql = "SELECT event_id, event_name, event_start_date, event_end_date FROM `calendar`"; // Include event_id in the query
+        $result = mysqli_query($conn, $sql);
+        $events = array();
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Include the event_id in the event object
+            $event = array(
+                'id' => $row['event_id'],
+                'title' => $row['event_name'],
+                'start' => $row['event_start_date'],
+                'end' => $row['event_end_date']
+            );
+            $events[] = $event;
+        }
+
+        echo json_encode($events);
+    }
+} else {
+    echo json_encode(array('status' => 'error', 'message' => 'Action parameter is missing.'));
+}
 ?>
