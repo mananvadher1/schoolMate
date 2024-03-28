@@ -150,8 +150,3 @@ if($update){
 }
 
 ?>
-
-
-<!-- SELECT exams.*, classes.class_name 
-FROM exams 
-INNER JOIN classes ON exams.class_id = classes.class_id -->

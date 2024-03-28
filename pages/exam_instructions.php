@@ -3,6 +3,8 @@ include ("../includes/db.php");
 include ("../includes/header.php");
 include ("../includes/sidebar.php");
 
+$cid = $_GET["cid"];
+$sname = $_GET["sname"];
 echo '<div class="container">
 <h1 class="text-center my-4"><b>Exam Instructions</b></h1>
 
@@ -23,8 +25,9 @@ echo '<div class="container">
     <p style="color:green">Please ensure that you understand all the instructions mentioned above.</p> 
     <p style="color:green">Once you click the "Start Exam" button, the timer will begin automatically.</p>
     
-    <a class="btn btn-primary btn-lg" href="attend_exam.php" role="button">Start Exam</a>
+    <a class="btn btn-primary btn-lg" href="attend_exam.php?cid='.$cid.'&sname='.$sname.'" role="button">Start Exam</a>
 </div>
 </div>';
+
 include("../includes/footer.php");
 ?>

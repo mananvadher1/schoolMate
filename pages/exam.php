@@ -32,7 +32,7 @@
                         <td>" . $row['exam_time'] . "</td>
                         <td>" . $row['duration'] . "</td>
                         <td>" . $row['result_date'] . "</td>
-                        <td><a href='exam_instructions.php'><button class='btn btn-sm btn-danger'>Attend Exam</button></a></td>
+                        <td><a href='exam_instructions.php?cid=".$class_id."&sname=".$subject_name."'><button class='btn btn-sm btn-danger'>Attend Exam</button></a></td>
                     </tr>";
                 }
             } ?>
@@ -40,4 +40,6 @@
     </table>
     </div>
 </div>
+
+
 <?php include("../includes/footer.php"); ?>
