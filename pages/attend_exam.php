@@ -7,7 +7,7 @@
         align-items: center;
         height: 100vh;
     }
-    
+
     .cd {
         border-radius: 50%;
         width: 200px;
@@ -27,36 +27,44 @@
     <div class="head d-flex mt-4">
         <div class="col-md-8 left">
             <h3 class=""><b>Subject: Maths</b></h3>
-            <h5>Total Questions: <?php echo $totalQuestions; ?></h5>
+            <h5>Total Questions:
+                <?php echo $totalQuestions; ?>
+            </h5>
         </div>
         <div class="col-md-8 right">
             <!-- <h1>clock</h1> -->
             <div class="cd" id="cd">00:00:00</div>
         </div>
     </div>
+
     <div class="questions my-4">
-        <form class="" method="post" action="exam_submitted.php">
-        <!-- attend_exam.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?> -->
+        <form class="" method="post" action="result.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?>">
+            <!-- attend_exam.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?> -->
             <?php
             $sno = 0;
             while ($row = mysqli_fetch_array($result_fetch)) {
-                $sno = $sno +1;
+                $sno = $sno + 1;
                 $id = $row["ques_id"];
                 $ques = $row["question"];
+                $mark = $row['mark'];
                 $optionA = $row["optionA"];
                 $optionB = $row["optionB"];
                 $optionC = $row["optionC"];
                 $optionD = $row["optionD"];
                 echo '<div class="ques my-3">
-                <h6>('.$sno.') '.$ques.'</h6>
-                <input type="radio" id="optionA" name="'.$id.'" value="'.$optionA.'">
-                <label for="optionA">'.$optionA.'</label><br>
-                <input type="radio" id="optionB" name="'.$id.'" value="'.$optionB.'">
-                <label for="optionB">'.$optionB.'</label><br>
-                <input type="radio" id="optionC" name="'.$id.'" value="'.$optionC.'">
-                <label for="optionC">'.$optionC.'</label><br>
-                <input type="radio" id="optionD" name="'.$id.'" value="'.$optionD.'">
-                <label for="optionD">'.$optionD.'</label><br>
+                <div class="question d-flex" style="justify-content:space-between">
+                    <div class="quest"> <h6>(' . $sno . ') ' . $ques . '</h6></div>
+                    <div class="mark">['.$mark.']</div>
+                </div>
+               
+                <input type="radio" id="optionA" name="answers[' . $id . ']" value="' . $optionA . '">
+                <label for="optionA">' . $optionA . '</label><br>
+                <input type="radio" id="optionB" name="answers[' . $id . ']" value="' . $optionB . '">
+                <label for="optionB">' . $optionB . '</label><br>
+                <input type="radio" id="optionC" name="answers[' . $id . ']" value="' . $optionC . '">
+                <label for="optionC">' . $optionC . '</label><br>
+                <input type="radio" id="optionD" name="answers[' . $id . ']" value="' . $optionD . '">
+                <label for="optionD">' . $optionD . '</label><br>
             </div>';
             }
             ?>
@@ -93,7 +101,7 @@
 
     // Start the timer when the page is loaded
     window.onload = function () {
-        let countdownDuration = <?php echo $duration_seconds; ?> ;
+        let countdownDuration = <?php echo $duration_seconds; ?>;
         let display = document.getElementById('cd');
         startTimer(countdownDuration, display);
     };

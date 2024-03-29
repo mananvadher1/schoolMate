@@ -42,14 +42,8 @@
                 <input type="text" id="edit_optionD" name="edit_optionD" placeholder="Option D" required class="form-control">
               </div>
               <div class="form-group">
-                <label for="edit_right_option">Right Option</label>
-                <select name="edit_right_option" id="edit_right_option" required>
-                  <option selected>Choose...</option>
-                  <option value="Option A">Option A</option>
-                  <option value="Option B">Option B</option>
-                  <option value="Option C">Option C</option>
-                  <option value="Option D">Option D</option>
-                </select>
+                <label for="right_option">Right Answer</label>
+                <input type="text" id="right_option" name="right_option" placeholder="right_option" required class="form-control">
               </div>
 
               <button name="submit" class="btn btn-primary float-right">
@@ -183,14 +177,8 @@
                 <input type="text" id="optionD" name="optionD" placeholder="Option D" required class="form-control">
               </div>
               <div class="form-group">
-                <label for="right_option">Right Option</label>
-                <select name="right_option" id="right_option" required>
-                  <option selected>Choose...</option>
-                  <option value="Option A">Option A</option>
-                  <option value="Option B">Option B</option>
-                  <option value="Option C">Option C</option>
-                  <option value="Option D">Option D</option>
-                </select>
+                <label for="right_option">Right Answer</label>
+                <input type="text" id="right_option" name="right_option" placeholder="Write Right Answer here..." required class="form-control">
               </div>
 
               <button name="submit" class="btn btn-primary float-right">

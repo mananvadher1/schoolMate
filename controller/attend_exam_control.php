@@ -7,7 +7,7 @@ $sname = $_GET["sname"];
 // echo "done";
 // }
 
-// to fetch questions 
+// to fetch questions in while loop
 $sql_fetch = "SELECT * FROM `questions` WHERE class_id = '$cid' AND subject_name= '$sname';";
 $result_fetch = mysqli_query($conn, $sql_fetch);
 
