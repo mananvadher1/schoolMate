@@ -30,7 +30,9 @@
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- full calender -->
     <link rel="stylesheet" href="../plugins/fullcalendar/main.css" rel="stylesheet">
-    <script src="../plugins/fullcalendar/main.js"></script>
+   <!-- Include Slick Slider CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
     <!-- LINK OF SWEETALERT 2 -->
     <script src="../dist/js/sweetalert.min.js"></script>
     
