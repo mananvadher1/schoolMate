@@ -69,15 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // echo "<script> 
                 //     document.location.href = '../login.php';
                 // </script>";
-                $_SESSION['toast_message'] = "<script>
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Check your email to get new generated password. Now you can login!',
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#3085d6'
-                });
-                </script>";
+                $_SESSION['toast_message'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Check your email to get new generated password. Now you can login!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
             //     $_SESSION['toast_message'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
             //     <strong>Success! </strong>Check your email to get new generated password. Now you can login.
             //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -96,15 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     } else {
-        echo "<script>
-        Swal.fire({
-            title: 'Error!',
-            text: 'No email found!',
-            icon: 'error',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#3085d6'
-        });
-        </script>";
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> No email found!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
     }
 }
 

@@ -26,11 +26,11 @@
                     <div class="form-group col-md-4">
                         <label for="edit_duration">Duration</label>
                         <select class="custom-select mr-sm-2" id="edit_duration" name="edit_duration">
-                            <option value="20 min">20 min</option>
-                            <option value="30 min">30 min</option>
-                            <option value="60 min">60 min</option>
-                            <option value="80 min">80 min</option>
-                            <option value="80 min">100 min</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="60">60</option>
+                            <option value="80">80</option>
+                            <option value="80">100</option>
                         </select>
                     </div>
                 </div>
@@ -111,13 +111,13 @@
                         <input type="time" required class="form-control" id="etime" name="etime" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="duration">Duration</label>
+                        <label for="duration">Duration(Minutes)</label>
                         <select class="custom-select mr-sm-2" id="duration" name="duration" required>
-                            <option value="20 min">20 min</option>
-                            <option value="30 min">30 min</option>
-                            <option value="60 min">60 min</option>
-                            <option value="80 min">80 min</option>
-                            <option value="80 min">100 min</option>
+                            <option value="20 min">20</option>
+                            <option value="30 min">30</option>
+                            <option value="60 min">60</option>
+                            <option value="80 min">80</option>
+                            <option value="80 min">100</option>
                         </select>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                 <th scope="col">Subject</th>
                 <th scope="col">Exam Date</th>
                 <th scope="col">Exam Time</th>
-                <th scope="col">Duration</th>
+                <th scope="col">Duration(Minutes)</th>
                 <th scope="col">Result date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>

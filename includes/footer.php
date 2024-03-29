@@ -36,7 +36,11 @@
   <script src="../plugins/summernote/summernote-bs4.min.js"></script>
   <!-- overlayScrollbars -->
   <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-
+  <!-- fullcalader -->
+  <script src="../plugins/fullcalendar/main.js"></script>
+  <!-- Include jQuery and Slick Slider JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
   <!-- DataTables  & Plugins -->
   <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

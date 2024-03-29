@@ -36,7 +36,7 @@ if (isset($_POST['edit_id'])) {
   $id = $_POST['edit_id'];
   $edate = $_POST["edit_edate"];
   $etime = $_POST["edit_etime"];
-  $duration = $_POST['edit_duration'];
+  $duration = isset($_POST['edit_duration']) ? $_POST['edit_duration'] : '20'; 
   $rdate = $_POST['edit_rdate'];
   $status = $_POST['edit_status'];
   // $updated_by = $_SESSION['email'];
@@ -150,8 +150,3 @@ if($update){
 }
 
 ?>
-
-
-<!-- SELECT exams.*, classes.class_name 
-FROM exams 
-INNER JOIN classes ON exams.class_id = classes.class_id -->
