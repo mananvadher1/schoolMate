@@ -6,6 +6,8 @@ include ("../includes/sidebar.php");
 $cid = $_GET['cid'];
 $sname = $_GET['sname'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    
     // Initialize an array to store the submitted answers
     $submittedAnswers = array();
 
@@ -23,19 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "<br><br>";
         
 
-    } else {
-        // Handle the case when no answers are submitted
-//         echo '<div class="container text-center">
-//         <h1 class="my-4"><b>No Answers Submitted!</b></h1>
+    } 
 
-//         <div class="jumbotron">
-    
-//         <p class="lead text-danger">You Failed the Test!</p>
-//         <p class="lead"> For further process you need to contact your class teacher.</p> 
-        
-// </div>
-// </div>';
-    }
 } 
 
   // query to compare answers and fetch questions from table

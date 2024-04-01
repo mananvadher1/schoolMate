@@ -23,138 +23,22 @@
                             <input type="file" class="form-control-file" name="profile_img" id="profile_img">
                         </div>
                     </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/7.avif" data-toggle="lightbox" data-title="sample 7 - white">
-                        <img src="../dist/img/gallery_image/7.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/8.avif" data-toggle="lightbox" data-title="sample 8 - black">
-                        <img src="../dist/img/gallery_image/8.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="../dist/img/gallery_image/9.avif" data-toggle="lightbox" data-title="sample 9 - red">
-                        <img src="../dist/img/gallery_image/9.avif" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/10.avif" data-toggle="lightbox" data-title="sample 10 - white">
-                        <img src="../dist/img/gallery_image/10.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/11.avif" data-toggle="lightbox" data-title="sample 11 - white">
-                        <img src="../dist/img/gallery_image/11.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/12.avif" data-toggle="lightbox" data-title="sample 12 - black">
-                        <img src="../dist/img/gallery_image/12.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4 class="card-title">Events</h4>
-              </div>
-              <!-- <div class="mb-4">
-                  <div class="filter-container p-0 row">
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/1.avif" data-toggle="lightbox" data-title="sample 1 - white">
-                        <img src="../dist/img/gallery_image/1.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/2.avif" data-toggle="lightbox" data-title="sample 2 - black">
-                        <img src="../dist/img/gallery_image/2.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="../dist/img/gallery_image/3.avif" data-toggle="lightbox" data-title="sample 3 - red">
-                        <img src="../dist/img/gallery_image/3.avif" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="../dist/img/gallery_image/4.avif" data-toggle="lightbox" data-title="sample 4 - red">
-                        <img src="../dist/img/gallery_image/4.avif" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/5.avif" data-toggle="lightbox" data-title="sample 5 - black">
-                        <img src="../dist/img/gallery_image/5.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/6.avif" data-toggle="lightbox" data-title="sample 6 - white">
-                        <img src="../dist/img/gallery_image/6.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/7.avif" data-toggle="lightbox" data-title="sample 7 - white">
-                        <img src="../dist/img/gallery_image/7.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/8.avif" data-toggle="lightbox" data-title="sample 8 - black">
-                        <img src="../dist/img/gallery_image/8.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="../dist/img/gallery_image/9.avif" data-toggle="lightbox" data-title="sample 9 - red">
-                        <img src="../dist/img/gallery_image/9.avif" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/10.avif" data-toggle="lightbox" data-title="sample 10 - white">
-                        <img src="../dist/img/gallery_image/10.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="../dist/img/gallery_image/11.avif" data-toggle="lightbox" data-title="sample 11 - white">
-                        <img src="../dist/img/gallery_image/11.avif" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="../dist/img/gallery_image/12.avif" data-toggle="lightbox" data-title="sample 12 - black">
-                        <img src="../dist/img/gallery_image/12.avif" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                  </div>
-                </div> -->
-                <div class="slideshow-container">
-                <div class="mySlides fade">
-                  <div class="numbertext">1 / 3</div>
-                  <img src="../dist/img/gallery_image/12.avif" style="max-width:100%; max-height:100%" alt="sample image">
-                  <div class="text">Caption Text</div>
-                </div>
-
-
-<div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
-  <img src="../dist/img/gallery_image/8.avif" style="width:100%">
-  <div class="text">Caption Two</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-  <img src="../dist/img/gallery_image/8.avif" style="width:100%">
-  <div class="text">Caption Three</div>
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
+        </div>
+    </div>
+<div class="col-12 mt-2">
+  <div class="card card-primary">
+    <div class="card-header">
+      <h4 class="card-title">Events</h4>
+    </div>
+    <div class="slider">
+  <?php foreach ($imageNames as $imageName) : ?>
+    <div>
+      <img src="../dist/img/gallery_image/<?php echo $imageName; ?>" alt="<?php echo $imageName; ?>">
+    </div>
+  <?php endforeach; ?>
 </div>
   </div>
 </div>

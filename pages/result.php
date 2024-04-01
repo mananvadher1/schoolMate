@@ -29,7 +29,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $totalScore += $mark;
     // first we need to convert this array into single variable 
-    $submittedAnswer = $submittedAnswers[$quesId];
+    // $submittedAnswer = $submittedAnswers[$quesId];
+
+    // for checking if the answer is selected or not
+    $submittedAnswer = isset($submittedAnswers[$quesId]) ? $submittedAnswers[$quesId] : null;
+
     if ($submittedAnswer == $right_option) {
         $scored += $mark;
             echo '<div class="ques my-3">
@@ -47,7 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <img src="../dist/img/wrong.png" class="mx-5" alt="wrong_answer" style="width:20px;height:20px;border:0px">
                     <div class="mark">[' . $mark . ']</div>
                 </div>
-                <div class="">Right Answer is '.$right_option.'! Try to remember the answer/method next time:)</div>
+                <div class="">Right Answer is <b>'.$right_option.'</b>! Try to remember the answer/method next time:)</div>
             </div>';
     }
 }
@@ -59,18 +63,18 @@ if ($scored == $totalScore) {
     echo '<div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
-      <p class="lead text-success">Congratulations! You passed the test with full marks.</p>
+      <p class="lead text-success">Excellent!! You passed the test with full marks.</p>
       <h5><b>Your Grade: A</b></h5>
-      <a class="btn btn-primary btn-lg my-3" href="#" role="button">Download Result</a>
+      <a class="btn btn-primary btn-lg my-3" href="../controller/generate_pdf_control.php?cid='.$cid.'&sname='.$sname.'&score='.$scored.'&tscore='.$totalScore.'" role="button">Download Result</a>
     </div>
   </div>';
-}elseif($scored >= ($totalScore * 0.5)){
+}elseif($scored >= ($totalScore * 0.5)) {
     echo '<div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
       <p class="lead text-info">Well Done!! You passed the test with good marks.</p>
       <h5><b>Your Grade: B</b></h5>
-      <a class="btn btn-primary btn-lg my-3" href="#" role="button">Download Result</a>
+      <a class="btn btn-primary btn-lg my-3" href="../controller/generate_pdf_control.php?cid='.$cid.'&sname='.$sname.'&score='.$scored.'&tscore='.$totalScore.'" role="button">Download Result</a>
     </div>
   </div>';
 }else {
@@ -79,13 +83,17 @@ if ($scored == $totalScore) {
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
       <p class="lead text-danger">You should study more! You failed the test.</p>
       <h5><b>Your Grade: C</b></h5>
-      <a class="btn btn-primary btn-lg my-3" href="../controller/generate_pdf_control.php?cid='.$cid.'&sname='.$sname.'" role="button">Download Result</a>
+      <a class="btn btn-primary btn-lg my-3" href="../controller/generate_pdf_control.php?cid='.$cid.'&sname='.$sname.'&score='.$scored.'&tscore='.$totalScore.'" role="button">Download Result</a>
     </div>
   </div>';
 }
 
+
+
 include ("../includes/footer.php");
 ?>
+
+<!-- <a class="btn btn-primary btn-lg my-3" href="../controller/generate_pdf_control.php?cid='.$cid.'&sname='.$sname.'&score='.$scored.'&tscore='.$totalScore.'" role="button">Download Result</a> -->
 
 
 

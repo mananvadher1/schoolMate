@@ -28,6 +28,7 @@
         }
   },
   "require": {
-    "cboden/ratchet": "^0.4.4"
+    "cboden/ratchet": "^0.4.4",
+    "mpdf/mpdf": "^8.2"
   }
 }
