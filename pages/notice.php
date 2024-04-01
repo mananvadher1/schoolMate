@@ -98,22 +98,35 @@
 </div>
 
 <?php endif; ?>
-<h1 class="text-primary text-center my-3"><b>Notice Board</b></h1>
+<h1 class="text-dark text-center my-3"><b>Notice Board</b></h1>
 <!-- notice cards -->
 <?php
 $sno = 0;
 echo '<div class="row justify-content-center">';
 while ($row = mysqli_fetch_array($cardresult)) {
   $sno = $sno + 1;
-  echo '<div class="col-md-4 mx-3 card text-white" style="max-width: 48rem;" id="c' . $row['notice_id'] . '">
-  <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
-  <div class="card-body bg-primary">
-    <p class="card-text">' . $row["notice_desc"] . '</p>
-  </div>
-</div>';
-}
-echo '</div>';
+  if($sno % 2 == 0){
+    echo '<div class="col-md-12 my-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
+    <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
+    <div class="card-body bg-danger">
+      <p class="card-text">' . $row["notice_desc"] . '</p>
+    </div>
+    <div class="card-footer text-muted bg-dark">' . date("F j, Y", strtotime($row['created_dt'])) . '</div>
+  </div>';
+  }else{
+    echo '<div class="col-md-12 m-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
+    <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
+    <div class="card-body bg-warning">
+      <p class="card-text">' . $row["notice_desc"] . '</p>
+    </div>
+    <div class="card-footer text-muted bg-dark">' . date("F j, Y", strtotime($row['created_dt'])) . '</div>
+  </div>';
+  }
+  }
+ echo "</div>";
+
 ?>
+
 
 
 <hr>
