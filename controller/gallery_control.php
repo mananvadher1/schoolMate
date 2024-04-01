@@ -9,6 +9,16 @@ $imageNames = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $imageNames[] = $row['image'];
 }
+
+
+$sqlAc = "SELECT DISTINCT image FROM `gallery` WHERE title='Academic'";
+$resultAc = mysqli_query($conn, $sqlAc);
+
+$Academicimage = array();
+while ($row = mysqli_fetch_assoc($resultAc)) {
+    $Academicimage[] = $row['image'];
+}
+
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $title = $_POST['title'];
     $created_by = $_SESSION['email'];
