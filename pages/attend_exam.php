@@ -38,8 +38,7 @@
     </div>
 
     <div class="questions my-4">
-        <form class="" method="post" action="result.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?>">
-            <!-- attend_exam.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?> -->
+        <form id="examForm" method="post" action="result.php?cid=<?php echo $cid; ?>&sname=<?php echo $sname; ?>">
             <?php
             $sno = 0;
             while ($row = mysqli_fetch_array($result_fetch)) {
@@ -94,6 +93,8 @@
 
             if (--timer < 0) {
                 timer = duration;
+                // Automatically submit the form when timer ends
+                document.getElementById('examForm').submit();
             }
         }, 1000);
     }
