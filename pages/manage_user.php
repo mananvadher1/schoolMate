@@ -14,15 +14,27 @@
                 <div class="modal-body">
                     <form class="my-4" action="manage_user.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="edit_email" id="edit_email" required>
+                        </div>
+
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" name="edit_email" id="edit_email" required>
-                            </div>
                             <div class="form-group col-md-6">
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" name="edit_pass" id="edit_pass" required>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="class_id">Class:</label>
+                                <select class="form-control" name="edit_class_id" id="edit_class_id" required>
+                                    <?php
+                                    while ($class_dropdowm = mysqli_fetch_assoc($m_class_dropdown)) {
+                                        echo '  <option value="' . $class_dropdowm['class_id'] . '">' . $class_dropdowm['class_name'] . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
                         </div>
 
                         <div class="form-row">
@@ -110,8 +122,6 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="role_id">Role:</label>
-
-
                             <select class="form-control" name="role_id" id="role_id" required>
                                 <?php
                                 while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
@@ -131,13 +141,23 @@
                                 }
                                 ?>
                             </select>
-
-
                         </div>
+
                         <div class="form-group col-md-6">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" required>
+                            <label for="class_id">Class:</label>
+                            <select class="form-control" name="class_id" id="class_id" required>
+                                <?php
+                                while ($class_dropdowm = mysqli_fetch_assoc($class_dropdown)) {
+                                    echo '  <option value="' . $class_dropdowm['class_id'] . '">' . $class_dropdowm['class_name'] . '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" id="email" required>
                     </div>
 
                     <div class="form-row">
@@ -218,12 +238,30 @@
     </div>
 
     <!-- data table -->
-    <div class="container">
+    <div class="m-3">
+        <label for="role_id">Role:</label>
+        <!-- <form id="roleForm" action="../api/get_user.php" method="POST"> -->
+        <select class="form-control" name="table_role_id" id="table_role_id" required>
+            <?php
+            while ($row_dropdowm = mysqli_fetch_assoc($search_role)) {
+                if ($row_dropdowm['role_id'] == 4) {
+                    continue;
+                }
+                echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
+            }
+            ?>
+        </select>
+        <!-- </form> -->
+    </div>
+
+    <!-- datatables -->
+    <div class="container m-3">
         <table class="table" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">Sr no</th>
                     <th scope="col">Role</th>
+                    <th class="addClass" scope="col">Class</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">First Name</th>
@@ -243,11 +281,13 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                <?php
+                while ($row_dt = mysqli_fetch_assoc($re_dt)) {
                     $sno = $sno + 1;
                     echo "<tr id=" . $row_dt['id'] . ">
                     <td>" . $sno . "</td>
                     <td>" . $row_dt['role_name'] . "</td>
+                    <td>" . $row_dt['class_name'] . "</td>
                     <td>" . $row_dt['email'] . "</td>
                     <td>" . $row_dt['password'] . "</td>
                     <td>" . $row_dt['first_name'] . "</td>
@@ -356,17 +396,74 @@
                             }
                             // for active status
                             $('#edit_status').prop('checked', value['status'] == 1);
+
+                            $('#edit_class_id').val(value['class_id']);
                         });
                         $('#edit_user').modal('show');
                     }
                 });
             });
         }
+
+        $(document).ready(function() {
+            $('#table_role_id').on('change', function() {
+                // console.log(111111)
+                var role_id = $(this).val();
+                $.ajax({
+                    url: '../api/get_user.php',
+                    type: 'POST',
+                    data: {
+                        role_id: role_id,
+                        action: "get_user"
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        $("#myTable tbody").empty();
+
+                        // Iterate over the JSON data
+                        $.each(response, function(index, row) {
+                            // Construct HTML for each row
+                            var html = "<tr id='" + row.id + "'>";
+                            html += "<td>" + (index + 1) + "</td>";
+                            html += "<td>" + row.role_name + "</td>";
+                            if (role_id != 1) {
+                                html += "<td class='addClass'>" + row.class_name + "</td>";
+                            }
+                            html += "<td>" + row.email + "</td>";
+                            html += "<td>" + row.password + "</td>";
+                            html += "<td>" + row.first_name + "</td>";
+                            html += "<td>" + row.last_name + "</td>";
+                            html += "<td>" + row.dob + "</td>";
+                            html += "<td>" + row.gender + "</td>";
+                            html += "<td>" + row.phone + "</td>";
+                            html += "<td>" + row.blood_group + "</td>";
+                            html += "<td>" + row.address + "</td>";
+                            html += "<td>" + row.city + "</td>";
+                            html += "<td>" + row.status + "</td>";
+                            html += "<td>" + row.created_by + "</td>";
+                            html += "<td>" + row.created_dt + "</td>";
+                            html += "<td>" + row.updated_by + "</td>";
+                            html += "<td>" + row.updated_dt + "</td>";
+                            html += "<td><button onClick='editClick(" + row.id + ")' class='edit btn btn-sm btn-success'>Edit</button>";
+                            html += "<button onClick='deleteClick(" + row.id + ")' class='delete btn btn-sm btn-danger'>Delete</button></td>";
+                            html += "</tr>";
+
+                            // Append HTML to the table body
+                            $("#myTable tbody").append(html);
+                        });
+
+                        if (role_id == 1) {
+                            $(".addClass").hide();
+                        } else {
+                            $(".addClass").show();
+                        }
+
+                    }
+                });
+            })
+        })
     </script>
     <?php include("../includes/footer.php"); ?>
 <?php else : ?>
-    <?php
-    header("location: 404.php");
-    ?>
-
+    <?php header("location: 404.php"); ?>
 <?php endif; ?>

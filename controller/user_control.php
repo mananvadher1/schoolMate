@@ -18,7 +18,6 @@ function edit()
     $id = $_POST['id'];
     $role_data = array();
     
-    
     // fetch data from db 
     $result = mysqli_query($conn, "SELECT * FROM `users` WHERE id = $id");
     if (mysqli_num_rows($result) > 0) {
@@ -52,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(isset($_POST['email'])){
         $role = $_POST['role_id'];
+        $class = $_POST['class_id'];
         $email = $_POST['email'];
         $fname = $_POST['first_name'];
         $lname = $_POST['last_name'];
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Move uploaded file from temporery destination to permanent destination folder
                 if (move_uploaded_file($img_tmp_name, $upload_folder . $img_name)) {
                     // Insert data into database
-                    $sql = "INSERT INTO `users`(`role_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
+                    $sql = "INSERT INTO `users`(`role_id`, `class_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `gender`, `phone`, `blood_group`, `address`, `city`, `profile_img`, `status`, `created_by`) VALUES ('$role', '$class','$email','$password','$fname','$lname','$dob','$gender','$phone','$bgroup','$address','$city','$img_name','$status','$created_by')";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         $insert = true;
@@ -138,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // edit user
     if(isset($_POST['edit_email'])){
         $id = $_POST['edit_id'];
+        $class = $_POST['edit_class_id'];
         $email = $_POST['edit_email'];
         $fname = $_POST['edit_fname'];
         $lname = $_POST['edit_lname'];
@@ -155,6 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $sql = "UPDATE `users` SET 
             `email`='$email',
+            `class_id`='$class',
             `first_name`='$fname',
             `last_name`='$lname',
             `password`='$password',
@@ -190,11 +192,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 }
 
-// sql for form in dropdown
+// sql for form in role dropdown
 $sql_dropdown = "SELECT * FROM `roles`";
 $re_dropdown = mysqli_query($conn, $sql_dropdown);
+// sql for form in role dropdown
+$role_table = "SELECT * FROM `roles`";
+$search_role = mysqli_query($conn, $role_table);
+//sql for form in class dropdown for edit modal
+$modal_class_dropdown = "SELECT * FROM `classes`";
+$m_class_dropdown = mysqli_query($conn, $modal_class_dropdown);
+//sql for form in class dropdown for add form
+$sql_class_dropdown = "SELECT * FROM `classes`";
+$class_dropdown = mysqli_query($conn, $sql_class_dropdown);
 // sql for data table
-$sql_dt = "SELECT users.*,roles.role_name FROM `users` JOIN `roles` ON users.role_id = roles.role_id";
+$sql_dt = "SELECT users.*,roles.role_name,classes.class_name FROM `users` JOIN `roles` ON users.role_id = roles.role_id JOIN `classes` ON users.class_id = classes.class_id";
 $re_dt = mysqli_query($conn, $sql_dt);
 $sno = 0;
 ?>
