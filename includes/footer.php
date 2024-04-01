@@ -68,6 +68,7 @@
     $(document).ready(function() {
       $('#myTable').DataTable({
         responsive: true,
+        bDestroy: true,
         "pagingType": "full_numbers", // Customize pagination style
         "language": {
           "search": "Search:",
