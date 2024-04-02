@@ -8,7 +8,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete') {
 }
 
 //edit button data send thrught api with jason format
-if (isset($_POST['action']) && $_POST['action'] == 'edit') {
+else if (isset($_POST['action']) && $_POST['action'] == 'edit') {
     edit();
 }
 
