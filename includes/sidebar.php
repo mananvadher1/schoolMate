@@ -75,7 +75,7 @@
               </p>
             </a>
           </li> 
-
+          <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id']==2) : ?>
           <li class="nav-item">
             <a href="../pages/attendance.php" class="nav-link">
             <i class="nav-icon fa fa-clipboard"></i>
@@ -84,6 +84,17 @@
               </p>
             </a>
           </li>
+          <?php endif; ?>   
+          <?php if ($_SESSION['role_id'] == 3 ) : ?>
+          <li class="nav-item">
+            <a href="../pages/studentattendence.php" class="nav-link">
+            <i class="nav-icon fa fa-clipboard"></i>
+              <p>
+                Attendence
+              </p>
+            </a>
+          </li>
+          <?php endif; ?>   
 
           <li class="nav-item">
             <a href="../pages/class.php" class="nav-link">

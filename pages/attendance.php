@@ -31,11 +31,13 @@
                 $sno = $sno + 1;
                 echo "<tr id=" . $row_dt['id'] . ">
                     <td>" . $sno . "</td>
-                    <td>" . $row_dt['first_name'] ."  ".$row_dt['last_name'] . "</td>
+                    <td>" . $row_dt['first_name'] . "  " . $row_dt['last_name'] . "</td>
                     <td><button onClick='editClick(" . $row_dt['id'] . ")' class='present btn btn-sm btn-success'>P</button>
                     <button onClick='deleteClick(" . $row_dt['id'] . ")' class='abesent btn btn-sm btn-danger'>A</button>
-                    <button type='button' id='bigpresent'class='btn btn-success'>Present</button>
-                    <button type='button'id='bigabsent' class='btn btn-danger'>Absent</button></td>
+                    <p id='bigpresent' class='d-inline-block' style='background-color: green; color: white; padding: 5px 10px; margin-right: 10px; border-radius: 3px;'>Present</p>
+                    <p id='bigabsent' class='d-inline-block' style='background-color: red; color: white; padding: 5px 10px; border-radius: 3px;'>Absent</p>
+                    
+</td>
                 </tr>";
             } ?>
         </tbody>
