@@ -1,5 +1,38 @@
 <?php include("../controller/notice_control.php"); ?>
 <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
+  <style>
+    
+
+    .containertb {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .notice {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-left: 4px solid #007bff;
+    }
+
+    .notice h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    .notice p {
+      margin-bottom: 0;
+    }
+  </style>
 <!-- edit notice modal  -->
 <div class="modal" id="edit_notice" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -98,32 +131,21 @@
 </div>
 
 <?php endif; ?>
-<h1 class="text-dark text-center my-3"><b>Notice Board</b></h1>
-<!-- notice cards -->
+<div class="containertb">
+<h1>Notice Board</h1>
 <?php
-$sno = 0;
-echo '<div class="row justify-content-center">';
 while ($row = mysqli_fetch_array($cardresult)) {
-  $sno = $sno + 1;
-  if($sno % 2 == 0){
-    echo '<div class="col-md-12 my-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
-    <div class="card-header bg-dark">' . $row["notice_title"] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(' . date("F j, Y", strtotime($row['created_dt'])) . ')</div>
-    <div class="card-body bg-danger">
-      <p class="card-text">' . $row["notice_desc"] . '</p>
-    </div>
-  </div>';
-  }else{
-    echo '<div class="col-md-12 m-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
-    <div class="card-header bg-dark">' . $row["notice_title"] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(' . date("F j, Y", strtotime($row['created_dt'])) . ')</div>
-    <div class="card-body bg-primary">
-      <p class="card-text">' . $row["notice_desc"] . '</p>
-    </div>
-  </div>';
-  }
-  }
- echo "</div>";
+  echo' <div class="notice">
+  <h2>' . $row["notice_title"] .'</h2>
+  <p>'. $row["notice_desc"] .'</p>
+</div>';
 
+}
 ?>
+</div>
+
+
+
 
 
 
