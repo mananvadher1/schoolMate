@@ -8,13 +8,13 @@
 </style>
 <div class="container">
     <div class="heading my-4">
-        <h1><b>Attendance for Class <?php echo $_SESSION['class_id']?></b></h1>
+        <h1><b>Attendance - Class <?php echo $_SESSION['class_id']?></b></h1>
+        <button type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</button>
     </div>
-    <div class="heading my-4">
+    <div class="date my-4">
     <div class="date-wrapper">
         <h2>Date:<?php echo date("j-n-y"); ?></h2>
     </div>
-    <button type="button" class="btn btn-primary">Download Attendance</button>
 </div>
 <table class="table" id="myTable">
         <thead>
