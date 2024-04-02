@@ -382,6 +382,7 @@
                     }
                 });
         }
+        
         $(document).ready(function() {
             userDataTable(0);
             $('#table_role_id').on('change', function() {
@@ -468,10 +469,8 @@
                         },
                     },
                     'columnDefs' : [
-                            //hide the second & fourth column
-                            
+                                //hide the second column class name in a principal role
                                 { 'visible': false, 'targets': hide }
-                          
                         ],
                     "aoColumns": [
                         {mData: 'sr_no'},
@@ -496,7 +495,6 @@
                     ],
                 });
         }
-
     </script>
     <?php include("../includes/footer.php"); ?>
 <?php else : ?>
