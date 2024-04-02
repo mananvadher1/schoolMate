@@ -4,9 +4,9 @@ $cid = $_GET['cid'];
 
 <div class="container">
     <h1 class="my-4"><b>Class: <? echo $cid?></b></h1>
-    <table class="table" id="myTable">
+    <table class="table" id="">
         <thead>
-            <tr>
+            <tr style="background-color:#ABB2B9">
                 <th scope="col">Sno</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
