@@ -46,6 +46,58 @@
 
 </div>
 
+<script>
+    function present(id) {
+        console.log(111)
+        $.ajax({
+            url: '../controller/attendance_control.php',
+            type: 'POST',
+            data: {
+                id: id,
+                action: "present"
+            },
+            success: function(response) {
+                if (response) {
+                    // $("#").hide();
+                    alert(111);
+                    // $("#").show();
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to Present attendence",
+                        icon: "error"
+                    });
+                }
+            }
+        });
 
+    }
+
+    function absent(id) {
+        console.log(111)
+        $.ajax({
+            url: '../controller/attendance_control.php',
+            type: 'POST',
+            data: {
+                id: id,
+                action: "absent"
+            },
+            success: function(response) {
+                if (response) {
+                    // $("#").hide();
+                    alert(111);
+                    // $("#").show();
+
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to Absent attendence",
+                        icon: "error"
+                    });
+                }
+            }
+        });
+    }
+</script>
 <?php include("../includes/footer.php"); ?>
 <!-- data table -->

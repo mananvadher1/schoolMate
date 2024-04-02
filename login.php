@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['dob'] = $dob;
             $_SESSION['address'] = $address;
             $_SESSION['role_id'] = $role_id;
-            $_SESSION['class_id']=$class_id;
+            $_SESSION['class_id'] = $class_id;
             header("Location: http://localhost/schoolMate/pages/dashboard.php");
         }
     } else {
