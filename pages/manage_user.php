@@ -238,25 +238,29 @@
     </div>
 
     <!-- data table -->
-    <div class="m-3">
-        <label for="role_id">Role:</label>
-        <!-- <form id="roleForm" action="../api/get_user.php" method="POST"> -->
-        <select class="form-control" name="table_role_id" id="table_role_id" required>
-            <?php
-            while ($row_dropdowm = mysqli_fetch_assoc($search_role)) {
-                if ($row_dropdowm['role_id'] == 4) {
-                    continue;
+    <div class="row m-3">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="role_id">Role:</label>                 
+                <select class="form-control" name="table_role_id" id="table_role_id" required>
+                    <option value="" selected disabled> -- Select Role --</option>
+                <?php
+                while ($row_dropdowm = mysqli_fetch_assoc($search_role)) {
+                    if ($row_dropdowm['role_id'] == 4) {
+                        continue;
+                    }
+                    echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
                 }
-                echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
-            }
-            ?>
-        </select>
-        <!-- </form> -->
+                ?>
+            </select>                     
+            </div>
+        </div>
     </div>
-
+ 
     <!-- datatables -->
-    <div class="container m-3">
-        <table class="table" id="myTable">
+    <div class="content">
+    <div class="container-fluid">
+        <table class="table table-hover " id="userDataList" width="100%">
             <thead>
                 <tr>
                     <th scope="col">Sr no</th>
@@ -281,38 +285,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                while ($row_dt = mysqli_fetch_assoc($re_dt)) {
-                    $sno = $sno + 1;
-                    echo "<tr id=" . $row_dt['id'] . ">
-                    <td>" . $sno . "</td>
-                    <td>" . $row_dt['role_name'] . "</td>
-                    <td>" . $row_dt['class_name'] . "</td>
-                    <td>" . $row_dt['email'] . "</td>
-                    <td>" . $row_dt['password'] . "</td>
-                    <td>" . $row_dt['first_name'] . "</td>
-                    <td>" . $row_dt['last_name'] . "</td>
-                    <td>" . $row_dt['dob'] . "</td>
-                    <td>" . $row_dt['gender'] . "</td>
-                    <td>" . $row_dt['phone'] . "</td>
-                    <td>" . $row_dt['blood_group'] . "</td>
-                    <td>" . $row_dt['address'] . "</td>
-                    <td>" . $row_dt['city'] . "</td>
-                    <td>" . $row_dt['status'] . "</td>
-                    <td>" . $row_dt['created_by'] . "</td>
-                    <td>" . $row_dt['created_dt'] . "</td>
-                    <td>" . $row_dt['updated_by'] . "</td>
-                    <td>" . $row_dt['updated_dt'] . "</td>
-                    <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
-                    <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
-                </tr>";
-                } ?>
             </tbody>
         </table>
+    </div>
     </div>
 
 
     <script>
+        
         function deleteClick(id) {
             // Use SweetAlert for confirmation before deleting
             Swal.fire({
@@ -362,7 +342,6 @@
         }
 
         function editClick(id) {
-            $(document).ready(function() {
                 // console.log('hii')
                 $.ajax({
                     url: '../controller/user_control.php',
@@ -402,66 +381,120 @@
                         $('#edit_user').modal('show');
                     }
                 });
-            });
         }
-
+        
         $(document).ready(function() {
+            userDataTable(0);
             $('#table_role_id').on('change', function() {
-                // console.log(111111)
                 var role_id = $(this).val();
-                $.ajax({
-                    url: '../api/get_user.php',
-                    type: 'POST',
-                    data: {
-                        role_id: role_id,
-                        action: "get_user"
+                userDataTable(role_id);
+                // data: {
+                //         role_id: role_id,
+                //         action: "get_user"
+                //     },
+                // $('#myTable').DataTable().clear();
+
+                // console.log(111111)
+                // var role_id = $(this).val();
+                // $.ajax({
+                //     url: '../api/get_user.php',
+                //     type: 'POST',
+                //     data: {
+                //         role_id: role_id,
+                //         action: "get_user"
+                //     },
+                //     success: function(response) {
+                //         // console.log(response);
+                //         $("#myTable tbody").empty();
+                //         $("#myTable").show();
+                //         // Iterate over the JSON data
+                //         $.each(response, function(index, row) {
+                //             // Construct HTML for each row
+                //             var html = "<tr id='" + row.id + "'>";
+                //             html += "<td>" + (index + 1) + "</td>";
+                //             html += "<td>" + row.role_name + "</td>";
+                //             if (role_id != 1) {
+                //                 html += "<td class='addClass'>" + row.class_name + "</td>";
+                //             }
+                //             html += "<td>" + row.email + "</td>";
+                //             html += "<td>" + row.password + "</td>";
+                //             html += "<td>" + row.first_name + "</td>";
+                //             html += "<td>" + row.last_name + "</td>";
+                //             html += "<td>" + row.dob + "</td>";
+                //             html += "<td>" + row.gender + "</td>";
+                //             html += "<td>" + row.phone + "</td>";
+                //             html += "<td>" + row.blood_group + "</td>";
+                //             html += "<td>" + row.address + "</td>";
+                //             html += "<td>" + row.city + "</td>";
+                //             html += "<td>" + row.status + "</td>";
+                //             html += "<td>" + row.created_by + "</td>";
+                //             html += "<td>" + row.created_dt + "</td>";
+                //             html += "<td>" + row.updated_by + "</td>";
+                //             html += "<td>" + row.updated_dt + "</td>";
+                //             html += "<td><button onClick='editClick(" + row.id + ")' class='edit btn btn-sm btn-success'>Edit</button>&nbsp;";
+                //             html += "<button onClick='deleteClick(" + row.id + ")' class='delete btn btn-sm btn-danger'>Delete</button></td>";
+                //             html += "</tr>";
+
+                //             // Append HTML to the table body
+                //             $("#myTable tbody").append(html);
+                //         });
+                //         if (role_id == 1) {
+                //             $(".addClass").hide();
+                //         } else {
+                //             $(".addClass").show();
+                //         }
+                        
+                        
+                //     }
+                // });
+            });
+        });
+
+        function userDataTable(role_id){
+            var hide = [];
+            if(role_id == 1){
+                var hide = [2];
+            }
+            $('#userDataList').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    responsive: true,
+                    bDestroy: true,
+                    ajax: {
+                        url: '../api/get_user.php',
+                        type: 'POST',
+                        data: {
+                            role_id: role_id,
+                            action: "get_user"
+                        },
                     },
-                    success: function(response) {
-                        // console.log(response);
-                        $("#myTable tbody").empty();
-
-                        // Iterate over the JSON data
-                        $.each(response, function(index, row) {
-                            // Construct HTML for each row
-                            var html = "<tr id='" + row.id + "'>";
-                            html += "<td>" + (index + 1) + "</td>";
-                            html += "<td>" + row.role_name + "</td>";
-                            if (role_id != 1) {
-                                html += "<td class='addClass'>" + row.class_name + "</td>";
-                            }
-                            html += "<td>" + row.email + "</td>";
-                            html += "<td>" + row.password + "</td>";
-                            html += "<td>" + row.first_name + "</td>";
-                            html += "<td>" + row.last_name + "</td>";
-                            html += "<td>" + row.dob + "</td>";
-                            html += "<td>" + row.gender + "</td>";
-                            html += "<td>" + row.phone + "</td>";
-                            html += "<td>" + row.blood_group + "</td>";
-                            html += "<td>" + row.address + "</td>";
-                            html += "<td>" + row.city + "</td>";
-                            html += "<td>" + row.status + "</td>";
-                            html += "<td>" + row.created_by + "</td>";
-                            html += "<td>" + row.created_dt + "</td>";
-                            html += "<td>" + row.updated_by + "</td>";
-                            html += "<td>" + row.updated_dt + "</td>";
-                            html += "<td><button onClick='editClick(" + row.id + ")' class='edit btn btn-sm btn-success'>Edit</button>";
-                            html += "<button onClick='deleteClick(" + row.id + ")' class='delete btn btn-sm btn-danger'>Delete</button></td>";
-                            html += "</tr>";
-
-                            // Append HTML to the table body
-                            $("#myTable tbody").append(html);
-                        });
-
-                        if (role_id == 1) {
-                            $(".addClass").hide();
-                        } else {
-                            $(".addClass").show();
-                        }
-
-                    }
+                    'columnDefs' : [
+                                //hide the second column class name in a principal role
+                                { 'visible': false, 'targets': hide }
+                        ],
+                    "aoColumns": [
+                        {mData: 'sr_no'},
+                        {data: 'role_name'},
+                        {data: 'class_name'},
+                        {data: 'email'},
+                        {data: 'password'},
+                        {data: 'first_name'},
+                        {data: 'last_name'},
+                        {data: 'dob'},
+                        {data: 'gender'},
+                        {data: 'phone'},
+                        {data: 'blood_group'},
+                        {data: 'address'},
+                        {data: 'city'},
+                        {data: 'status'},
+                        {data: 'created_by'},
+                        {data: 'created_dt'},
+                        {data: 'updated_by'},
+                        {data: 'updated_dt'},
+                        {data: 'action'}, 
+                    ],
                 });
-            })
-        })
+        }
     </script>
     <?php include("../includes/footer.php"); ?>
 <?php else : ?>

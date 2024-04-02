@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = mysqli_fetch_assoc($result)) {
             $role_id = $row["role_id"];
             $id = $row['id'];
+            
             mysqli_query($conn, "UPDATE `users` SET `loggedin`='1' WHERE id = '$id'");
             $fname = $row['first_name'];
             $lname = $row['last_name'];
@@ -42,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $gender = $row['gender'];
             $dob = $row['dob'];
             $address = $row['address'];
+            $class_id=$row['class_id'];
             $login = true;
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
@@ -55,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['dob'] = $dob;
             $_SESSION['address'] = $address;
             $_SESSION['role_id'] = $role_id;
+            $_SESSION['class_id']=$class_id;
             header("Location: http://localhost/schoolMate/pages/dashboard.php");
         }
     } else {
