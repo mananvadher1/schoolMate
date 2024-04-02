@@ -107,19 +107,17 @@ while ($row = mysqli_fetch_array($cardresult)) {
   $sno = $sno + 1;
   if($sno % 2 == 0){
     echo '<div class="col-md-12 my-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
-    <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
+    <div class="card-header bg-dark">' . $row["notice_title"] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(' . date("F j, Y", strtotime($row['created_dt'])) . ')</div>
     <div class="card-body bg-danger">
       <p class="card-text">' . $row["notice_desc"] . '</p>
     </div>
-    <div class="card-footer text-muted bg-dark">' . date("F j, Y", strtotime($row['created_dt'])) . '</div>
   </div>';
   }else{
     echo '<div class="col-md-12 m-4 card text-white" style="max-width: 58rem;" id="c' . $row['notice_id'] . '">
-    <div class="card-header bg-dark">' . $row["notice_title"] . '</div>
-    <div class="card-body bg-warning">
+    <div class="card-header bg-dark">' . $row["notice_title"] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(' . date("F j, Y", strtotime($row['created_dt'])) . ')</div>
+    <div class="card-body bg-primary">
       <p class="card-text">' . $row["notice_desc"] . '</p>
     </div>
-    <div class="card-footer text-muted bg-dark">' . date("F j, Y", strtotime($row['created_dt'])) . '</div>
   </div>';
   }
   }

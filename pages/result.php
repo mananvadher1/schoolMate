@@ -58,6 +58,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo  '</div>
 </div>';
 
+$user_id = $_SESSION['id'];
+$sql = "INSERT INTO `results`(`user_id`, `class_id`, `score`, `totalscore`) VALUES ('')";
 
 if ($scored == $totalScore) {
     echo '<div class="jumbotron jumbotron-fluid">
