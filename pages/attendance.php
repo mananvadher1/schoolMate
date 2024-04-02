@@ -33,7 +33,9 @@
                     <td>" . $sno . "</td>
                     <td>" . $row_dt['first_name'] ."  ".$row_dt['last_name'] . "</td>
                     <td><button onClick='editClick(" . $row_dt['id'] . ")' class='present btn btn-sm btn-success'>P</button>
-                    <button onClick='deleteClick(" . $row_dt['id'] . ")' class='abesent btn btn-sm btn-danger'>A</button></td>
+                    <button onClick='deleteClick(" . $row_dt['id'] . ")' class='abesent btn btn-sm btn-danger'>A</button>
+                    <button type='button' id='bigpresent'class='btn btn-success'>Present</button>
+                    <button type='button'id='bigabsent' class='btn btn-danger'>Absent</button></td>
                 </tr>";
                 } ?>
             </tbody>
