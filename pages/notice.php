@@ -1,6 +1,5 @@
 <?php include("../controller/notice_control.php"); ?>
-<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
-  <style>
+<style>
     
 
     .containertb {
@@ -33,6 +32,8 @@
       margin-bottom: 0;
     }
   </style>
+<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
+
 <!-- edit notice modal  -->
 <div class="modal" id="edit_notice" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -143,13 +144,6 @@ while ($row = mysqli_fetch_array($cardresult)) {
 }
 ?>
 </div>
-
-
-
-
-
-
-<hr>
 
 
 
