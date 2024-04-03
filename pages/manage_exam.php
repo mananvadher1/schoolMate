@@ -156,8 +156,8 @@
                 <th scope="col">Duration(Minutes)</th>
                 <th scope="col">Result date</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
-                <th scope="col">Add Questions</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Other Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -178,7 +178,7 @@
                     <td>" . $row['status'] . "</td>
                     <td><button onClick='editClick(" . $row['id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
                     <button onClick='deleteClick(" . $row['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
-                    <td><a href='questions.php?cid=".$class_id."&sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Questions</button></a></td>
+                    <td><a href='questions.php?cid=".$class_id."&sname=".$subject_name."'><button class='edit btn btn-sm btn-warning'>Add Ques</button></a><a href='../controller/generate_class_pdf_control.php?cid=".$class_id."&sname=".$subject_name."'><button class='edit btn btn-sm btn-secondary ml-2'>Result</button></a></td>
                 </tr>";
             } ?>
         </tbody>

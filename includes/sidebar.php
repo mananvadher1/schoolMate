@@ -124,31 +124,6 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-id-badge"></i>
-              <p>
-                Exam
-                <i class=" nav-icon right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-                <a href="../pages/manage_exam.php" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Manage Exam</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Attend Exam</p>
-                </a>
-              </li>
-            </ul>
-          </li> -->
-
-         
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
@@ -222,16 +197,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-globe" aria-hidden="true"></i>
-              <p>
-                Map
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">           
+            <a href="settings.php" class="nav-link">           
             <i class="nav-icon  fa fa-cogs" aria-hidden="true"></i>
               <p>
                 settings  
