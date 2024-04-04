@@ -1,15 +1,7 @@
 <?php include("../controller/attendance_control.php"); ?>
-<style>
-    .heading {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-</style>
 <div class="container">
     <div class="heading my-4">
         <h1><b>Attendance - Class <?php echo $_SESSION['class_id'] ?></b></h1>
-        <button type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</button>
     </div>
     <div class="date my-4">
         <div class="date-wrapper">

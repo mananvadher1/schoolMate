@@ -85,7 +85,27 @@
         }
       });
     });
-
+    $(document).ready(function() {
+      $('#attendence').DataTable({
+        responsive: false,
+        bDestroy: true,
+        "pagingType": "full_numbers", // Customize pagination style
+        "language": {
+          "search": "Search:",
+          "lengthMenu": "Show _MENU_ entries per page",
+          "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+          "infoEmpty": "Showing 0 to 0 of 0 entries",
+          "zeroRecords": "No matching records found",
+          "infoFiltered": "(filtered from _MAX_ total entries)",
+          "paginate": {
+            "first": "First",
+            "last": "Last",
+            "next": "Next",
+            "previous": "Previous"
+          }
+        }
+      });
+    });
     $(document).ready(function() {
       // $('.edit_form').hide();
       $('.nav-link').click(function() {

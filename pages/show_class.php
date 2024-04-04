@@ -7,7 +7,7 @@ $cid = $_GET['cid'];
     <table class="table" id="">
         <thead>
             <tr style="background-color:#ABB2B9">
-                <th scope="col">Sno</th>
+                <th scope="col">Enrollment No.</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>

@@ -60,8 +60,8 @@ echo  '</div>
 
 // query to insert result data
 $user_id = $_SESSION['id'];
-$class_id = $_SESSION['class_id'];
-$sql = "INSERT INTO `results`(`user_id`, `class_id`, `score`, `totalscore`) VALUES ('$user_id','$class_id','$scored','$totalScore')";
+// $class_id = $_SESSION['class_id'];
+$sql = "INSERT INTO `results`(`user_id`, `class_id`, `score`, `totalscore`, `subject_name`) VALUES ('$user_id','$cid','$scored','$totalScore','$sname')";
 $result = mysqli_query($conn, $sql);
 if($result){
   // echo "done";
