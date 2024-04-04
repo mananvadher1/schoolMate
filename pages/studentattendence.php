@@ -5,12 +5,18 @@
     #attendence td {
         border-right: 1px solid #ddd; /* Adjust color and thickness as needed */
     }
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 
 
 <div class="container">
     <div class="heading my-4">
         <h1><b>Attendance</b></h1>
+        <button type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</button>
     </div>
    
     <table class="table" id="attendence">
