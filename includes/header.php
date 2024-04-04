@@ -30,12 +30,12 @@
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- full calender -->
     <link rel="stylesheet" href="../plugins/fullcalendar/main.css" rel="stylesheet">
-   <!-- Include Slick Slider CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
+    <!-- Include Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
     <!-- LINK OF SWEETALERT 2 -->
     <script src="../dist/js/sweetalert.min.js"></script>
-    
+
     <style>
         table.dataTable {
             width: 100%;
@@ -101,7 +101,7 @@
             padding: 5px;
             background-color: #fff;
         }
-        
+
         /* for chat room */
         body {
             background-color: #f4f4f4;
@@ -167,6 +167,20 @@
         .chat-app .card-body .text-start {
             text-align: right;
         }
+
+        /* datatable css */
+        @media (min-width: 768px) {
+            .dataTables_filter {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            .dataTables_filter label {
+                margin-right: 10px;
+            }
+        }
+        
     </style>
     <script src="../plugins/jquery/jquery.min.js"></script>
 </head>
