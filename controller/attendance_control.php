@@ -80,4 +80,7 @@ for ($day = 1; $day <= $numberOfDays; $day++) {
     $currentMonthDates[] = $qDate;
 }
 
+//to print the data
+
+
 

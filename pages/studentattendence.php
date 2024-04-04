@@ -16,7 +16,12 @@
 <div class="container">
     <div class="heading my-4">
         <h1><b>Attendance</b></h1>
-        <button type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</button>
+        <form method="post" action="../controller/download.php">
+    <input type="submit" class="btn btn-success" name="download" value="Download">
+</form>
+
+        </form>
+        <!-- <button type="button" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</button> -->
     </div>
    
     <table class="table" id="attendence">
@@ -32,7 +37,7 @@
     </thead>
     <tbody>
         <?php 
-        // print_r($attendData);
+       // print_r($attendData);
         $printedNames = array(); // To keep track of printed names
         foreach ($attendData as $row_dt) {
             // Check if the name is already printed
