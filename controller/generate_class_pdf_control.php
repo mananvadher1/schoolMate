@@ -250,7 +250,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                    <h1><i>SCHOOL<span>MATE</span></i></h1>
                    <h4>Online School Management System</h4>
                    <h4>Year: 2024-2025</h4>
-                   <h4>Student Result</h4>
+                   <h4>Class Result</h4>
                    <h4>Class: '.$cid.'</h4>
                    <h4>Subject: '.$sname.'</h4>
                </div>

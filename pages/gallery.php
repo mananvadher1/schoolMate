@@ -1,4 +1,15 @@
-<?php include("../controller/gallery_control.php"); ?>
+<?php include ("../controller/gallery_control.php"); ?>
+
+<style>
+    .slider-container {
+        max-width: 100%;
+        overflow: hidden;
+        /* Add overflow property */
+        position: relative;
+    }
+</style>
+
+
 
 <div class="card card-secondary">
     <div class="card-header">
@@ -7,7 +18,8 @@
                 <h3 class="card-title my-2">Gallery</h3>
             </div>
             <div class="col-auto">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Image</a>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">Add Image</a>
             </div>
         </div>
     </div>
@@ -31,33 +43,39 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row justify-content-center my-4">
+        <div class="col-md-6 mr-5">
             <div class="card card-primary">
                 <div class="card-header">
                     <h4 class="card-title">Events</h4>
                 </div>
-                <div class="eventslider">
-                    <?php foreach ($imageNames as $imageName) : ?>
-                        <div>
-                            <img src="../dist/img/gallery_image/<?php echo $imageName; ?>" alt="<?php echo $imageName; ?>">
-                        </div>
-                    <?php endforeach; ?>
+                <div class="slider-container mb-3">
+                    <div class="eventslider">
+                        <?php foreach ($imageNames as $imageName): ?>
+                            <div>
+                                <img src="../dist/img/gallery_image/<?php echo $imageName; ?>"
+                                    alt="<?php echo $imageName; ?>">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mr-5">
             <div class="card card-primary">
                 <div class="card-header">
                     <h4 class="card-title">Academic</h4>
                 </div>
-                <div class="academicslider">
-                    <?php foreach ($Academicimage as $Academicimage) : ?>
-                        <div>
-                            <img src="../dist/img/gallery_image/<?php echo $Academicimage; ?>" alt="<?php echo $Academicimage; ?>">
-                        </div>
-                    <?php endforeach; ?>
+                <div class="slider-container mb-3">
+                    <div class="academicslider">
+                        <?php foreach ($Academicimage as $Academicimage): ?>
+                            <div>
+                                <img src="../dist/img/gallery_image/<?php echo $Academicimage; ?>"
+                                    alt="<?php echo $Academicimage; ?>">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +83,7 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.eventslider').slick({
             // Slick Slider settings
             slidesToShow: 1,
@@ -75,22 +93,22 @@
             arrows: true,
             dots: true,
             responsive: [{
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: 1
-                    }
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1
                 }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
             ]
         });
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.academicslider').slick({
             // Slick Slider settings
             slidesToShow: 1,
@@ -100,20 +118,20 @@
             arrows: true,
             dots: true,
             responsive: [{
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: 1
-                    }
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1
                 }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
             ]
         });
     });
 </script>
 
-<?php include("../includes/footer.php"); ?>
+<?php include ("../includes/footer.php"); ?>

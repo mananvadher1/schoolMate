@@ -11,16 +11,12 @@ $sname = $_GET['sname'];
 $score = $_GET['score'];
 $tscore = $_GET['tscore'];
 
-$sql = "SELECT * FROM `users`";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $fname = $row['first_name'];
-    $lname = $row['last_name'];
-    $email = $row['email'];
+$fname = $_SESSION['fname'];
+$lname = $_SESSION['lname'];
+$email = $_SESSION['email'];
 
-    // Generate HTML content
-    $html = '<!DOCTYPE html>
+// Generate HTML content
+$html = '<!DOCTYPE hrowtml>
     <html>
     <head>
         <style>
@@ -90,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
             }
     
             hr {
-                margin: 10px 0;
+                margin: row10px 0;
                 border: none;
                 border-top: 1px solid #ccc;
             }
@@ -152,15 +148,15 @@ if (mysqli_num_rows($result) > 0) {
                 <hr>
                 <div class="text">
                     <h3 class="msg ';
-    
-        // Determine the class based on the score
-        if ($score >= ($tscore * 0.5)) {
-            $html .= 'passed">Congratulations! You Passed the Test:)';
-        } else {
-            $html .= 'failed">Study more! You Failed the Test:(';
-        }
-    
-        $html .= '</h3>
+
+// Determine the class based on the score
+if ($score >= ($tscore * 0.5)) {
+    $html .= 'passed">Congratulations! You Passed the Test:)';
+} else {
+    $html .= 'failed">Study more! You Failed the Test:(';
+}
+
+$html .= '</h3>
                 </div>
                 <hr>
                 <p>It is an auto-generated PDF!</p>
@@ -169,20 +165,17 @@ if (mysqli_num_rows($result) > 0) {
         </div>
     </body>
     </html>';
-    // echo $html;
+// echo $html;
 
-    // Output buffering ends before PDF generation
-    ob_end_clean();
+// Output buffering ends before PDF generation
+ob_end_clean();
 
-    // PDF generation code starts
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML($html);
-    $mpdf->Output("Result", "D"); // there are more para like D- D for downloading the pdf- Force download the PDF
+// PDF generation code starts
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML($html);
+$mpdf->Output("Result", "D"); // there are more para like D- D for downloading the pdf- Force download the PDF
 
-} else {
-    // Handle case where no data is found
-    echo '<h1>Data Not Found</h1>';
-}
+
 ?>
 
 <!-- explanation -->

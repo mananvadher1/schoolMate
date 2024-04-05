@@ -4,7 +4,7 @@ include("../includes/header.php");
 include("../includes/sidebar.php");
 
 
-    $sql = "SELECT * FROM users where role_id=1";
+    $sql = "SELECT * FROM users where role_id=3";
     $result = mysqli_query($conn, $sql);
     $display_student=mysqli_num_rows($result);
 
