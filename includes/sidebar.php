@@ -125,27 +125,12 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../pages/fees.php" class="nav-link">
             <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
               <p>
                 Fees
-                <i class=" nav-icon right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-                <a href="../index.html" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Education fees</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
-                <i class=" nav-icon fas fa-angle-right"></i>
-                  <p>Transportation fees</p>
-                </a>
-              </li>
-            </ul>
           </li>
 
           <li class="nav-item">

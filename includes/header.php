@@ -7,7 +7,8 @@
     <title>SchoolMate</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -31,8 +32,10 @@
     <!-- full calender -->
     <link rel="stylesheet" href="../plugins/fullcalendar/main.css" rel="stylesheet">
     <!-- Include Slick Slider CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
     <!-- LINK OF SWEETALERT 2 -->
     <script src="../dist/js/sweetalert.min.js"></script>
 
@@ -102,6 +105,11 @@
             background-color: #fff;
         }
 
+        /* for preventing page from scroling to side */
+        .container {
+            overflow: hidden;
+        }
+
         /* for chat room */
         body {
             background-color: #f4f4f4;
@@ -167,20 +175,6 @@
         .chat-app .card-body .text-start {
             text-align: right;
         }
-
-        /* datatable css */
-        @media (min-width: 768px) {
-            .dataTables_filter {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-            }
-
-            .dataTables_filter label {
-                margin-right: 10px;
-            }
-        }
-        
     </style>
     <script src="../plugins/jquery/jquery.min.js"></script>
 </head>
@@ -201,7 +195,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             </ul>
 
@@ -228,16 +223,24 @@
 
                     <a href="#" class="dropdown-toggle text-light mx-2" data-toggle="dropdown">
                         <i class="fas fa-user"></i>
-                        <span><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?> <i class="caret"></i></span>
+                        <span>
+                            <?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?> <i class="caret"></i>
+                        </span>
                     </a>
 
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-blue" style="height: 210px;">
-                            <img src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" class="img-circle" alt="User Image" />
-                            <p><b><?php echo $_SESSION['fname'] . " " . $_SESSION['lname'] . "<br>"; ?>
-                                    <small><?php echo "Email: " . $_SESSION['email'] . "<br>"; ?></small>
-                                    <small><?php echo "Phone: " . $_SESSION['phone'] . "<br>"; ?></small>
+                            <img src="../dist/img/user_image/<?php echo $_SESSION['img']; ?>" class="img-circle"
+                                alt="User Image" />
+                            <p><b>
+                                    <?php echo $_SESSION['fname'] . " " . $_SESSION['lname'] . "<br>"; ?>
+                                    <small>
+                                        <?php echo "Email: " . $_SESSION['email'] . "<br>"; ?>
+                                    </small>
+                                    <small>
+                                        <?php echo "Phone: " . $_SESSION['phone'] . "<br>"; ?>
+                                    </small>
                                 </b>
                             </p>
                         </li>
@@ -248,7 +251,8 @@
                                 <a href="../pages/edit_profile.php" class="btn btn-default btn-flat">Edit Profile</a>
                             </div>
                             <div class="float-right">
-                                <a href="../logout.php?id=<?php echo $_SESSION['id']; ?>" class="btn btn-default btn-flat">Logout</a>
+                                <a href="../logout.php?id=<?php echo $_SESSION['id']; ?>"
+                                    class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>

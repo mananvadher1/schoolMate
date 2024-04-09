@@ -108,4 +108,12 @@
     };
 </script>
 
-<?php include ("../includes/footer.php"); ?>
+
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark" style="background-color: rgba(0, 0, 0, 0.05);">
+  <strong>Copyright &copy; 2024-2025 <a href="#">SchoolMate</a>.</strong>
+    All rights reserved.
+  </div>
+  <!-- Copyright -->
+</footer>

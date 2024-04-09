@@ -64,27 +64,29 @@
   <!-- DataTable Initialization -->
   <script>
     $(document).ready(function() {
-      $('#myTable').DataTable({
-        responsive: true,
-        bDestroy: true,
-        "pagingType": "full_numbers", // Customize pagination style
-        "language": {
-          "search": "Search:",
-          "lengthMenu": "Show _MENU_ entries per page",
-          "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-          "infoEmpty": "Showing 0 to 0 of 0 entries",
-          "zeroRecords": "No matching records found",
-          "infoFiltered": "(filtered from _MAX_ total entries)",
-          "paginate": {
-            "first": "First",
-            "last": "Last",
-            "next": "Next",
-            "previous": "Previous"
-          }
-          
-        }
-      });
-    });
+  $('#myTable').DataTable({
+    responsive: true,
+    bDestroy: true,
+    "pagingType": "full_numbers", // Customize pagination style
+    "language": {
+      "search": "Search:",
+      "lengthMenu": "Show _MENU_ entries per page",
+      "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+      "infoEmpty": "Showing 0 to 0 of 0 entries",
+      "zeroRecords": "No matching records found",
+      "infoFiltered": "(filtered from _MAX_ total entries)",
+      "paginate": {
+        "next": "Next",
+        "previous": "Previous"
+      }
+    },
+    "drawCallback": function(settings) {
+      // Remove "First" and "Last" buttons from pagination controls
+      $('#myTable_paginate .first, #myTable_paginate .last').remove();
+    }
+  });
+});
+
     $(document).ready(function() {
       $('#attendence').DataTable({
         responsive: false,
@@ -98,12 +100,13 @@
           "zeroRecords": "No matching records found",
           "infoFiltered": "(filtered from _MAX_ total entries)",
           "paginate": {
-            "first": "First",
-            "last": "Last",
+            // "first": "First",
+            // "last": "Last",
             "next": "Next",
             "previous": "Previous"
           }
         }
+        
       });
     });
     $(document).ready(function() {
@@ -113,6 +116,7 @@
         $(this).addClass('active');
       });
     });
+    
   </script>
   </body>
   </html>
