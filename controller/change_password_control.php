@@ -17,25 +17,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_assoc($result_fetch);
     $password = $row["password"];
 
-    if ($new == $confirm) {
-        $sql = "UPDATE `users` SET `password` = '" . $new . "' WHERE `id` = '" . $_SESSION['id'] . "'";
-        $result = mysqli_query($conn, $sql);
+    if($current == $password){
+        // echo "right current password";
 
-        if ($result) {
-            $update = true;
+        if ($new == $confirm) {
+            $sql = "UPDATE `users` SET `password` = '" . $new . "' WHERE `id` = '" . $_SESSION['id'] . "'";
+            $result = mysqli_query($conn, $sql);
+    
+            if ($result) {
+                $update = true;
+                echo "<script>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Password updated successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
+                    </script>";
+                }
+        } else {
+            // echo  "error";
             echo "<script>
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Password updated successfully!',
-                        icon: 'success',
-                        confirmButtonText: 'OK',
-                        confirmButtonColor: '#3085d6'
-                    });
-                </script>";
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'New and Confirm password should be the same!',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
+                    </script>";
         }
-    } else {
-        echo  "error";
+    }else{
+        // echo "wrong current password";
+        echo "<script>
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'You should enter correct current password!',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
+                    </script>";
     }
+
+
 
 }
 
