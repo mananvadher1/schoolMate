@@ -49,11 +49,10 @@
 </div>
 
 <div class="content">
-    <div class="container-fluid">
+    <div class="table-responsive">
         <table class="table table-hover " id="attendList" width="100%">
             <thead>
-                <tr id='header'>
-                </tr>
+            <tr id="header"><th>Name</th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th><th>Day 5</th><th>Day 6</th><th>Day 7</th><th>Day 8</th><th>Day 9</th><th>Day 10</th><th>Day 11</th><th>Day 12</th><th>Day 13</th><th>Day 14</th><th>Day 15</th><th>Day 16</th><th>Day 17</th><th>Day 18</th><th>Day 19</th><th>Day 20</th><th>Day 21</th><th>Day 22</th><th>Day 23</th><th>Day 24</th><th>Day 25</th><th>Day 26</th><th>Day 27</th><th>Day 28</th><th>Day 29</th><th>Day 30</th></tr>
             </thead>
             <tbody>
             </tbody>
@@ -62,86 +61,52 @@
 </div>
 <script>
     $(document).ready(function() {
+        var dataTable;
+        
+        var initialMonth = $('#month').val();
+        var initialYear = $('#year').val();
+        
+        // Initialize DataTable
+        initializeDataTable(initialMonth, initialYear);
+        
         $('#month, #year').on('change', function() {
             var month = $('#month').val();
             var year = $('#year').val();
-            // if($("#attendList_wrapper").length == 0)
-            // {
-
-            // }
-            // else
-            // {
-            //     $('#attendList').DataTable({
-            //     "bDestroy": true,
-            //     });
-            //     alert("madyo mane");
-            // }
-
-            // console.log("yes");
-            // generateMonthColumns(month, year);
-            userDataTable(month, year);
-            // console.log("no");
+            initializeDataTable(month, year);
         });
-    });
-
-    // function generateMonthColumns(month, year) {
-
-    //     $('#header').empty();
-    //     var headerContent = '<th>Name</th>';
-    //     var lastDay = new Date(year, month, 0).getDate();
-    //     var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    //         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    //     ];
-    //     console.log(lastDay)
-
-    //     for (var day = 1; day <= lastDay; day++) {
-    //         var date = new Date(year, month - 1, day);
-    //         var formattedDate = day + ' ' + monthNames[date.getMonth()];
-    //         console.log(formattedDate)
-    //         headerContent += '<th>' + formattedDate + '</th>';
-
-    //     }
-    //     $('#header').append(headerContent);
-    // }
-
-
-    function userDataTable(month, year) {
-        var lastDay = new Date(year, month, 0).getDate();
-        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-        var columns = [{
-            "data": null,
-            "render": function(data, type, row) {
-                return data.name; // Changed to use 'name' field
-            },
-            "title": "Name"
-        }];
-        for (var day = 1; day <= lastDay; day++) {
-            var dayStr = day + "-" + monthNames[month - 1];
-            columns.push({
-                "data": function(row) {
-                    var attendanceData = row.attendance[dayStr];
-                    return attendanceData !== undefined ? attendanceData : ''; // Corrected line
-                },
-                "title": dayStr
-            });
+        
+        // Function to dynamically generate column headers
+        function generateColumnHeaders(month, year) {
+            var lastDay = new Date(year, month, 0).getDate();
+            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var headerContent = "";
+            headerContent += "<th>Name</th>"; // Static column header for name
+            for (var day = 1; day <= lastDay; day++) {
+                var date = day + "-" + monthNames[month - 1];
+                headerContent += "<th>" + date + "</th>";
+            }
+            $('#header').html(headerContent);
         }
 
-        $('#attendList').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "destroy": true,
-            ajax: {
-                url: '../api/get_attend.php',
-                type: 'POST',
-                data: {
-                    month: month,
-                    year: year,
-                    action: "get_attend"
+        function initializeDataTable(initialMonth, initialYear) {
+             dataTable = $('#attendList').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "processData": false,
+                "destroy": true,
+                ajax: {
+                    url: '../api/get_attend.php',
+                    type: 'POST',
+                    data: {
+                        month: initialMonth,
+                        year: initialYear,
+                        action: "get_attend"
+                    },
                 },
-            },
-            "columns": columns
-        });
-    }
+            });
+            generateColumnHeaders(initialMonth, initialYear);
+        }
+        
+    });
 </script>
 <?php include("../includes/footer.php"); ?>

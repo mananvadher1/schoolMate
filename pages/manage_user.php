@@ -492,6 +492,7 @@
                         {data: 'updated_dt'},
                         {data: 'action'}, 
                     ],
+                    // "pageLength": 1
                 });
         }
     </script>

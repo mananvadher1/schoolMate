@@ -11,66 +11,55 @@ function getAttend()
 
     $month = $_POST['month'];
     $year = $_POST['year'];
-    $current_day = date('j');
-    $current_month = date('n');
-    $current_year = date('Y');
+    // $current_day = date('j');
+    // $current_month = date('n');
+    // $current_year = date('Y');
 
     $data = [];
     $class_id = $_SESSION['class_id'];
-
-//    $sql = "SELECT DISTINCT u.id, u.first_name, u.last_name,a.date FROM attendance as a LEFT JOIN users as u ON u.id = a.user_id WHERE u.class_id = '12' AND u.role_id = '3' AND YEAR(a.`date`) = '2024' AND MONTH(a.`date`) = '4';"
-   $sql = "SELECT DISTINCT u.id, u.first_name, u.last_name,a.date 
-            FROM `attendance` AS a 
-            LEFT JOIN users as u ON u.id = a.user_id 
-            where u.class_id = '$class_id' 
-                AND u.role_id = '3' 
-                AND YEAR(a.date) = '$year' 
-                AND MONTH(a.date) = '$month'
-            ";
+    $sql = "SELECT DISTINCT u.id, u.first_name, u.last_name 
+            FROM `users` AS u 
+            WHERE EXISTS (
+                SELECT 1 FROM `attendance` AS a 
+                WHERE u.id = a.user_id 
+                AND class_id = '$class_id' 
+                AND role_id = '3' 
+                AND YEAR(`date`) = '$year' 
+                AND MONTH(`date`) = '$month'
+            )";
     $user_query = mysqli_query($conn, $sql) or die("database error:" . mysqli_error($conn));
-
+    
     while ($user_row = mysqli_fetch_assoc($user_query)) {
-
+        //get atta
         $user_id = $user_row['id'];
-        $user_data = [
-            'id' => $user_id,
-            'name' => $user_row['first_name'].''. $user_row['last_name'],
-            // 'last_name' => $user_row['last_name'],
-            'attendance' => []
-        ];
-
-        // Fetching all dates in the specified month
+        $attendance_sql = "SELECT `status`,`date` FROM `attendance` WHERE `user_id` = ".$user_id." AND YEAR(`date`) = '$year' AND MONTH(`date`) = '$month'";
+        $attendance_query = mysqli_query($conn, $attendance_sql) or die("database error:" . mysqli_error($conn));
+        $att = [];
+        while ($at = mysqli_fetch_assoc($attendance_query)) {
+            $att[$at['date']] = $at['status'];
+        }
+        // echo print_r($att);
         $num_days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $months[0] = $user_row['first_name'].' '.$user_row['last_name'];
+        $i = 1;
         for ($day = 1; $day <= $num_days; $day++) {
-            while ($user_row = mysqli_fetch_assoc($user_query)) {
-            $user_data = [
-                'id' => $user_id,
-                'first_name' => $user_row['first_name'],
-                'last_name' => $user_row['last_name'],
-                'attendance' => []
-            ];
-
-        }
-
-
-            // Initialize $date outside of the if statement
-            $date = sprintf("%d-%s", $day, date("M", mktime(0, 0, 0, $month, $day, $year)));
-            if ($year < $current_year || ($year == $current_year && $month < $current_month) || ($year == $current_year && $month == $current_month && $day <= $current_day)) {
-                $attendance_sql = "SELECT `status` 
-                                   FROM `attendance` 
-                                   WHERE user_id = '$user_id' 
-                                   AND `date` = '$year-$month-$day'";
-                $attendance_query = mysqli_query($conn, $attendance_sql) or die("database error:" . mysqli_error($conn));
-                $attendance_row = mysqli_fetch_assoc($attendance_query);
-                $status = ($attendance_row && $attendance_row['status'] == 'present') ? "P" : "A"; // "P" for present, "A" for absent
-            } else {
-                $status = "0";
+            
+            $monthStr = date('Y-m-d',strtotime($day.'-'.$month.'-'.$year));
+            $curDate = date('Y-m-d');
+            // echo $monthStr;
+            $status = '-';
+            if (array_key_exists($monthStr, $att)){
+                $status = $att[$monthStr];
             }
-            $user_data['attendance'][$date] = $status;
+            if($curDate < $monthStr){
+                $status = 'N/A';
+            }
+            $months[$i] = $status;
+            $i++;
         }
-        $data[] = $user_data;
+        $data[] = array_merge($months);
     }
-
+    //print_r($data);exit;
     // Count total records for pagination
     $query = "SELECT COUNT(*) as total FROM `users`";
     $result_count = mysqli_query($conn, $query) or die("database error:" . mysqli_error($conn));
