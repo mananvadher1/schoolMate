@@ -41,44 +41,17 @@ $re_dt = mysqli_query($conn, $sql_dt);
 // $re_stu_dt = mysqli_query($conn, $sql_stu_dt);
 
 
-// Get the current month and year
-$currentMonth = date('m');
-$currentYear = date('Y');
+// $currentMonth = date('m');
+// $currentYear = date('Y');
 
-// Get the number of days in the current month
-$numberOfDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+// $numberOfDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
 
-// Array to store dates of the current month
-$currentMonthDates = array();
-$attendData = array();
-
-// Loop through each day of the current month
-for ($day = 1; $day <= $numberOfDays; $day++) {
-    // Format the date
-    $date = date("d-m-Y", strtotime("$currentYear-$currentMonth-$day"));
-    $qDate = date("Y-m-d", strtotime("$currentYear-$currentMonth-$day"));
-    $sql_name="SELECT 
-                    u.first_name, 
-                    u.last_name, 
-                    a.date, 
-                    a.status 
-                FROM 
-                    users AS u 
-                LEFT JOIN 
-                    attendance AS a 
-                ON 
-                    u.id = a.user_id 
-                    AND a.date = '$qDate' 
-                WHERE 
-                    u.class_id = '{$_SESSION["class_id"]}' AND u.role_id = '3'";
-    $re_name = mysqli_query($conn, $sql_name);
-    // Add the date to the array
-    while ($row_dt = mysqli_fetch_assoc($re_name)) {
-        // Add each row to the $attendData array
-        $attendData[] = $row_dt;
-    }
-    $currentMonthDates[] = $qDate;
-}
+// $monthDates = array();
+// // Loop through each day of the current month
+// for ($day = 1; $day <= $numberOfDays; $day++) {
+//     $date = date("j M", strtotime("$currentYear-$currentMonth-$day"));
+//     $monthDates[] = $date;
+// }
 
 //to print the data
 
