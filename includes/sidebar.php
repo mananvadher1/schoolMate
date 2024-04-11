@@ -132,14 +132,24 @@
               </p>
             </a>
           </li>
-
+          <?php if ($_SESSION['role_id'] == 3 ) : ?>
+            <li class="nav-item">
+            <a href="../pages/student_transport.php" class="nav-link">
+            <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
+              <p>
+                Transport
+          </p>
+            </a>
+          </li>
+          <?php endif; ?>
+          <?php if ($_SESSION['role_id'] != 3 ) : ?>
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
               <p>
                 Transport
-                <i class=" nav-icon right fas fa-angle-left"></i>
               </p>
+              <i class=" nav-icon right fas fa-angle-left"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
@@ -162,7 +172,7 @@
               </li>
             </ul>
           </li>
-
+          <?php endif; ?> 
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fa fa-calendar"></i>
