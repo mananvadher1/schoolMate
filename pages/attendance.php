@@ -30,9 +30,9 @@
                     if($row_dt['status'] == NULL && $row_dt['status'] == NULL){
                         echo "<button onClick='present(" . $row_dt['id'] . ")' id='smallP".$row_dt['id']."' class='present btn btn-sm btn-success'>P</button>
                         <button onClick='absent(" . $row_dt['id'] . ")' id='smallA".$row_dt['id']."' class='abesent btn btn-sm btn-danger'>A</button>";
-                    }else if($row_dt['status'] == 'present'){
+                    }else if($row_dt['status'] == 'P'){
                         echo "<div class='d-inline-block' style='background-color: green; color: white; padding: 5px 10px; margin-right: 10px; border-radius: 3px;'>Present</div>";
-                    }else if($row_dt['status'] == 'absent'){
+                    }else if($row_dt['status'] == 'A'){
                         echo "<div class='d-inline-block' style='background-color: red; color: white; padding: 5px 10px; border-radius: 3px;'>Absent</div>";
                     }
                     echo "</td></tr>";

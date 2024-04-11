@@ -237,7 +237,6 @@
         </div>
     </div>
 
-    <!-- data table -->
     <div class="row m-3">
         <div class="col-md-4">
             <div class="form-group">
@@ -493,6 +492,7 @@
                         {data: 'updated_dt'},
                         {data: 'action'}, 
                     ],
+                    // "pageLength": 1
                 });
         }
     </script>
