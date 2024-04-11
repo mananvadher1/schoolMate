@@ -11,11 +11,11 @@ function attendence()
     $id = $_POST['id'];
     $currentDate = date('Y-m-d');
     if ($_POST['action'] == 'present') {
-        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','present')");
+        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','P')");
     } else if ($_POST['action'] == 'absent') {
-        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','absent')");
+        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','A')");
     } else if ($_POST['action'] == 'holiday') {
-        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','holiday')");
+        $result = mysqli_query($conn, "INSERT INTO `attendance`(`user_id`, `date`, `status`) VALUES ('$id', '$currentDate','H')");
     }
     if ($result) {
         echo 1;
