@@ -4,7 +4,7 @@ include("../controller/fees_control.php");?>
 
 
 
-<div class="container">
+<div class="container my-4">
     <h1 class="text-center">
         <strong>Fees Details</strong>
     </h1>
