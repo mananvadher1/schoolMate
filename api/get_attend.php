@@ -11,12 +11,12 @@ function getAttend()
 
     $month = $_POST['month'];
     $year = $_POST['year'];
+    $class_id = $_POST['class'];
     // $current_day = date('j');
     // $current_month = date('n');
     // $current_year = date('Y');
 
     $data = [];
-    $class_id = $_SESSION['class_id'];
     $sql = "SELECT DISTINCT u.id, u.first_name, u.last_name 
             FROM `users` AS u 
             WHERE EXISTS (

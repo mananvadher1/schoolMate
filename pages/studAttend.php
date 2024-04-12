@@ -46,13 +46,54 @@
             </select>
         </div>
     </div>
+
+    <!-- select Class -->
+    <!-- <div class="col-md-3">
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <select class="form-control" name="year" id="year" required>
+            </select>
+        </div>
+    </div> -->
 </div>
 
 <div class="content">
     <div class="table-responsive">
         <table class="table table-hover " id="attendList" width="100%">
             <thead>
-            <tr id="header"><th>Name</th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th><th>Day 5</th><th>Day 6</th><th>Day 7</th><th>Day 8</th><th>Day 9</th><th>Day 10</th><th>Day 11</th><th>Day 12</th><th>Day 13</th><th>Day 14</th><th>Day 15</th><th>Day 16</th><th>Day 17</th><th>Day 18</th><th>Day 19</th><th>Day 20</th><th>Day 21</th><th>Day 22</th><th>Day 23</th><th>Day 24</th><th>Day 25</th><th>Day 26</th><th>Day 27</th><th>Day 28</th><th>Day 29</th><th>Day 30</th></tr>
+                <tr id="header">
+                    <th>Name</th>
+                    <th>Day 1</th>
+                    <th>Day 2</th>
+                    <th>Day 3</th>
+                    <th>Day 4</th>
+                    <th>Day 5</th>
+                    <th>Day 6</th>
+                    <th>Day 7</th>
+                    <th>Day 8</th>
+                    <th>Day 9</th>
+                    <th>Day 10</th>
+                    <th>Day 11</th>
+                    <th>Day 12</th>
+                    <th>Day 13</th>
+                    <th>Day 14</th>
+                    <th>Day 15</th>
+                    <th>Day 16</th>
+                    <th>Day 17</th>
+                    <th>Day 18</th>
+                    <th>Day 19</th>
+                    <th>Day 20</th>
+                    <th>Day 21</th>
+                    <th>Day 22</th>
+                    <th>Day 23</th>
+                    <th>Day 24</th>
+                    <th>Day 25</th>
+                    <th>Day 26</th>
+                    <th>Day 27</th>
+                    <th>Day 28</th>
+                    <th>Day 29</th>
+                    <th>Day 30</th>
+                </tr>
             </thead>
             <tbody>
             </tbody>
@@ -62,19 +103,20 @@
 <script>
     $(document).ready(function() {
         var dataTable;
-        
+
         var initialMonth = $('#month').val();
         var initialYear = $('#year').val();
-        
+        var class_id = '<?php echo $_SESSION['class_id']; ?>';
+
         // Initialize DataTable
-        initializeDataTable(initialMonth, initialYear);
+        initializeDataTable(initialMonth, initialYear, class_id);
         
         $('#month, #year').on('change', function() {
             var month = $('#month').val();
             var year = $('#year').val();
-            initializeDataTable(month, year);
+            initializeDataTable(month, year, class_id);
         });
-        
+
         // Function to dynamically generate column headers
         function generateColumnHeaders(month, year) {
             var lastDay = new Date(year, month, 0).getDate();
@@ -88,8 +130,9 @@
             $('#header').html(headerContent);
         }
 
-        function initializeDataTable(initialMonth, initialYear) {
-             dataTable = $('#attendList').DataTable({
+        function initializeDataTable(initialMonth, initialYear, class_id) {
+            // console.log(class_id);
+            dataTable = $('#attendList').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "processData": false,
@@ -100,13 +143,14 @@
                     data: {
                         month: initialMonth,
                         year: initialYear,
+                        class: class_id,
                         action: "get_attend"
                     },
                 },
             });
             generateColumnHeaders(initialMonth, initialYear);
         }
-        
+
     });
 </script>
 <?php include("../includes/footer.php"); ?>
