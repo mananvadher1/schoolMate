@@ -76,25 +76,31 @@
             </a>
           </li> 
           <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id']==2) : ?>
-          <li class="nav-item">
-            <a href="../pages/attendance.php" class="nav-link">
+            <li class="nav-item">
+            <a href="" class="nav-link">
             <i class="nav-icon fa fa-clipboard"></i>
               <p>
                 Attendence
               </p>
+              <i class=" nav-icon right fas fa-angle-left"></i>
             </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../pages/attendance.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>Take Attendence</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../pages/teacher_attendence.php" class="nav-link">
+                <i class=" nav-icon fas fa-angle-right"></i>
+                  <p>View Attendence</p>
+                </a>
+              </li>
+             
+            </ul>
           </li>
-          <?php endif; ?>   
-          <?php if ($_SESSION['role_id'] == 3 ) : ?>
-          <li class="nav-item">
-            <a href="../pages/studentattendence.php" class="nav-link">
-            <i class="nav-icon fa fa-clipboard"></i>
-              <p>
-                Attendence
-              </p>
-            </a>
-          </li>
-          <?php endif; ?>   
+          <?php endif; ?>     
 
           <li class="nav-item">
             <a href="../pages/class.php" class="nav-link">

@@ -10,7 +10,7 @@
 </style>
 
 
-
+<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
 <div class="card card-secondary">
     <div class="card-header">
         <div class="row">
@@ -40,7 +40,12 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 
+<div class="container">
+    <div class="heading text-center my-4">
+        <h1><b>Gallery</b></h1>
+    </div>
 <div class="container-fluid">
     <div class="row justify-content-center my-4">
         <div class="col-md-6 px-2">
@@ -78,6 +83,9 @@
         </div>
     </div>
 </div>
+</div>
+
+
 <script>
     $(document).ready(function() {
         $('.eventslider').slick({

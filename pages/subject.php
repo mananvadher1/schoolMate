@@ -34,7 +34,7 @@
     </div>
 </div>
 
-
+<?php if ($_SESSION['role_id'] != 3 ) : ?>
 <div class="card card-secondary">
     <div class="card-header">
         <div class="row">
@@ -86,6 +86,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 
 <h1 class="text-center my-3"><b>Subject Reference</b></h1>

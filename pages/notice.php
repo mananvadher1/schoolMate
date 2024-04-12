@@ -133,7 +133,7 @@
 
 <?php endif; ?>
 <div class="containertb">
-<h1>Notice Board</h1>
+<h1><b>Notice Board</b></h1>
 <?php
 while ($row = mysqli_fetch_array($cardresult)) {
   echo' <div class="notice">
