@@ -37,23 +37,7 @@ $sql_dt = "SELECT u.id, u.first_name, u.last_name, u.class_id, u.role_id, a.id A
             ON u.id = a.user_id AND a.date = '$currentDate'
             WHERE u.class_id = '$class_id' AND u.role_id = 3";
 $re_dt = mysqli_query($conn, $sql_dt);
-// $sql_stu_dt = "SELECT a.id, u.first_name, u.last_name, a.date, a.status FROM users AS u RIGHT JOIN attendance AS a ON u.id = a.user_id;";
-// $re_stu_dt = mysqli_query($conn, $sql_stu_dt);
 
-
-// $currentMonth = date('m');
-// $currentYear = date('Y');
-
-// $numberOfDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
-
-// $monthDates = array();
-// // Loop through each day of the current month
-// for ($day = 1; $day <= $numberOfDays; $day++) {
-//     $date = date("j M", strtotime("$currentYear-$currentMonth-$day"));
-//     $monthDates[] = $date;
-// }
-
-//to print the data
-
-
+$class = " SELECT class_id, class_name From `classes`";
+$re_class = mysqli_query($conn, $class);
 
