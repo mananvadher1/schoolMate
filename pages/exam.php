@@ -5,7 +5,7 @@
         <h4 ><b>Class: <?php echo $_SESSION['class_id']?></b></h4>
     </div>
     <div class="main-body my-4">
-    <table class="table" id="myTable">
+    <table class="table" id="">
         <thead>
             <tr>
                 <th scope="col">Sno</th>
