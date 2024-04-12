@@ -93,7 +93,7 @@
 <div class="container">
 
     <?php
-        while ($row = mysqli_fetch_assoc($result_classes)) {
+       $row = mysqli_fetch_assoc($result_classes) ;
     
             $c_name = $row['class_name'];
 
@@ -131,7 +131,7 @@
                 }
                 echo '</tbody></table>';
         
-        }
+        
         ?>
 </div>
 

@@ -121,7 +121,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Get unique class names from the subjects table
 // query to fetch distinct class to loop through each class and show content of that class  
-$sql_classes = "SELECT DISTINCT class_name FROM subjects ORDER BY class_name";
+
+// $sql_classes = "SELECT DISTINCT class_name FROM subjects ORDER BY class_name";
+// $result_classes = mysqli_query($conn, $sql_classes);
+$id = $_SESSION['class_id'];
+$sql_classes = "SELECT DISTINCT s.* ,c.class_id 
+FROM subjects as s 
+LEFT JOIN classes as c
+ON s.class_name = c.class_name
+WHERE class_id = ".$id.";";
 $result_classes = mysqli_query($conn, $sql_classes);
 
 // for fetching classes in select tag
