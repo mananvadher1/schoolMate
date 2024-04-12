@@ -77,13 +77,20 @@
 <script>
     // Function to start the countdown timer
     function startTimer(duration, display) {
-        let timer = duration;
+        let timer;
+        if (sessionStorage.getItem('timer')) {
+            timer = sessionStorage.getItem('timer');
+        } else {
+            timer = duration;
+        }
 
         function formatTime(time) {
             return time < 10 ? "0" + time : time;
         }
 
-        setInterval(function () {
+        timer = parseInt(timer); // Ensure timer is an integer
+
+        function updateTimer() {
             let hours = formatTime(Math.floor(timer / 3600));
             let minutes = formatTime(Math.floor((timer % 3600) / 60));
             let seconds = formatTime(timer % 60);
@@ -96,9 +103,15 @@
                 // Automatically submit the form when timer ends
                 document.getElementById('examForm').submit();
             }
-        }, 1000);
-    }
 
+            // Store the timer value in sessionStorage
+            sessionStorage.setItem('timer', timer.toString());
+        }
+
+        // Call updateTimer initially and every second thereafter
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    }
 
     // Start the timer when the page is loaded
     window.onload = function () {
@@ -107,6 +120,7 @@
         startTimer(countdownDuration, display);
     };
 </script>
+
 
 
 <footer class="bg-body-tertiary text-center text-lg-start">

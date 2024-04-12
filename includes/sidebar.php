@@ -112,6 +112,7 @@
           </li>
 
 
+          <?php if ($_SESSION['role_id'] == 2 || $_SESSION['role_id']==3 ) : ?>
           <li class="nav-item">
             <a href="../pages/subject.php" class="nav-link">
             <i class="nav-icon fa fa-book"></i>
@@ -120,7 +121,9 @@
               </p>
             </a>
           </li>
+          <?php endif; ?> 
 
+          <?php if ($_SESSION['role_id']==3 ) : ?>
           <li class="nav-item">
             <a href="../pages/exam.php" class="nav-link">
             <i class="nav-icon fa fa-id-badge"></i>
@@ -129,6 +132,7 @@
               </p>
             </a>
           </li>
+          <?php endif; ?> 
 
           <li class="nav-item">
             <a href="../pages/fees.php" class="nav-link">

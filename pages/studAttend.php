@@ -48,13 +48,22 @@
     </div>
 
     <!-- select Class -->
-    <!-- <div class="col-md-3">
-        <div class="form-group">
-            <label for="year">Year:</label>
-            <select class="form-control" name="year" id="year" required>
-            </select>
+    <?php if ($_SESSION['role_id'] == 1) : ?>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="cls">Year:</label>
+                <select class="form-control" name="cls" id="cls" required>
+                    <?php while ($row = mysqli_fetch_assoc($re_class)) {
+                        $selected = ($row['class_id'] == $_SESSION['class_id']) ? 'selected' : '';
+                        echo '<option value="' . $row['class_id'] . '" ' . $selected . '>' . $row['class_name'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
         </div>
-    </div> -->
+    <?php else : ?>
+        <option id="cls" value="<?php echo $_SESSION['class_id']; ?>" selected></option>
+    <?php endif; ?>
 </div>
 
 <div class="content">
@@ -106,16 +115,18 @@
 
         var initialMonth = $('#month').val();
         var initialYear = $('#year').val();
-        var class_id = '<?php echo $_SESSION['class_id']; ?>';
+        var class_id = $('#cls').val();
 
         // Initialize DataTable
         initializeDataTable(initialMonth, initialYear, class_id);
-        
-        $('#month, #year').on('change', function() {
+
+        $('#month, #year, #cls').on('change', function() {
             var month = $('#month').val();
             var year = $('#year').val();
-            initializeDataTable(month, year, class_id);
+            var cls = $('#cls').val();
+            initializeDataTable(month, year, cls);
         });
+
 
         // Function to dynamically generate column headers
         function generateColumnHeaders(month, year) {
