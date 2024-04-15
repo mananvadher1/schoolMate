@@ -1,5 +1,6 @@
 <?php
 include ("../includes/db.php");
+if ($_SESSION['role_id'] == 3 ) {
 include ("../includes/header.php");
 include ("../includes/sidebar.php");
 
@@ -30,4 +31,9 @@ echo '<div class="container">
 </div>';
 
 include("../includes/footer.php");
+}
+else
+{
+    header("location: 404.php");  
+}
 ?>

@@ -103,7 +103,14 @@
           <?php endif; ?>     
 
           <li class="nav-item">
-            <a href="../pages/class.php" class="nav-link">
+            <a href="<?php 
+            if($_SESSION['role_id'] != 3){
+              echo "../pages/class.php";
+            }
+            else{
+              echo "../pages/show_class.php?cid=".$_SESSION['class_id'];
+            }
+            ?>" class="nav-link">
             <i class="nav-icon fa fa-users"></i>
               <p>
                 Class

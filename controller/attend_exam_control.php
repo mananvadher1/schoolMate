@@ -1,14 +1,12 @@
 <?php
 include ("../includes/db.php");
-
-
-
+if ($_SESSION['role_id'] == 3){
 $cid = $_GET["cid"];
 $sname = $_GET["sname"];
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
 // echo "done";
 // }
-
+if($_SESSION['class_id'] == $cid){
 // to fetch questions in while loop
 $sql_fetch = "SELECT * FROM `questions` WHERE class_id = '$cid' AND subject_name= '$sname';";
 $result_fetch = mysqli_query($conn, $sql_fetch);
@@ -36,6 +34,10 @@ if ($result_timer && mysqli_num_rows($result_timer) > 0) {
 
     // Convert duration from minutes to seconds
     $duration_seconds = $duration_minutes * 60;
+}
+}else
+{
+     header("location: 404.php");
 }
 ?>
 
@@ -125,3 +127,8 @@ if ($result_timer && mysqli_num_rows($result_timer) > 0) {
         </nav>
 
         <!-- Main Sidebar Container -->
+    <?php } 
+    else{
+        header("location: 404.php");
+    }
+    
