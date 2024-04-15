@@ -8,7 +8,7 @@
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-column align-items-center mx-auto">
                             <img src="../dist/img/user_image/<?= $row["profile_img"] ?>" class="rounded-circle" width="70" height="70" mr-1>
-                                <strong><?= $row['first_name'] . ' ' . $row['last_name'] ?></strong>
+                            <strong><?= $row['first_name'] . ' ' . $row['last_name'] ?></strong>
                         </div>
                     </div>
                 <?php endwhile; ?>
@@ -29,7 +29,28 @@
                     <?php while ($row = mysqli_fetch_assoc($re_user)) : ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span class="d-flex flex-column">
-                                <a href="chatroom.php?id=<?php echo $row['id']; ?>"><?= $row['first_name'] . ' ' . $row['last_name'] ?></a>
+                                <a href="chatroom.php?id=<?php echo $row['id']; ?>">
+                                    <?= $row['first_name'] . ' ' . $row['last_name'] ?>
+                                    <?php
+                                    // Display role name based on role ID
+                                    $role_name = '';
+                                    switch ($row['role_id']) {
+                                        case 1:
+                                            $role_name = '<span class="text-success fw-bold">Principal</span>';
+                                            break;
+                                        case 2:
+                                            $role_name = '<span class="text-success fst-italic">Teacher</span>';
+                                            break;
+                                        case 3:
+                                            $role_name = '<span class="text-success text-decoration-underline">Student</span>';
+                                            break;
+                                        default:
+                                            $role_name = '<span class="text-danger fw-bold">Unknown</span>';
+                                            break;
+                                    }
+                                    echo "(" . $role_name . ")";
+                                    ?>
+                                </a>
                                 <small class="text-muted"><?= $row['email'] ?></small>
                             </span>
                             <?php if ($row['loggedin'] == 1) : ?>

@@ -1,7 +1,7 @@
 <?php
 include ("../controller/result_control.php");
 
-echo '<div class="jumbotron jumbotron-fluid">
+echo '<div class="jumbotron jumbotron-fluid mx-5 mt-5">
 <div class="container">
   <h1 class="display-4 text-primary">Well Done!!</h1>
   <p class="lead">You have successfully submitted the test. Now, let\'s delve deeper into your performance.</p>
@@ -68,7 +68,7 @@ if($result){
 }
 
 if ($scored == $totalScore) {
-    echo '<div class="jumbotron jumbotron-fluid">
+    echo '<div class="jumbotron jumbotron-fluid mx-5 md-5">
     <div class="container">
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
       <p class="lead text-success">Excellent!! You passed the test with full marks.</p>
@@ -77,7 +77,7 @@ if ($scored == $totalScore) {
     </div>
   </div>';
 }elseif($scored >= ($totalScore * 0.5)) {
-    echo '<div class="jumbotron jumbotron-fluid">
+    echo '<div class="jumbotron jumbotron-fluid mx-5 md-5">
     <div class="container">
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
       <p class="lead text-info">Well Done!! You passed the test with good marks.</p>
@@ -86,7 +86,7 @@ if ($scored == $totalScore) {
     </div>
   </div>';
 }else {
-    echo '<div class="jumbotron jumbotron-fluid">
+    echo '<div class="jumbotron jumbotron-fluid mx-5 md-5">
     <div class="container">
       <h3 class="display-4"><i>Total Score: '.$scored.'/'.$totalScore.'</i></h3>
       <p class="lead text-danger">You should study more! You failed the test.</p>

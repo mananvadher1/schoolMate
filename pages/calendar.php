@@ -4,7 +4,7 @@ include ("../includes/header.php");
 include ("../includes/sidebar.php");
 ?>
 
-<div id='calendar'></div>
+<div class="px-5" id='calendar'></div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
