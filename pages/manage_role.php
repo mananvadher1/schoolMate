@@ -1,5 +1,5 @@
 <?php include("../controller/role_control.php"); ?>
-<?php if ($_SESSION['role_id'] == 1): ?>
+
  
 <!-- edit modal -->
 <div class="modal" id="edit_role" tabindex="-1" role="dialog">
@@ -157,9 +157,4 @@
 </script>
 
 <?php include("../includes/footer.php"); ?>
-<?php else : ?>
-<?php
-    header("location: 404.php");
-    ?>
 
-<?php endif; ?>

@@ -1,131 +1,131 @@
 <?php include("../controller/edit_profile_control.php"); ?>
 
 <style>
-body {
-    background-color: #f9f9fa
-}
+    body {
+        background-color: #f9f9fa
+    }
 
-/* .padding {
+    /* .padding {
     padding: 3rem !important
 } */
 
-.user-card-full {
-    overflow: hidden;
-}
+    .user-card-full {
+        overflow: hidden;
+    }
 
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    border: none;
-    margin-bottom: 30px;
-}
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+        box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+        border: none;
+        margin-bottom: 30px;
+    }
 
-.m-r-0 {
-    margin-right: 0px;
-}
+    .m-r-0 {
+        margin-right: 0px;
+    }
 
-.m-l-0 {
-    margin-left: 0px;
-}
+    .m-l-0 {
+        margin-left: 0px;
+    }
 
-.user-card-full .user-profile {
-    border-radius: 5px 0 0 5px;
-}
+    .user-card-full .user-profile {
+        border-radius: 5px 0 0 5px;
+    }
 
 
-.user-profile {
-    padding: 20px 0;
-}
+    .user-profile {
+        padding: 20px 0;
+    }
 
-.card-block {
-    padding: 1.25rem;
-}
+    .card-block {
+        padding: 1.25rem;
+    }
 
-.m-b-25 {
-    margin-bottom: 25px;
-}
+    .m-b-25 {
+        margin-bottom: 25px;
+    }
 
-h6 {
-    font-size: 14px;
-}
-
-.card .card-block p {
-    line-height: 25px;
-}
-
-@media only screen and (min-width: 1400px) {
-    p {
+    h6 {
         font-size: 14px;
     }
-}
 
-.card-block {
-    padding: 1.25rem;
-}
+    .card .card-block p {
+        line-height: 25px;
+    }
 
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0;
-}
+    @media only screen and (min-width: 1400px) {
+        p {
+            font-size: 14px;
+        }
+    }
 
-.m-b-20 {
-    margin-bottom: 20px;
-}
+    .card-block {
+        padding: 1.25rem;
+    }
 
-.p-b-5 {
-    padding-bottom: 5px !important;
-}
+    .b-b-default {
+        border-bottom: 1px solid #e0e0e0;
+    }
 
-.card .card-block p {
-    line-height: 25px;
-}
+    .m-b-20 {
+        margin-bottom: 20px;
+    }
 
-.m-b-10 {
-    margin-bottom: 10px;
-}
+    .p-b-5 {
+        padding-bottom: 5px !important;
+    }
 
-.text-muted {
-    color: #919aa3 !important;
-}
+    .card .card-block p {
+        line-height: 25px;
+    }
 
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0;
-}
+    .m-b-10 {
+        margin-bottom: 10px;
+    }
 
-.f-w-600 {
-    font-weight: 600;
-}
+    .text-muted {
+        color: #919aa3 !important;
+    }
 
-.m-b-20 {
-    margin-bottom: 20px;
-}
+    .b-b-default {
+        border-bottom: 1px solid #e0e0e0;
+    }
 
-.m-t-40 {
-    margin-top: 20px;
-}
+    .f-w-600 {
+        font-weight: 600;
+    }
 
-.p-b-5 {
-    padding-bottom: 5px !important;
-}
+    .m-b-20 {
+        margin-bottom: 20px;
+    }
 
-.m-b-10 {
-    margin-bottom: 10px;
-}
+    .m-t-40 {
+        margin-top: 20px;
+    }
 
-.m-t-40 {
-    margin-top: 20px;
-}
+    .p-b-5 {
+        padding-bottom: 5px !important;
+    }
 
-.user-card-full .social-link li {
-    display: inline-block;
-}
+    .m-b-10 {
+        margin-bottom: 10px;
+    }
 
-.user-card-full .social-link li a {
-    font-size: 20px;
-    margin: 0 10px 0 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
+    .m-t-40 {
+        margin-top: 20px;
+    }
+
+    .user-card-full .social-link li {
+        display: inline-block;
+    }
+
+    .user-card-full .social-link li a {
+        font-size: 20px;
+        margin: 0 10px 0 0;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
 </style>
 
 <div class="card card-secondary">
@@ -135,8 +135,7 @@ h6 {
                 <h3 class="card-title my-2">Edit Profile</h3>
             </div>
             <div class="col-auto">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">Edit Now</a>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit Now</a>
             </div>
         </div>
     </div>
@@ -147,28 +146,24 @@ h6 {
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="first_name">First Name:</label>
-                        <input type="text" class="form-control" name="first_name" id="first_name"
-                            value="<?php echo $row_edit['first_name']; ?>" required>
+                        <input type="text" class="form-control" name="first_name" id="first_name" value="<?php echo $row_edit['first_name']; ?>" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Last Name:</label>
-                        <input type="text" class="form-control" name="last_name" id="last_name"
-                            value="<?php echo $row_edit['last_name']; ?>" required>
+                        <input type="text" class="form-control" name="last_name" id="last_name" value="<?php echo $row_edit['last_name']; ?>" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" name="email" id="email"
-                            value="<?php echo $row_edit['email']; ?>" required>
+                        <input type="email" class="form-control" name="email" id="email" value="<?php echo $row_edit['email']; ?>" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="dob">Date of Birth:</label>
-                        <input type="date" class="form-control" name="dob" id="dob"
-                            value="<?php echo $row_edit['dob']; ?>" required>
+                        <input type="date" class="form-control" name="dob" id="dob" value="<?php echo $row_edit['dob']; ?>" required>
                     </div>
                 </div>
 
@@ -176,35 +171,37 @@ h6 {
                     <div class="form-group col-md-6">
                         <label for="gender">Gender:</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender-male" value="male"
-                                <?php echo ($row_edit['gender'] === 'male') ? 'checked' : ''; ?> required>
+                            <input class="form-check-input" type="radio" name="gender" id="gender-male" value="male" <?php echo ($row_edit['gender'] === 'male') ? 'checked' : ''; ?> required>
                             <label class="form-check-label" for="gender-male">Male</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender-female" value="female"
-                                <?php echo ($row_edit['gender'] === 'female') ? 'checked' : ''; ?> required>
+                            <input class="form-check-input" type="radio" name="gender" id="gender-female" value="female" <?php echo ($row_edit['gender'] === 'female') ? 'checked' : ''; ?> required>
                             <label class="form-check-label" for="gender-female">Female</label>
                         </div>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="phone">Phone Number:</label>
-                        <input type="tel" class="form-control" name="phone" id="phone"
-                            value="<?php echo $row_edit['phone']; ?>" required>
+                        <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $row_edit['phone']; ?>" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="blood_group">Blood Group:</label>
-                        <input type="text" class="form-control" name="blood_group" id="blood_group"
-                            value="<?php echo $row_edit['blood_group']; ?>" required>
+                        <input type="text" class="form-control" name="blood_group" id="blood_group" value="<?php echo $row_edit['blood_group']; ?>" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="address">Address:</label>
-                        <textarea class="form-control" name="address" id="address"
-                            required><?php echo $row_edit['address']; ?></textarea>
+                        <textarea class="form-control" name="address" id="address" required><?php echo $row_edit['address']; ?></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="profile_img">Profile Image:</label>
+                        <input type="file" class="form-control-file" name="profile_img" id="profile_img" accept="image/*">
                     </div>
                 </div>
 
@@ -246,9 +243,8 @@ h6 {
         <div class="row">
 
             <div class="col-md-6" style="margin-left:100px">
-                <img class="profile-user-img img-fluid mt-2" style="width:400px"
-                    src="../dist/img/user_image/<?php echo $row_edit["profile_img"]; ?>" alt="User profile picture">
-                <h4 class="mt-4 ml-4"><b><?php echo $row_edit['first_name'];?>
+                <img class="profile-user-img img-fluid mt-2" style="width:400px" src="../dist/img/user_image/<?php echo $row_edit["profile_img"]; ?>" alt="User profile picture">
+                <h4 class="mt-4 ml-4"><b><?php echo $row_edit['first_name']; ?>
                         <?php echo $row_edit['last_name']; ?></b></h4>
             </div>
 
@@ -258,27 +254,27 @@ h6 {
 
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Email</p>
-                <p class="text-muted f-w-400"><?php echo $row_edit['email'];?></p>
+                <p class="text-muted f-w-400"><?php echo $row_edit['email']; ?></p>
             </div>
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Phone</p>
-                <h6 class="text-muted f-w-400"><?php echo $row_edit['phone'];?></h6>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['phone']; ?></h6>
             </div>
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Gender</p>
-                <h6 class="text-muted f-w-400"><?php echo $row_edit['gender'];?></h6>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['gender']; ?></h6>
             </div>
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Date Of Birth</p>
-                <h6 class="text-muted f-w-400"><?php echo $row_edit['dob'];?></h6>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['dob']; ?></h6>
             </div>
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Address</p>
-                <h6 class="text-muted f-w-400"><?php echo $row_edit['address'];?></h6>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['address']; ?></h6>
             </div>
             <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Blood Group</p>
-                <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group'];?></h6>
+                <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group']; ?></h6>
             </div>
 
         </div>
@@ -302,7 +298,7 @@ h6 {
                                         src="../dist/img/user_image/<?php echo $row_edit["profile_img"]; ?>"
                                         alt="User profile picture">
                                     <br><br>
-                                    <h5><b><?php echo $row_edit['first_name'];?>
+                                    <h5><b><?php echo $row_edit['first_name']; ?>
                                             <?php echo $row_edit['last_name']; ?></b></h5>
                                 </div>
                                 <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
@@ -316,33 +312,33 @@ h6 {
                                 <div class="row">
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Email</p>
-                                    <p class="text-muted f-w-400"><?php echo $row_edit['email'];?></p>
+                                    <p class="text-muted f-w-400"><?php echo $row_edit['email']; ?></p>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Phone</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['phone'];?></h6>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['phone']; ?></h6>
                                 </div>
                                 </div>
 
                                 <div class="row">
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Gender</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['gender'];?></h6>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['gender']; ?></h6>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Date Of Birth</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['dob'];?></h6>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['dob']; ?></h6>
                                 </div>
                                 </div>
 
                                 <div class="row">
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Address</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['address'];?></h6>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['address']; ?></h6>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Blood Group</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group'];?></h6>
+                                    <h6 class="text-muted f-w-400"><?php echo $row_edit['blood_group']; ?></h6>
                                 </div>
                                 </div>
 

@@ -1,5 +1,5 @@
 <?php include("../controller/user_control.php"); ?>
-<?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
+
 
     <!-- edit modal -->
     <div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -105,6 +105,7 @@
         </div>
     </div>
 
+    <!-- add user -->
     <div class="card card-secondary">
         <div class="card-header">
             <div class="row">
@@ -126,16 +127,12 @@
                                 <?php
                                 while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
 
-                                    // Skip the record if role_id is 4(Driver)
-                                    if ($_SESSION['role_id'] == 2) {
-                                        if ($row_dropdowm['role_id'] != 3) {
+                                          // Skip the record if role_id is 4(Driver)
+                                    if ($_SESSION['role_id'] == 2 && $row_dropdowm['role_id'] != 3) {
                                             continue;
-                                        }
                                     }
-                                    if ($_SESSION['role_id'] == 1) {
-                                        if ($row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1) {
+                                    if ($_SESSION['role_id'] == 1 && $row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1 ) {
                                             continue;
-                                        }
                                     }
                                     echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
                                 }
@@ -246,6 +243,9 @@
                 <?php
                 while ($row_dropdowm = mysqli_fetch_assoc($search_role)) {
                     if ($row_dropdowm['role_id'] == 4) {
+                        continue;
+                    }
+                    if($_SESSION['role_id'] == 2 && $row_dropdowm['role_id'] == 1){
                         continue;
                     }
                     echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
@@ -497,6 +497,3 @@
         }
     </script>
     <?php include("../includes/footer.php"); ?>
-<?php else : ?>
-    <?php header("location: 404.php"); ?>
-<?php endif; ?>

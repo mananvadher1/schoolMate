@@ -7,8 +7,8 @@
                 <th scope="col">Sr No</th>
                 <th scope="col">Name</th>
                 <th scope="col">Vehical No</th>
-                <th scope="col">Area</th>
-                <th scope="col">Phone No</th>
+                <th scope="col">Area Covered</th>
+                <th scope="col">Phone No of Driver</th>
                 
             </tr>
         </thead>
