@@ -76,8 +76,6 @@ include("../controller/generate_password_control.php");
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" id="submit" class="btn btn-primary btn-lg float-left"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Send Mail</button>
-                            <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                                    class="link-danger">Register</a></p> -->
                         </div>
 
                     </form>

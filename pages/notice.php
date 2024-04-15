@@ -32,6 +32,7 @@
       margin-bottom: 0;
     }
   </style>
+
 <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
 
 <!-- edit notice modal  -->
@@ -132,6 +133,8 @@
 </div>
 
 <?php endif; ?>
+
+<?php if ($_SESSION['role_id'] == 3): ?>
 <div class="containertb">
 <h1><b>Notice Board</b></h1>
 <?php
@@ -144,6 +147,7 @@ while ($row = mysqli_fetch_array($cardresult)) {
 }
 ?>
 </div>
+<?php endif; ?>
 
 
 
