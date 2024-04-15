@@ -127,16 +127,12 @@
                                 <?php
                                 while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
 
-                                    // Skip the record if role_id is 4(Driver)
-                                    if ($_SESSION['role_id'] == 2) {
-                                        if ($row_dropdowm['role_id'] != 3) {
+                                          // Skip the record if role_id is 4(Driver)
+                                    if ($_SESSION['role_id'] == 2 && $row_dropdowm['role_id'] != 3) {
                                             continue;
-                                        }
                                     }
-                                    if ($_SESSION['role_id'] == 1) {
-                                        if ($row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1) {
+                                    if ($_SESSION['role_id'] == 1 && $row_dropdowm['role_id'] == 4 || $row_dropdowm['role_id'] == 1 ) {
                                             continue;
-                                        }
                                     }
                                     echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
                                 }
@@ -247,6 +243,9 @@
                 <?php
                 while ($row_dropdowm = mysqli_fetch_assoc($search_role)) {
                     if ($row_dropdowm['role_id'] == 4) {
+                        continue;
+                    }
+                    if($_SESSION['role_id'] == 2 && $row_dropdowm['role_id'] == 1){
                         continue;
                     }
                     echo '  <option value="' . $row_dropdowm['role_id'] . '">' . $row_dropdowm['role_name'] . '</option>';
