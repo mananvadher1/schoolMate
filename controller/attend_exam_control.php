@@ -1,6 +1,8 @@
 <?php
 include ("../includes/db.php");
 
+
+
 $cid = $_GET["cid"];
 $sname = $_GET["sname"];
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -35,11 +37,6 @@ if ($result_timer && mysqli_num_rows($result_timer) > 0) {
     // Convert duration from minutes to seconds
     $duration_seconds = $duration_minutes * 60;
 }
-
-
-
-
-// include ("../includes/sidebar.php");
 ?>
 
 
@@ -117,12 +114,12 @@ if ($result_timer && mysqli_num_rows($result_timer) > 0) {
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="ml-5 text-center">
-                    <h5>
+                    <h5 class="ml-5 mt-2">
                         <?php echo "Welcome <b>" . $_SESSION['fname'] . "</b>!"; ?>
                     </h5>
                 </div>
-                <div class="ml-5">
-                    <p><strong>SCHOOLMATE wishes you Best of Luck for your exam!</strong></p>
+                <div class="ml-5 mt-2">
+                    <p style="margin-left:600px;"><strong>SCHOOLMATE wishes you Best of Luck for your exam!</strong></p>
                 </div>
             </div>
         </nav>

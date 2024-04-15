@@ -1,11 +1,11 @@
 <?php include("../controller/exam_control.php"); ?>
 <div class="container">
-    <div class="heading">
-        <h1 class="my-3"><b>Exam</b></h1>
-        <h4>Class: </h4>
+    <div class="heading my-3 text-center">
+        <h1 class=""><b>Exam</b></h1>
+        <h4 ><b>Class: <?php echo $_SESSION['class_id']?></b></h4>
     </div>
     <div class="main-body my-4">
-    <table class="table" id="myTable">
+    <table class="table" id="">
         <thead>
             <tr>
                 <th scope="col">Sno</th>
@@ -32,7 +32,7 @@
                         <td>" . $row['exam_time'] . "</td>
                         <td>" . $row['duration'] . "</td>
                         <td>" . $row['result_date'] . "</td>
-                        <td><a href='exam_instructions.php?cid=".$class_id."&sname=".$subject_name."'><button class='btn btn-sm btn-danger'>Attend Exam</button></a></td>
+                        <td><a href='exam_instructions.php?cid=".$class_id."&sname=".$subject_name."'>".$actionText."</a></td>
                     </tr>";
                 }
             } ?>

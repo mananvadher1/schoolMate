@@ -3,11 +3,14 @@ include ("../includes/db.php");
 include ("../includes/header.php");
 include ("../includes/sidebar.php");
 
+
 $cid = $_GET['cid'];
 $sname = $_GET['sname'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     
+ // Form has been submitted, set the session variable
+ $_SESSION['examSubmitted'] = true;
+
     // Initialize an array to store the submitted answers
     $submittedAnswers = array();
 
@@ -23,16 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "<h3>Answers</h3>";
         // echo implode("<br>", $submittedAnswers);
         // echo "<br><br>";
-        
 
-    } 
 
-} 
+    }
 
-  // query to compare answers and fetch questions from table
-  $sql = "SELECT * FROM `questions` WHERE `class_id` = '$cid' AND `subject_name` = '$sname'; ";
-  $result = mysqli_query($conn, $sql);
+}
+
+// query to compare answers and fetch questions from table
+$sql = "SELECT * FROM `questions` WHERE `class_id` = '$cid' AND `subject_name` = '$sname'; ";
+$result = mysqli_query($conn, $sql);
 
 
 ?>
-
