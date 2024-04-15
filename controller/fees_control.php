@@ -102,7 +102,15 @@ $m_class_dropdown = mysqli_query($conn, $modal_class_dropdown);
 $sql_class_dropdown = "SELECT * FROM `classes`";
 $class_dropdown = mysqli_query($conn, $sql_class_dropdown);
 // for data table
+if($_SESSION['role_id']==3)
+{
+    $sql_dt = "SELECT * FROM `fees` WHERE class_id = " . $_SESSION['class_id'];
+$re_dt = mysqli_query($conn, $sql_dt);
+}
+else
+{
 $sql_dt = "SELECT * FROM `fees`";
 $re_dt = mysqli_query($conn, $sql_dt);
 
+}
 ?>

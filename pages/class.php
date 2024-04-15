@@ -1,5 +1,5 @@
 <?php include("../controller/class_control.php"); ?>
-
+<?php if ($_SESSION['role_id'] != 3) : ?>
 <div class="container">
     <h2 class="text-center my-4"><b>Class List</b></h2>
     <div class="row">
@@ -44,3 +44,6 @@
 
 
 <?php include("../includes/footer.php"); ?>
+<?php else : ?>
+<?php header("location: 404.php"); ?>
+<?php endif; ?>   

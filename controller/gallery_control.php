@@ -1,6 +1,7 @@
 <?php
-// Include your database connection file here
 include("../includes/db.php");
+include("../includes/header.php"); 
+include("../includes/sidebar.php");
 // Fetch image names from the database where title is 'Events'
 $sql = "SELECT DISTINCT image FROM `gallery` WHERE title='Events'";
 $result = mysqli_query($conn, $sql);
@@ -22,8 +23,8 @@ while ($row = mysqli_fetch_assoc($resultAc)) {
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $title = $_POST['title'];
     $created_by = $_SESSION['email'];
-}
-$insert = false;
+
+    $insert = false;
             // Handle file upload
             if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
                 $img_name = $_FILES['profile_img']['name'];
@@ -83,7 +84,8 @@ $insert = false;
                 </script>";
             }
         
+}
+
     
-include("../includes/header.php"); 
-include("../includes/sidebar.php");
+
 ?>

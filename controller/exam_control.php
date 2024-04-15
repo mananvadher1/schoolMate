@@ -1,5 +1,6 @@
 <?php
 include ("../includes/db.php");
+if ($_SESSION['role_id'] == 3) {
 include ("../includes/header.php");
 include ("../includes/sidebar.php");
 
@@ -12,6 +13,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['examSubmitted']) && $_SESSION['ex
 // fetch exam
 $sql_exams = "SELECT * FROM `exams` WHERE `class_id` = ".$_SESSION['class_id']."";
 $result_exams = mysqli_query($conn, $sql_exams);
-
+}
+else
+{
+    header("location: 404.php");    
+}
 ?>
 

@@ -19,7 +19,7 @@ include("../controller/fees_control.php");?>
 
                 // Determine color based on the counter value
                 $color = $counter % 3 == 0 ? 'bg-success' : ($counter % 2 == 0 ? 'bg-warning' : 'bg-info');
-
+                
                 echo ' <div class="col-lg-4 col-6">
                         <div class="small-box ' . $color . '">
                         <div class="inner">
