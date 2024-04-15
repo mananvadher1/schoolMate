@@ -110,9 +110,12 @@
                    
                     <th class="font-weight-bold col-md-3">Subject Name</th>
                     <th class="font-weight-bold col-md-3">Subject Code</th>
-                    <th class="font-weight-bold col-md-3">Subject Reference</th>
-                    <th class="font-weight-bold col-md-3">Action</th>
-                </tr>';
+                    <th class="font-weight-bold col-md-3">Subject Reference</th>';
+                    if ($_SESSION['role_id'] == 1 || $_SESSION['role_id']==2) {
+                        echo '<th class="font-weight-bold col-md-3">Action</th>';
+                    }
+                    
+                echo '</tr>';
 
                 // query to fetch particular class subjects
             $sql_subjects = "SELECT * FROM subjects WHERE class_name = '$c_name'";
@@ -123,12 +126,14 @@
                     
                     <td>" . $row_dt['subject_name'] . "</td>
                     <td>" . $row_dt['subject_code'] . "</td>
-                    <td><a href='" . $row_dt['subject_ref'] . "'>click here to see the reference</a></td>
-                    
-                    <td><button onClick='editClick(" . $row_dt['subject_id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
-                    <button onClick='deleteClick(" . $row_dt['subject_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
+                    <td><a href='" . $row_dt['subject_ref'] . "'>click here to see the reference</a></td>";
+                   if ($_SESSION['role_id'] == 1 || $_SESSION['role_id']==2) {
+                    echo "<td><button onClick='editClick(" . $row_dt['subject_id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
+                    <button onClick='deleteClick(" . $row_dt['subject_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>";
+                   }
+           
 
-                </tr>";
+                echo "</tr>";
                 }
                 echo '</tbody></table>';
         
