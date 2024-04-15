@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Handle file upload
             if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
-                $img_name = $_FILES['profile_img']['name'];
+                $img_name = uniqid() . '_' . $_FILES['profile_img']['name'];
                 $img_tmp_name = $_FILES['profile_img']['tmp_name'];
                 $upload_folder = '../dist/img/user_image/';
     
