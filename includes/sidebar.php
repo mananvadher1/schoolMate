@@ -184,7 +184,7 @@
           </li>
           <?php endif; ?> 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../pages/report.php" class="nav-link">
             <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Report

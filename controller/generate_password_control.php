@@ -75,12 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>';
-            //     $_SESSION['toast_message'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            //     <strong>Success! </strong>Check your email to get new generated password. Now you can login.
-            //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            //       <span aria-hidden="true">&times;</span>
-            //     </button>
-            //   </div>';
+        
                 header('Location: ../login.php');
             }else {
                 echo "Something is wrong, Mail is not sent!";

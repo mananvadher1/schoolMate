@@ -7,6 +7,12 @@
         /* Add overflow property */
         position: relative;
     }
+    .slider-container .slick-slide img {
+        height: 500px; 
+        width: 800px; 
+        object-fit: cover; /* Ensures the image covers the entire space */
+    }
+
 </style>
 
 
@@ -28,7 +34,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="title">Title:</label>
-                        <input type="text" class="form-control" name="title" id="title" required>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Events, Academic" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="profile_img"> Image:</label>
@@ -48,10 +54,10 @@
     </div>
 <div class="container-fluid">
     <div class="row justify-content-center my-4">
-        <div class="col-md-6 px-2">
+        <div class="col-md-8 px-2">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4 class="card-title">Events</h4>
+                    <h4 class="card-title"><b>Events</b></h4>
                 </div>
                 <div class="slider-container mb-3">
                     <div class="eventslider">
@@ -65,10 +71,10 @@
             </div>
         </div>
 
-        <div class="col-md-6 px-2">
+        <div class="col-md-8 px-2">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4 class="card-title">Academic</h4>
+                    <h4 class="card-title"><b>Academic</b></h4>
                 </div>
                 <div class="slider-container mb-3">
                     <div class="academicslider">
