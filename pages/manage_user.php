@@ -1,6 +1,4 @@
 <?php include("../controller/user_control.php"); ?>
-
-
     <!-- edit modal -->
     <div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">

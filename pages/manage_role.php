@@ -1,6 +1,4 @@
 <?php include("../controller/role_control.php"); ?>
-
- 
 <!-- edit modal -->
 <div class="modal" id="edit_role" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

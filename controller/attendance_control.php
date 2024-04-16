@@ -1,6 +1,6 @@
 <?php
 include("../includes/db.php");
-
+if ($_SESSION['role_id'] == 2){
 if (isset($_POST['action']) && isset($_POST['id'])) {
     attendence();
 }
@@ -40,4 +40,9 @@ $re_dt = mysqli_query($conn, $sql_dt);
 
 $class = " SELECT class_id, class_name From `classes`";
 $re_class = mysqli_query($conn, $class);
-
+}
+else
+{
+    header("location: 404.php");
+}
+?>

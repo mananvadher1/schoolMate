@@ -1,6 +1,5 @@
 <?php
 include("../includes/db.php");
-
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -13,6 +12,7 @@ require '../phpmailer/src/SMTP.php';
 
 //delete button logic api calling and 
 // echo '<pre>'; print_r($_POST); exit;
+if ($_SESSION['role_id'] != 3){
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     delete();
 }
@@ -273,3 +273,9 @@ $class_dropdown = mysqli_query($conn, $sql_class_dropdown);
 $sql_dt = "SELECT users.*,roles.role_name,classes.class_name FROM `users` JOIN `roles` ON users.role_id = roles.role_id JOIN `classes` ON users.class_id = classes.class_id";
 $re_dt = mysqli_query($conn, $sql_dt);
 $sno = 0;
+}
+else
+{
+    header("location: 404.php");
+}
+?>

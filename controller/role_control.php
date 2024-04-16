@@ -2,7 +2,6 @@
 include("../includes/db.php");  
  if ($_SESSION['role_id'] == 1){
 
-
 //delete button logic api calling and 
 // echo '<pre>'; print_r($_POST); exit;
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
