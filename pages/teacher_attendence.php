@@ -1,4 +1,9 @@
-<?php include("../controller/attendance_control.php"); ?>
+<?php include("../includes/db.php");
+include("../includes/header.php");
+include("../includes/sidebar.php");
+$class = " SELECT class_id, class_name From `classes`";
+$re_class = mysqli_query($conn, $class);
+?>
 <style>
     /* Apply vertical borders between table cells */
     #attendence th,
