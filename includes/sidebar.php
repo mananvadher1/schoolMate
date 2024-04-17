@@ -203,7 +203,7 @@
             <a href="../pages/calendar.php" class="nav-link">
             <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Calender
+                Calendar
               </p>
             </a>
           </li>
