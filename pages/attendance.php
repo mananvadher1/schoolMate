@@ -19,10 +19,11 @@
         </thead>
         <tbody>
             <?php $sno = 0;
+            // echo $sql_dt;
             // echo var_dump($re_dt);
             while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                // echo $row_dt['id'];
                 $sno = $sno + 1;
-                // echo $row_dt['status'];
                 echo "<tr>
                     <td>" . $sno . "</td>
                     <td>" . $row_dt['first_name'] . "  " . $row_dt['last_name'] . "</td>

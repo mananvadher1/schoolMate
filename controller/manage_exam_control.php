@@ -36,7 +36,7 @@ if (isset($_POST['edit_id'])) {
   $id = $_POST['edit_id'];
   $edate = $_POST["edit_edate"];
   $etime = $_POST["edit_etime"];
-  $duration = isset($_POST['edit_duration']) ? $_POST['edit_duration'] : '20'; 
+  $duration = isset($_POST['edit_duration']) ? $_POST['edit_duration'] : '20';
   $rdate = $_POST['edit_rdate'];
   $status = $_POST['edit_status'];
   // $updated_by = $_SESSION['email'];
@@ -48,7 +48,6 @@ if (isset($_POST['edit_id'])) {
   // echo var_dump($result);
   if ($result) {
     $update = true;
-    
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
@@ -74,26 +73,26 @@ function delete()
 
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-if(isset($_POST['class'])){
-  $class = $_POST['class'];
-  $sub = $_POST['subject'];
-  $edate = $_POST['edate'];
-  $etime = $_POST['etime'];
-  $duration = $_POST['duration'];
-  $rdate = $_POST['rdate'];
-  $status = $_POST['status'];
-  
-  // insert data into exams
-  $sql = "INSERT INTO `exams` (`class_id`, `subject_name`, `exam_date`, `exam_time`, `duration`, `result_date`, `status`) VALUES ('$class', '$sub', '$edate', '$etime', '$duration', '$rdate', '$status')";
-  $result = mysqli_query($conn, $sql);
+  if (isset($_POST['class'])) {
+    $class = $_POST['class'];
+    $sub = $_POST['subject'];
+    $edate = $_POST['edate'];
+    $etime = $_POST['etime'];
+    $duration = $_POST['duration'];
+    $rdate = $_POST['rdate'];
+    $status = $_POST['status'];
 
-  
-  if ($result) {
-    $insert = true;
-    // echo "done";
-    
-          } else {
-            echo "<script>
+    // insert data into exams
+    $sql = "INSERT INTO `exams` (`class_id`, `subject_name`, `exam_date`, `exam_time`, `duration`, `result_date`, `status`) VALUES ('$class', '$sub', '$edate', '$etime', '$duration', '$rdate', '$status')";
+    $result = mysqli_query($conn, $sql);
+
+
+    if ($result) {
+      $insert = true;
+      // echo "done";
+
+    } else {
+      echo "<script>
       Swal.fire({
           title: 'Error!',
           text: 'Exam can't be inserted!',
@@ -102,31 +101,29 @@ if(isset($_POST['class'])){
           confirmButtonColor: '#3085d6'
       });
       </script>";
-          }
+    }
+  }
 }
-}
 
 
+if ($_SESSION['role_id'] == 2) {
+  // fetch from exams
+  // join two tables classes and exams to fetch class_name
+  $sql_exams = "SELECT exams.*, classes.class_name FROM exams INNER JOIN classes ON exams.class_id = classes.class_id";
+  $result_exams = mysqli_query($conn, $sql_exams);
 
-// fetch from exams
-// join two tables classes and exams to fetch class_name
-$sql_exams = "SELECT exams.*, classes.class_name 
-FROM exams 
-INNER JOIN classes ON exams.class_id = classes.class_id";
-$result_exams = mysqli_query($conn, $sql_exams);
+  $sql_classes = "SELECT * FROM `classes`";
+  $result_classes = mysqli_query($conn, $sql_classes);
 
-$sql_classes = "SELECT * FROM `classes`";
-$result_classes = mysqli_query($conn, $sql_classes);
-
-$sql_subjects = "SELECT * FROM `subjects`";
-$result_subjects = mysqli_query($conn, $sql_subjects);
+  $sql_subjects = "SELECT * FROM `subjects`";
+  $result_subjects = mysqli_query($conn, $sql_subjects);
 
 
-include("../includes/header.php");
-include("../includes/sidebar.php");
+  include("../includes/header.php");
+  include("../includes/sidebar.php");
 
-if($insert){
-  echo "<script>
+  if ($insert) {
+    echo "<script>
   Swal.fire({
       title: 'Success!',
       text: 'Exam inserted successfully!',
@@ -135,10 +132,10 @@ if($insert){
       confirmButtonColor: '#3085d6'
   });
   </script>";
-}
+  }
 
-if($update){
-  echo "<script>
+  if ($update) {
+    echo "<script>
   Swal.fire({
       title: 'Success!',
       text: 'Exam updated successfully!',
@@ -147,6 +144,7 @@ if($update){
       confirmButtonColor: '#3085d6'
   });
   </script>";
+  }
+} else {
+  header("location: 404.php");
 }
-
-?>
