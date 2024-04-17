@@ -3,7 +3,7 @@
 <h1 class="text-center my-3"><b>Transport Details</b></h1>
     <table class="table">
         <thead>
-            <tr>
+            <tr style="background-color:#ABB2B9">
                 <th scope="col">Sr No</th>
                 <th scope="col">Name</th>
                 <th scope="col">Vehical No</th>

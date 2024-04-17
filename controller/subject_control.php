@@ -1,6 +1,6 @@
 <?php
 include("../includes/db.php");
-
+if ($_SESSION['role_id'] != 1){
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
   delete();
 }
@@ -135,6 +135,10 @@ $result_classes = mysqli_query($conn, $sql_classes);
 // for fetching classes in select tag
 $sql_fetch = "SELECT * FROM `classes`";
 $result3 = mysqli_query($conn, $sql_fetch);
-  
+  }
+  else
+  {
+    header("location: 404.php");
+  } 
 
 ?>
