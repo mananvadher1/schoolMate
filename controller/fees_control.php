@@ -93,31 +93,28 @@ if ($_SESSION['role_id'] != 2) {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
             }
-        } else {
-            echo "Error: Missing parameters.";
         }
-    }
-    // edit user
-    $update = false;
-    if (isset($_POST['edit_id'])) {
-        $id = $_POST['edit_id'];
-        $fees_type = $_POST['edit_fees_type'];
-        $fees = $_POST['edit_fees'];
+        // edit user
+        $update = false;
+        if (isset($_POST['edit_id'])) {
+            $id = $_POST['edit_id'];
+            $fees_type = $_POST['edit_fees_type'];
+            $fees = $_POST['edit_fees'];
 
-        // Assuming there's a column named 'class_id' in the 'fees' table
-        $sql_select_class_id = "SELECT class_id FROM `fees` WHERE id = $id";
-        $result_select_class_id = mysqli_query($conn, $sql_select_class_id);
+            // Assuming there's a column named 'class_id' in the 'fees' table
+            $sql_select_class_id = "SELECT class_id FROM `fees` WHERE id = $id";
+            $result_select_class_id = mysqli_query($conn, $sql_select_class_id);
 
-        if ($result_select_class_id && mysqli_num_rows($result_select_class_id) > 0) {
-            $row = mysqli_fetch_assoc($result_select_class_id);
-            $class_id = $row['class_id'];
+            if ($result_select_class_id && mysqli_num_rows($result_select_class_id) > 0) {
+                $row = mysqli_fetch_assoc($result_select_class_id);
+                $class_id = $row['class_id'];
 
-            $sql = "UPDATE `fees` SET `fees_type`='$fees_type',`rs`='$fees' WHERE id = $id";
-            $result = mysqli_query($conn, $sql);
+                $sql = "UPDATE `fees` SET `fees_type`='$fees_type',`rs`='$fees' WHERE id = $id";
+                $result = mysqli_query($conn, $sql);
 
-            if ($result) {
-                // Run the JavaScript function after the update
-                echo "<script>
+                if ($result) {
+                    // Run the JavaScript function after the update
+                    echo "<script>
                 Swal.fire({
                     title: 'Success!',
                     text: 'User updated successfully!',
@@ -130,11 +127,12 @@ if ($_SESSION['role_id'] != 2) {
                     $('#class_id').val('$class_id');
                 });
                 </script>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
             } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                echo "Error: Class ID not found for the given fees ID.";
             }
-        } else {
-            echo "Error: Class ID not found for the given fees ID.";
         }
     }
 
