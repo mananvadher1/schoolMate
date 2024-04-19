@@ -128,7 +128,7 @@
     // })
 
     $(document).ready(function() {
-        var conn = new WebSocket('ws://localhost:8080');
+        var conn = new WebSocket('ws://192.168.24.97:8081');
         conn.onopen = function(e) {
             console.log("Connection established!");
         };

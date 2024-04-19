@@ -10,7 +10,7 @@ if (mysqli_connect_error()) {
 }
 
 if (isset($_SESSION["loggedin"]) && $_SESSION['loggedin'] == true) {
-    header("location: /pages/dashboard.php");
+    header("location: /schoolMate/pages/dashboard.php");
     // echo $_SESSION['loggedin'];
     exit;
 }
