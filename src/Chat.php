@@ -43,7 +43,7 @@ class Chat implements MessageComponentInterface
         $send_result = mysqli_query($conn, $send_sql);
         if ($send_result) {
             $userId = $data['formUserId'];
-            $sql_user =  "SELECT * FROM `users` WHERE id = '$userId'";
+            echo $sql_user =  "SELECT * FROM `users` WHERE id = '$userId'";
             $result_user = mysqli_query($conn, $sql_user);
             $user = mysqli_fetch_assoc($result_user);
             $data['from'] = $user['first_name'] . ' ' . $user['last_name'];
