@@ -134,15 +134,18 @@
         };
 
         conn.onmessage = function(e) {
-            console.log(e.data);
+            // console.log(e.data);
             var data = JSON.parse(e.data);
             var isSelfMessage = data.toUserId === $('#userId').val();
             if (!isSelfMessage) {
                 var row = '<div class="mb-3 d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><img src="../dist/img/user_image/' + data.img + '" class="rounded-circle" width="40" height="40" mr-1>&nbsp;<strong>' + data.from + ':</strong>&nbsp;' + data.msg + '</div><span class="badge bg-secondary ml-1">' + data.dt + '</span></div>';
             } else {
                 var row = '<div class="mb-3 d-flex justify-content-between align-items-center"><span class="badge bg-secondary mr-1">' + data.dt + '</span><div class="d-flex flex-row align-items-center"><strong>You:</strong>&nbsp;' + data.msg + '&nbsp;<img src="../dist/img/user_image/' + data.img + '" class="rounded-circle mt-2" width="40" height="40" /></div></div>';
+                $('#chat_box').append(row);
             }
-            $('#chat_box').append(row);
+            if (data.toUserId == <?php echo $_SESSION['id']; ?> && data.formUserId == <?php echo $_GET['id']; ?>) {
+                $('#chat_box').append(row);
+            }
             addMessageAndScroll();
         };
 
