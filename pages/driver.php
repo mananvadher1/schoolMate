@@ -122,29 +122,30 @@
 </div>
 
 <!-- data table -->
-<div class="container">
-    <table class="table" id="myTable">
-        <thead>
-            <tr>
-                <th scope="col">Driver Id</th>
-                <th scope="col">Vechical Id</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th scope="col">DOB</th>
-                <th scope="col">Address</th>
-                <th scope="col">Created By</th>
-                <th scope="col">Created Date</th>
-                <th scope="col"> Upadated By</th>
-                <th scope="col">Updated Date</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
-                $sno = $sno + 1;
-                echo "<tr id=" . $row_dt['driver_id'] . ">
+<div class="content">
+    <div class="container-fluid">
+        <table class="table" id="myTable" width="100%">
+            <thead>
+                <tr>
+                    <th scope="col">Driver Id</th>
+                    <th scope="col">Vechical Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Created By</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col"> Upadated By</th>
+                    <th scope="col">Updated Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                    $sno = $sno + 1;
+                    echo "<tr id=" . $row_dt['driver_id'] . ">
                     <td>" . $sno . "</td>
                     <td>" . $row_dt['vehical_id'] . "</td>
                     <td>" . $row_dt['fname'] . "</td>
@@ -160,59 +161,60 @@
                     <td><button onClick='editClick(" . $row_dt['driver_id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
                     <button onClick='deleteClick(" . $row_dt['driver_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
                 </tr>";
-            } ?>
-        </tbody>
-    </table>
+                } ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
 <script>
     function deleteClick(id) {
-    // Use SweetAlert for confirmation before deleting
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Proceed with deletion
-            $.ajax({
-                url: '../controller/driver_control.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    action: "delete"
-                },
-                success: function(response) {
-                    if (response) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Driver deleted successfully.",
-                            icon: "success",
-                            confirmButtonColor: '#3085d6'
-                        }).then(() => {
-                            // Reload or update the page after deletion
-                            // location.reload();
-                        });
-                        // Optional: Hide the deleted row without refreshing the page
-                        $("#" + id).hide();
-                        $(".child").hide();
-                    } else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Failed to delete the record.",
-                            icon: "error"
-                        });
+        // Use SweetAlert for confirmation before deleting
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with deletion
+                $.ajax({
+                    url: '../controller/driver_control.php',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        action: "delete"
+                    },
+                    success: function(response) {
+                        if (response) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Driver deleted successfully.",
+                                icon: "success",
+                                confirmButtonColor: '#3085d6'
+                            }).then(() => {
+                                // Reload or update the page after deletion
+                                // location.reload();
+                            });
+                            // Optional: Hide the deleted row without refreshing the page
+                            $("#" + id).hide();
+                            $(".child").hide();
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Failed to delete the record.",
+                                icon: "error"
+                            });
+                        }
                     }
-                }
-            });
-        }
-    });
-}
+                });
+            }
+        });
+    }
 
     function editClick(id) {
         $(document).ready(function() {

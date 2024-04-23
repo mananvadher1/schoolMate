@@ -1,6 +1,5 @@
 <?php
 include("../includes/db.php");
-if ($_SESSION['role_id'] != 1){
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
   delete();
 }
@@ -20,13 +19,13 @@ function edit()
   // fetch data from db 
   $result = mysqli_query($conn, "SELECT * FROM `subjects` WHERE subject_id = $id;");
   if (mysqli_num_rows($result) > 0) {
-      while ($row = mysqli_fetch_array($result)) {
-          array_push($role_data, $row);
-      }
-      // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
-      header("Content-Type: application/json");
-      echo json_encode($role_data);
-      exit;
+    while ($row = mysqli_fetch_array($result)) {
+      array_push($role_data, $row);
+    }
+    // header("content-type : application/json");  this are give us to error we cant remain space between 'type' and ':'
+    header("Content-Type: application/json");
+    echo json_encode($role_data);
+    exit;
   }
 }
 
@@ -40,32 +39,32 @@ function delete()
   echo 1;
   exit;
 }
+// if ($_SESSION['role_id'] != 1) {
 //form and page related data
 $update = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //for update the sql
   if (isset($_POST['subject_id'])) {
-      $edit_id = $_POST["subject_id"];
-     
-       $edit_code = $_POST["edit_code"];
-      $edit_ref = $_POST["edit_sub_ref"];
+    $edit_id = $_POST["subject_id"];
 
-      $updatesql = "UPDATE `subjects` SET `subject_code` = '$edit_code', `subject_ref` = '$edit_ref' WHERE `subject_id` = $edit_id";
-      $updateResult = mysqli_query($conn, $updatesql);
+    $edit_code = $_POST["edit_code"];
+    $edit_ref = $_POST["edit_sub_ref"];
+
+    $updatesql = "UPDATE `subjects` SET `subject_code` = '$edit_code', `subject_ref` = '$edit_ref' WHERE `subject_id` = $edit_id";
+    $updateResult = mysqli_query($conn, $updatesql);
 
 
-      if ($updateResult) {
-          $update = true;
-      
-      } else {
-          echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
-      }
+    if ($updateResult) {
+      $update = true;
+    } else {
+      echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
+    }
   }
 }
 include("../includes/header.php");
 include("../includes/sidebar.php");
 
-if($update){
+if ($update) {
   echo "<script>
   Swal.fire({
       title: 'Success!',
@@ -80,20 +79,20 @@ if($update){
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['sub_code'])) {
-        $c_name = $_POST['class_name'];
-        $s_name = $_POST['sub_name'];
-        $s_code = $_POST['sub_code'];
-        $s_ref = $_POST['sub_ref'];
-    
-        // insert data into subjects
-        $sql_insert = "INSERT INTO `subjects`(`subject_name`, `subject_code`, `subject_ref`, `class_name`) VALUES ('$s_name','$s_code','$s_ref','$c_name')";
-        $result = mysqli_query($conn, $sql_insert);
+    $c_id = ($_SESSION['role_id'] == 2) ? $_SESSION['class_id'] : $_POST['class_id'];
+    $s_name = $_POST['sub_name'];
+    $s_code = $_POST['sub_code'];
+    $s_ref = $_POST['sub_ref'];
 
-        if($result){
-            $insert = true;
-        // echo "done";
-        if($insert){
-          echo "<script>
+    // insert data into subjects
+    $sql_insert = "INSERT INTO `subjects`(`subject_name`, `subject_code`, `subject_ref`, `class_id`) VALUES ('$s_name','$s_code','$s_ref','$c_id')";
+    $result = mysqli_query($conn, $sql_insert);
+
+    if ($result) {
+      $insert = true;
+      // echo "done";
+      if ($insert) {
+        echo "<script>
           Swal.fire({
               title: 'Success!',
               text: 'Subject inserted successfully!',
@@ -102,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               confirmButtonColor: '#3085d6'
           });
           </script>";
-        }
+      }
     } else {
       echo "<script>
       Swal.fire({
@@ -115,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </script>";
     }
   }
-    }
+}
 
 
 
@@ -125,20 +124,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // $sql_classes = "SELECT DISTINCT class_name FROM subjects ORDER BY class_name";
 // $result_classes = mysqli_query($conn, $sql_classes);
 $id = $_SESSION['class_id'];
-$sql_classes = "SELECT DISTINCT s.* ,c.class_id 
-FROM subjects as s 
-LEFT JOIN classes as c
-ON s.class_name = c.class_name
-WHERE class_id = ".$id.";";
+$sql_classes = "SELECT DISTINCT s.* ,c.class_name 
+                  FROM subjects as s 
+                  LEFT JOIN classes as c
+                  ON s.class_id = c.class_id";
+if ($id) {
+  $sql_classes .= " WHERE s.class_id = " . $id . ";";
+}
+// echo $sql_classes;
 $result_classes = mysqli_query($conn, $sql_classes);
 
 // for fetching classes in select tag
 $sql_fetch = "SELECT * FROM `classes`";
 $result3 = mysqli_query($conn, $sql_fetch);
-  }
-  else
-  {
-    header("location: 404.php");
-  } 
-
-?>
+// } else {
+//   header("location: 404.php");
+// }

@@ -46,7 +46,7 @@
          <?php if ($_SESSION['role_id'] == 2) : ?>
            <li class="nav-item">
              <a href="../pages/manage_exam.php" class="nav-link">
-             <i class="nav-icon fa fa-book" aria-hidden="true"></i>
+               <i class="nav-icon fa fa-book" aria-hidden="true"></i>
                <p>
                  Manage Exam
                </p>
@@ -155,16 +155,14 @@
          </li>
 
 
-         <?php if ($_SESSION['role_id'] == 2 || $_SESSION['role_id'] == 3) : ?>
-           <li class="nav-item">
-             <a href="../pages/subject.php" class="nav-link">
-               <i class="nav-icon fa fa-book"></i>
-               <p>
-                 Subjects
-               </p>
-             </a>
-           </li>
-         <?php endif; ?>
+         <li class="nav-item">
+           <a href="../pages/subject.php" class="nav-link">
+             <i class="nav-icon fa fa-book"></i>
+             <p>
+               Subjects
+             </p>
+           </a>
+         </li>
 
          <?php if ($_SESSION['role_id'] == 3) : ?>
            <li class="nav-item">
@@ -207,14 +205,14 @@
            </a>
          </li> -->
 
-          <li class="nav-item">
-            <a href="../pages/calendar.php" class="nav-link">
-            <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                Calendar
-              </p>
-            </a>
-          </li>
+         <li class="nav-item">
+           <a href="../pages/calendar.php" class="nav-link">
+             <i class="nav-icon fa fa-calendar"></i>
+             <p>
+               Calendar
+             </p>
+           </a>
+         </li>
 
          <li class="nav-item">
            <a href="settings.php" class="nav-link">

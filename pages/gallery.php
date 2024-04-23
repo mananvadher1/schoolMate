@@ -7,88 +7,91 @@
         /* Add overflow property */
         position: relative;
     }
-    .slider-container .slick-slide img {
-        height: 500px; 
-        width: 800px; 
-        object-fit: cover; /* Ensures the image covers the entire space */
-    }
 
+    .slider-container .slick-slide img {
+        height: 500px;
+        width: 800px;
+        object-fit: cover;
+        /* Ensures the image covers the entire space */
+    }
 </style>
 
 
 <?php if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) : ?>
-<div class="card card-secondary">
-    <div class="card-header">
-        <div class="row">
-            <div class="col">
-                <h3 class="card-title my-2">Gallery</h3>
-            </div>
-            <div class="col-auto">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Image</a>
-            </div>
-        </div>
-    </div>
-    <div class="card-body px-4 p-0">
-        <div class="collapse mt-3" id="collapseExample">
-            <form class="my-4" action="gallery.php" method="post" enctype="multipart/form-data">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="title">Title:</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Events, Academic" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="profile_img"> Image:</label>
-                        <input type="file" class="form-control-file" name="profile_img" id="profile_img">
-                    </div>
+    <div class="card card-secondary">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="card-title my-2">Gallery</h3>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <div class="col-auto">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Add Image</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body px-4 p-0">
+            <div class="collapse mt-3" id="collapseExample">
+                <form class="my-4" action="gallery.php" method="post" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control" name="title" id="title" placeholder="Events, Academic" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="profile_img"> Image:</label>
+                            <input type="file" class="form-control-file" name="profile_img" id="profile_img">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 <?php endif; ?>
 
-<div class="container">
-    <div class="heading text-center my-4">
-        <h1><b>Gallery</b></h1>
-    </div>
-<div class="container-fluid">
-    <div class="row justify-content-center my-4">
-        <div class="col-md-8 px-2">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h4 class="card-title"><b>Events</b></h4>
-                </div>
-                <div class="slider-container mb-3">
-                    <div class="eventslider">
-                        <?php foreach ($imageNames as $imageName) : ?>
-                            <div>
-                                <img src="../dist/img/gallery_image/<?php echo $imageName; ?>" alt="<?php echo $imageName; ?>">
+<div class="content">
+    <div class="container-fluid">
+        <div class="heading text-center my-4">
+            <h1><b>Gallery</b></h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row justify-content-center my-4">
+                <div class="col-md-8 px-2">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title"><b>Events</b></h4>
+                        </div>
+                        <div class="slider-container mb-3">
+                            <div class="eventslider">
+                                <?php foreach ($imageNames as $imageName) : ?>
+                                    <div>
+                                        <img src="../dist/img/gallery_image/<?php echo $imageName; ?>" alt="<?php echo $imageName; ?>">
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-8 px-2">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h4 class="card-title"><b>Academic</b></h4>
-                </div>
-                <div class="slider-container mb-3">
-                    <div class="academicslider">
-                        <?php foreach ($Academicimage as $Academicimage) : ?>
-                            <div>
-                                <img src="../dist/img/gallery_image/<?php echo $Academicimage; ?>" alt="<?php echo $Academicimage; ?>">
+                <div class="col-md-8 px-2">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title"><b>Academic</b></h4>
+                        </div>
+                        <div class="slider-container mb-3">
+                            <div class="academicslider">
+                                <?php foreach ($Academicimage as $Academicimage) : ?>
+                                    <div>
+                                        <img src="../dist/img/gallery_image/<?php echo $Academicimage; ?>" alt="<?php echo $Academicimage; ?>">
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
@@ -117,7 +120,7 @@
             ]
         });
     });
-    
+
     $(document).ready(function() {
         $('.academicslider').slick({
             // Slick Slider settings

@@ -1,7 +1,7 @@
 <?php include("../controller/question_control.php"); ?>
 
 <!-- edit modal -->
-<div class="modal fade" id="edit_question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+<div class="modal fade" id="edit_questions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -43,7 +43,7 @@
               </div>
               <div class="form-group">
                 <label for="right_option">Right Answer</label>
-                <input type="text" id="right_option" name="right_option" placeholder="right_option" required class="form-control">
+                <input type="text" id="edit_right_option" name="edit_right_option" placeholder="right_option" required class="form-control">
               </div>
 
               <button name="submit" class="btn btn-primary float-right">
@@ -126,7 +126,7 @@
                     <td>'.$optionC.'</td>
                     <td>'.$optionD.'</td>
                     <td>'.$right_option.'</td>
-                    <td><button onclick="editClick(' . $row['ques_id'] . ')" class="edit btn btn-sm btn-success">Edit</button><button onclick="deleteClick(' . $row['ques_id'] . ')" class="delete btn btn-sm btn-danger">Delete</button>
+                    <td><button onclick="editClick(' . $row['ques_id'] . ')" class="edit btn btn-sm btn-success">Edit</button>&nbsp;<button onclick="deleteClick(' . $row['ques_id'] . ')" class="delete btn btn-sm btn-danger">Delete</button>
                     </td>
                   </tr>';
                   }
@@ -267,7 +267,7 @@ function editClick(id) {
                     $('#edit_optionD').val(value['optionD']);
                     $('#edit_right_option').val(value['right_option']);
                 });
-                $("#edit_question").modal('show');
+                $("#edit_questions").modal('show');
             },
 
         });

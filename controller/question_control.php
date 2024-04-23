@@ -9,7 +9,19 @@ if (isset ($_POST['action']) && $_POST['action'] == 'delete') {
 if (isset ($_POST['action']) && $_POST['action'] == 'edit') {
   edit();
 }
+function delete()
+{
+  global $conn;
+  $id = $_POST['id']; // Corrected $_POST variable name
 
+  $result = mysqli_query($conn, "DELETE FROM `questions` WHERE ques_id = $id");
+  if ($result == true) {
+    echo 1;
+    exit;
+  }
+  echo 0;
+  exit;
+}
 function edit()
 {
   global $conn;
@@ -18,7 +30,7 @@ function edit()
 
 
   // fetch data from db 
-  $result = mysqli_query($conn, "SELECT * FROM `questions` WHERE id = $id");
+  $result = mysqli_query($conn, "SELECT * FROM `questions` WHERE ques_id = $id");
   if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result)) {
       array_push($role_data, $row);
@@ -54,24 +66,6 @@ if (isset ($_POST['edit_id'])) {
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
-}
-
-
-
-
-
-function delete()
-{
-  global $conn;
-  $id = $_POST['id']; // Corrected $_POST variable name
-
-  $result = mysqli_query($conn, "DELETE FROM `questions` WHERE id = $id");
-  if ($result == true) {
-    echo 1;
-    exit;
-  }
-  echo 0;
-  exit;
 }
 
 // insert
