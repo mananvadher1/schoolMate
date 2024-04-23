@@ -62,7 +62,10 @@ $sql = "SELECT * FROM `users` WHERE class_id =4 && role_id=3;";
 
     // class teacher detail;
     $class_id =$_SESSION['class_id'] ;
-    $sql=" SELECT email,first_name,last_name,phone FROM `users` WHERE class_id=$class_id && role_id=2;";
+    $sql=" SELECT email,first_name,last_name,phone FROM `users` ";
+    if($_SESSION['role_id'] != 1){
+        $sql .= "WHERE class_id=$class_id && role_id=2;";
+    }
     $tech_result = mysqli_query($conn, $sql);
    if ($result && mysqli_num_rows($tech_result) > 0) {
        $row = mysqli_fetch_assoc($tech_result);
