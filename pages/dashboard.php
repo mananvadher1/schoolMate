@@ -38,7 +38,8 @@ p {
 }
 </style>
 
-<div class="container">
+<div class="content m-3">
+    <div class="container-fluid">
     <div class="header">
         <h1><b>School Management System</b></h1>
         <h4><i>Welcome, <?php echo $role_name
@@ -102,5 +103,5 @@ p {
         <?php endif; ?>
     </div>
 </div>
-
+        </div>
 <?php include("../includes/footer.php"); ?>
