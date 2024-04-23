@@ -53,22 +53,23 @@
 </div>
 
 <!-- data table -->
-<div class="container">
-    <table class="table" id="myTable">
-        <thead>
-            <tr>
-                <th scope="col">Vehical Id</th>
-                <th scope="col">Vehical No</th>
-                <th scope="col">Created By</th>
-                <th scope="col">Created Date</th>
-                <th scope="col"> Upadated By</th>
-                <th scope="col">Updated Date</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
-                echo "<tr id=" . $row_dt['vehical_id'] . ">
+<div class="content">
+    <div class="container-fluid">
+        <table class="table" id="myTable" width="100%">
+            <thead>
+                <tr>
+                    <th scope="col">Vehical Id</th>
+                    <th scope="col">Vehical No</th>
+                    <th scope="col">Created By</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col"> Upadated By</th>
+                    <th scope="col">Updated Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                    echo "<tr id=" . $row_dt['vehical_id'] . ">
                     <th scope='row'>" . $row_dt['vehical_id'] . "</th>
                     <td>" . $row_dt['vehical_no'] . "</td>
                     <td>" . $row_dt['created_by'] . "</td>
@@ -78,59 +79,60 @@
                     <td><button onClick='editClick(" . $row_dt['vehical_id'] . ")' class='edit btn btn-sm btn-success'>Edit</button>
                     <button onClick='deleteClick(" . $row_dt['vehical_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td>
                 </tr>";
-            } ?>
-        </tbody>
-        <!-- <button onClick='deleteClick(" . $row_dt['role_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
-    </table>
+                } ?>
+            </tbody>
+            <!-- <button onClick='deleteClick(" . $row_dt['role_id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
+        </table>
+    </div>
 </div>
 
 <script>
-   function deleteClick(id) {
-    // Use SweetAlert for confirmation before deleting
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Proceed with deletion
-            $.ajax({
-                url: '../controller/vehical_control.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    action: "delete"
-                },
-                success: function(response) {
-                    if (response) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Vehical deleted successfully.",
-                            icon: "success",
-                            confirmButtonColor: '#3085d6'
-                        }).then(() => {
-                            // Reload or update the page after deletion
-                            // location.reload();
-                        });
-                        // Optional: Hide the deleted row without refreshing the page
-                        $("#" + id).hide();
-                    } else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Failed to delete the record.",
-                            icon: "error"
-                        });
+    function deleteClick(id) {
+        // Use SweetAlert for confirmation before deleting
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with deletion
+                $.ajax({
+                    url: '../controller/vehical_control.php',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        action: "delete"
+                    },
+                    success: function(response) {
+                        if (response) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Vehical deleted successfully.",
+                                icon: "success",
+                                confirmButtonColor: '#3085d6'
+                            }).then(() => {
+                                // Reload or update the page after deletion
+                                // location.reload();
+                            });
+                            // Optional: Hide the deleted row without refreshing the page
+                            $("#" + id).hide();
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Failed to delete the record.",
+                                icon: "error"
+                            });
+                        }
                     }
-                }
-            });
-        }
-    });
-}
-    
+                });
+            }
+        });
+    }
+
 
     function editClick(id) {
         $(document).ready(function() {

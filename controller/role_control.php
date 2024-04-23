@@ -1,6 +1,5 @@
 <?php
 include("../includes/db.php");  
- if ($_SESSION['role_id'] == 1){
 
 //delete button logic api calling and 
 // echo '<pre>'; print_r($_POST); exit;
@@ -116,8 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //sql for datatable
 $sql_dt = "SELECT * FROM `roles`";
 $re_dt = mysqli_query($conn, $sql_dt);
-
-}
 
 }
 else{

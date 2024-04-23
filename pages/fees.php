@@ -147,30 +147,32 @@ include("../controller/fees_control.php"); ?>
     </div>
 
     <!-- data table -->
-    <div class="container">
-        <table class="table" id="feeDataList">
-            <thead>
-                <tr>
-                    <th scope="col">Sno.</th>
-                    <!-- <th scope="col">Class Id</th> -->
-                    <th scope="col">Fee Type</th>
-                    <th scope="col">Rs</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <td>" . $row_dt['class_id'] . "</td> -->
-                <!-- <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
-                            echo "<tr id=" . $row_dt['id'] . ">
+    <div class="content">
+        <div class="container-fluid">
+            <table class="table" id="feeDataList" width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Sno.</th>
+                        <!-- <th scope="col">Class Id</th> -->
+                        <th scope="col">Fee Type</th>
+                        <th scope="col">Rs</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <td>" . $row_dt['class_id'] . "</td> -->
+                    <!-- <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
+                                echo "<tr id=" . $row_dt['id'] . ">
                     <th scope='row'>" . $row_dt['id'] . "</th>
                     <td>" . $row_dt['fees_type'] . "</td>
                     <td>" . $row_dt['rs'] . "</td>
                     <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
                     </tr>";
-                        } ?> -->
-                <!-- <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
-            </tbody>
-        </table>
+                            } ?> -->
+                    <!-- <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
         // function deleteClick(id) {

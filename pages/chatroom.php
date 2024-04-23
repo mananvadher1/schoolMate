@@ -143,9 +143,11 @@
                 var row = '<div class="mb-3 d-flex justify-content-between align-items-center"><span class="badge bg-secondary mr-1">' + data.dt + '</span><div class="d-flex flex-row align-items-center"><strong>You:</strong>&nbsp;' + data.msg + '&nbsp;<img src="../dist/img/user_image/' + data.img + '" class="rounded-circle mt-2" width="40" height="40" /></div></div>';
                 $('#chat_box').append(row);
             }
-            if (data.toUserId == <?php echo $_SESSION['id']; ?> && data.formUserId == <?php echo $_GET['id']; ?>) {
-                $('#chat_box').append(row);
-            }
+            <?php if (isset($_GET['id'])) : ?>
+                if (data.toUserId == <?php echo $_SESSION['id']; ?> && data.formUserId == <?php echo $_GET['id']; ?>) {
+                    $('#chat_box').append(row);
+                }
+            <?php endif; ?>
             addMessageAndScroll();
         };
 
