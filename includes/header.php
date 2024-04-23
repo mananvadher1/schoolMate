@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SchoolMate</title>
+    <link rel="icon" type="image/x-icon" href="../dist/img/logo.jpeg ">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
