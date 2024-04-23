@@ -32,64 +32,80 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-    color: #0062FA;
-}
 
 p {
     margin-bottom: 10px;
 }
 
  </style>
-  
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management System Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+ 
     <div class="container">
         <div class="header">
             <h1>School Management System</h1>
-            <h4>Welcome, Principal!</h4>
+            <h4>Welcome, <?php echo $role_name
+            ?></h4>
         </div>
-        <div class="dashboard">
-            <div class="section">
-                <h2>Principal's Details</h2>
-                <p>Name: John Doe</p>
-                <p>Email: john.doe@example.com</p>
+        <?php if ($_SESSION['role_id'] == 1) : ?>
+        <div class="section bg-success">
+                <h2>Student and Teacher Details</h2>
+                <p>Total Students: <?php echo $total_stu?></p>
+                <p>Total Teachers: <?php echo $total_tec?></p>  
             </div>
-            <div class="section">
-                <h2>Student Details</h2>
-                <p>Total Students: 500</p>
-                <p>Total Students: 60</p>
-                <p>Miral Chauhan</p>
-                <p>Phone: 1234567890</p>
-                <p>Email: mira@gmail.com</p>
-            </div>
-            <div class="section">
-                <h2>Class Teacher Details</h2>
-                <p>Total Teachers: 12</p>
-                <p>Name: Jane Smith</p>
-                <p>Phone: 1234567890</p>
-                <p>Email: jane.smith@example.com</p>
-            </div>
-            <div class="section">
-                <h2>Class Details</h2>
-                <p>Class : 10</p>
-                <p>Total Students: 50</p>
-            </div>
-            <div class="section">
+            <div class="section bg-maroon mt-3">
                 <h2>Transportation Details</h2>
-                <p>Total Drivers: 2</p>
-                <p>Total Vehicles: 5</p>
+                <p>Total Drivers:<?php echo $total_driver; ?> </p>
+                <p>Total Vehicles:<?php echo $total_veh; ?> </p>
+            </div>
+            <div class="section bg-purple mt-3">
+                <h2>Class Details</h2>
+                <p>Total Class:12 </p>
+               
+            </div>
+    </div>
+            <?php endif; ?>
+
+        <?php if ($_SESSION['role_id'] != 1) : ?>
+        <div class="dashboard">
+        <?php if ($_SESSION['role_id'] != 1) : ?>
+            <div class="section bg-success">
+                <h2>Principal's Details</h2>
+                <p>Name:<?php  echo $p_fname. " ". $p_lname?></p>
+                <p>Email:<?php echo $p_email?></p>
+            </div>
+            <?php endif; ?>
+
+            <?php if ($_SESSION['role_id'] != 1) : ?>
+            <div class="section bg-yellow">
+                <h2>Student Details</h2>
+                <p>Total Students: <?php echo $total_stu?></p>
+                <!-- <p>Total Students: <?php echo $total_stu_class?></p> -->
+                <p><?php echo $s_fname. " ". $s_lname?></p>
+                <p>Phone: <?php echo $s_phone?></p>
+                <p>Email: <?php echo $s_email;?></p>
+            </div>
+            <?php endif; ?>
+
+            <?php if ($_SESSION['role_id'] == 3) : ?>
+            <div class="section bg-purple">
+                <h2>Class Teacher Details</h2>
+                <p>Total Teachers: <?php echo $total_tec?></p>
+                <p>Name: <?php  echo $fname. " ". $lname?></p>
+                <p>Phone: <?php echo $phone ?></p>
+                <p>Email: <?php echo $email;?></p>
+            </div>
+            <?php endif; ?>
+            
+            <div class="section bg-lightblue">
+                <h2>Class Details</h2>
+                <p>Class: <?php echo $_SESSION['class_id']; ?></p>
+                <p>Total Students: <?php echo $total_stu_class?>    </p>
+            </div>
+            <div class="section bg-maroon">
+                <h2>Transportation Details</h2>
+                <p>Total Drivers:<?php echo $total_driver; ?> </p>
+                <p>Total Vehicles:<?php echo $total_veh; ?> </p>
             </div>
         </div>
     </div>
-</body>
-</html>
-
+<?php endif; ?>
 <?php include("../includes/footer.php"); ?>
