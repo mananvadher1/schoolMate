@@ -26,7 +26,7 @@
 <div class="container">
     <div class="head d-flex mt-4">
         <div class="col-md-8 left">
-            <h3 class=""><b>Subject: Maths</b></h3>
+            <h3 class=""><b>Subject: <?php echo $_GET['sname']?></b></h3>
             <h5>Total Questions:
                 <?php echo $totalQuestions; ?>
             </h5>

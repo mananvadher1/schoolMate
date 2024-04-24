@@ -153,7 +153,6 @@ include("../controller/fees_control.php"); ?>
                 <thead>
                     <tr>
                         <th scope="col">Sno.</th>
-                        <!-- <th scope="col">Class Id</th> -->
                         <th scope="col">Fee Type</th>
                         <th scope="col">Rs</th>
                         <th scope="col">Action</th>
