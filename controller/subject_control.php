@@ -8,7 +8,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete') {
 if (isset($_POST['action']) && $_POST['action'] == 'edit') {
   edit();
 }
-
 function edit()
 {
   global $conn;
@@ -39,6 +38,9 @@ function delete()
   echo 1;
   exit;
 }
+
+include("../includes/header.php");
+include("../includes/sidebar.php");
 // if ($_SESSION['role_id'] != 1) {
 //form and page related data
 $update = false;
@@ -46,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //for update the sql
   if (isset($_POST['subject_id'])) {
     $edit_id = $_POST["subject_id"];
+    $class_id = $_POST["cid"];
 
     $edit_code = $_POST["edit_code"];
     $edit_ref = $_POST["edit_sub_ref"];
@@ -56,25 +59,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($updateResult) {
       $update = true;
+      if ($update) {
+        echo "<script>
+        Swal.fire({
+            title: 'Success!',
+            text: 'Subject updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6'
+        }).then((result) => {
+          // Call the feeDataTable function with the updated class_id
+          subjectDataTable('$class_id');
+          $('#class_id').val('$class_id');
+      });
+        </script>";
+      }
     } else {
       echo "Error: " . $updatesql . "<br>" . mysqli_error($conn);
     }
   }
 }
-include("../includes/header.php");
-include("../includes/sidebar.php");
 
-if ($update) {
-  echo "<script>
-  Swal.fire({
-      title: 'Success!',
-      text: 'Subject updated successfully!',
-      icon: 'success',
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#3085d6'
-  });
-  </script>";
-}
 
 $insert = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -99,7 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               icon: 'success',
               confirmButtonText: 'OK',
               confirmButtonColor: '#3085d6'
-          });
+          }).then((result) => {
+            // Call the feeDataTable function with the updated class_id
+            subjectDataTable('$c_id');
+            $('#class_id').val('$c_id');
+        });
           </script>";
       }
     } else {
@@ -110,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           icon: 'error',
           confirmButtonText: 'OK',
           confirmButtonColor: '#3085d6'
-      });
+      })
       </script>";
     }
   }
@@ -140,3 +149,8 @@ $result3 = mysqli_query($conn, $sql_fetch);
 // } else {
 //   header("location: 404.php");
 // }
+
+
+//sql for class dropdown to show dropdown to admin
+$sql_class_dropdown = "SELECT * FROM `classes`";
+$class_dropdown = mysqli_query($conn, $sql_class_dropdown);
