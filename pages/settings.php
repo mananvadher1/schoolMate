@@ -15,7 +15,9 @@ include("../includes/sidebar.php");
         </div>
     </div>
 </div>
-
+<script>
+        $('#settings-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>
 
 <!-- http://localhost/schoolMate/dist/img/logo2.jpeg -->

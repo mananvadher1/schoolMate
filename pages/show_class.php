@@ -34,5 +34,7 @@ $cid = $_GET['cid'];
         </table>
     </div>
 </div>
-
+<script>
+    $('#class-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>

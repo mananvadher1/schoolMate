@@ -64,28 +64,28 @@
   <!-- DataTable Initialization -->
   <script>
     $(document).ready(function() {
-  $('#myTable').DataTable({
-    responsive: true,
-    bDestroy: true,
-    "pagingType": "full_numbers", // Customize pagination style
-    "language": {
-      "search": "Search:",
-      "lengthMenu": "Show _MENU_ entries per page",
-      "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-      "infoEmpty": "Showing 0 to 0 of 0 entries",
-      "zeroRecords": "No matching records found",
-      "infoFiltered": "(filtered from _MAX_ total entries)",
-      "paginate": {
-        "next": "Next",
-        "previous": "Previous"
-      }
-    },
-    "drawCallback": function(settings) {
-      // Remove "First" and "Last" buttons from pagination controls
-      $('#myTable_paginate .first, #myTable_paginate .last').remove();
-    }
-  });
-});
+      $('#myTable').DataTable({
+        responsive: true,
+        bDestroy: true,
+        "pagingType": "full_numbers", // Customize pagination style
+        "language": {
+          "search": "Search:",
+          "lengthMenu": "Show _MENU_ entries per page",
+          "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+          "infoEmpty": "Showing 0 to 0 of 0 entries",
+          "zeroRecords": "No matching records found",
+          "infoFiltered": "(filtered from _MAX_ total entries)",
+          "paginate": {
+            "next": "Next",
+            "previous": "Previous"
+          }
+        },
+        "drawCallback": function(settings) {
+          // Remove "First" and "Last" buttons from pagination controls
+          $('#myTable_paginate .first, #myTable_paginate .last').remove();
+        }
+      });
+    });
 
     // $(document).ready(function() {
     //   $('#attendence').DataTable({
@@ -106,17 +106,19 @@
     //         "previous": "Previous"
     //       }
     //     }
-        
+
     //   });
     // });
-    $(document).ready(function() {
-      // $('.edit_form').hide();
-      $('.nav-link').click(function() {
-        $('.nav-link').removeClass('active');
-        $(this).addClass('active');
-      });
+    // $('.edit_form').hide();
+    $('#manage-transport-link').click(function() {
+      $('.nav-link').removeClass('active');
+      $('#manage-transport-link').addClass('active');
     });
-    
+    $('#attendence-link, take-attendence-link, view-attendence-link').click(function() {
+      $('.nav-link').removeClass('active');
+      $('#attendence-link').addClass('active');
+    });
   </script>
   </body>
+
   </html>

@@ -43,5 +43,7 @@
     </div>
 </div>
 
-
+<script>
+            $('#exam-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>

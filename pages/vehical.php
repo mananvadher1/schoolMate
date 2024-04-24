@@ -58,7 +58,7 @@
         <table class="table" id="myTable" width="100%">
             <thead>
                 <tr>
-                    <th scope="col">Vehical Id</th>
+                    <th scope="col">Sr No.</th>
                     <th scope="col">Vehical No</th>
                     <th scope="col">Created By</th>
                     <th scope="col">Created Date</th>
@@ -157,6 +157,7 @@
             });
         });
     }
+    $('#manage-transport-link').addClass('active');
 </script>
 
 <?php include("../includes/footer.php"); ?>

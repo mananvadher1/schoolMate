@@ -11,20 +11,19 @@
      <!-- Sidebar Menu -->
      <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        
+
          <li class="nav-item">
-           <a href="dashboard.php" class="nav-link active">
+           <a id="dashboard-link" href="dashboard.php" class="nav-link">
              <i class="nav-icon fas fa-tachometer-alt"></i>
              <p>
                Dashboard
              </p>
            </a>
          </li>
-        
 
          <?php if ($_SESSION['role_id'] == 1) : ?>
            <li class="nav-item">
-             <a href="../pages/manage_role.php" class="nav-link">
+             <a id="manage-role-link" href="../pages/manage_role.php" class="nav-link">
                <i class="nav-icon fa fa-user" aria-hidden="true"></i>
                <p>
                  Manage Role
@@ -34,7 +33,7 @@
          <?php endif; ?>
          <?php if ($_SESSION['role_id'] != 3) : ?>
            <li class="nav-item">
-             <a href="../pages/manage_user.php" class="nav-link">
+             <a id="manage-users-link" href="../pages/manage_user.php" class="nav-link">
                <i class="nav-icon fa fa-users" aria-hidden="true"></i>
                <p>
                  Manage Users
@@ -44,7 +43,7 @@
          <?php endif; ?>
          <?php if ($_SESSION['role_id'] == 2) : ?>
            <li class="nav-item">
-             <a href="../pages/manage_exam.php" class="nav-link">
+             <a id="manage-exam-link" href="../pages/manage_exam.php" class="nav-link">
                <i class="nav-icon fa fa-book" aria-hidden="true"></i>
                <p>
                  Manage Exam
@@ -55,7 +54,7 @@
 
          <?php if ($_SESSION['role_id'] == 1) : ?>
            <li class="nav-item">
-             <a href="  " class="nav-link">
+             <a id="manage-transport-link" class="nav-link">
                <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
                <p>
                  Manage Transport
@@ -64,19 +63,19 @@
              </a>
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="../pages/vehical.php" class="nav-link">
+                 <a id="vehical-link" href="../pages/vehical.php" class="nav-link">
                    <i class=" nav-icon fas fa-angle-right"></i>
                    <p>Vehical</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="../pages/area.php" class="nav-link">
+                 <a id="area-link" href="../pages/area.php" class="nav-link">
                    <i class=" nav-icon fas fa-angle-right"></i>
                    <p>Area</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="../pages/driver.php" class="nav-link">
+                 <a id="driver-link" href="../pages/driver.php" class="nav-link">
                    <i class=" nav-icon fas fa-angle-right"></i>
                    <p>Driver</p>
                  </a>
@@ -87,7 +86,7 @@
 
          <!-- / -->
          <li class="nav-item">
-           <a href="notice.php" class="nav-link">
+           <a id="notice-link" href="notice.php" class="nav-link">
              <i class="nav-icon fas fa-bullhorn"></i>
              <p>
                Notice
@@ -96,7 +95,7 @@
          </li>
 
          <li class="nav-item">
-           <a href="../pages/gallery.php" class="nav-link">
+           <a id="gallery-link" href="../pages/gallery.php" class="nav-link">
              <i class="nav-icon far fa-image"></i>
              <p>
                Gallery
@@ -105,7 +104,7 @@
          </li>
          <?php if ($_SESSION['role_id'] == 2) : ?>
            <li class="nav-item">
-             <a href="" class="nav-link">
+             <a id="attendence-link" href="" class="nav-link">
                <i class="nav-icon fa fa-clipboard"></i>
                <p>
                  Attendence
@@ -114,13 +113,13 @@
              </a>
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="../pages/attendance.php" class="nav-link">
+                 <a id="take-attendence-link" href="../pages/attendance.php" class="nav-link">
                    <i class=" nav-icon fas fa-angle-right"></i>
                    <p>Take Attendence</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="../pages/teacher_attendence.php" class="nav-link">
+                 <a id="view-attendence-link" href="../pages/teacher_attendence.php" class="nav-link">
                    <i class=" nav-icon fas fa-angle-right"></i>
                    <p>View Attendence</p>
                  </a>
@@ -129,7 +128,7 @@
            </li>
          <?php elseif ($_SESSION['role_id'] == 1) : ?>
            <li class="nav-item">
-             <a href="../pages/teacher_attendence.php" class="nav-link">
+             <a id="attendence-link" href="../pages/teacher_attendence.php" class="nav-link">
                <i class="nav-icon fa fa-clipboard"></i>
                <p>
                  Attendence
@@ -139,13 +138,13 @@
          <?php endif; ?>
 
          <li class="nav-item">
-           <a href="<?php
-                    if ($_SESSION['role_id'] != 3) {
-                      echo "../pages/class.php";
-                    } else {
-                      echo "../pages/show_class.php?cid=" . $_SESSION['class_id'];
-                    }
-                    ?>" class="nav-link">
+           <a id="class-link" href="<?php
+                                    if ($_SESSION['role_id'] != 3) {
+                                      echo "../pages/class.php";
+                                    } else {
+                                      echo "../pages/show_class.php?cid=" . $_SESSION['class_id'];
+                                    }
+                                    ?>" class="nav-link">
              <i class="nav-icon fa fa-users"></i>
              <p>
                Class
@@ -153,9 +152,8 @@
            </a>
          </li>
 
-
          <li class="nav-item">
-           <a href="../pages/subject.php" class="nav-link">
+           <a id="subject-link" href="../pages/subject.php" class="nav-link">
              <i class="nav-icon fa fa-book"></i>
              <p>
                Subjects
@@ -165,7 +163,7 @@
 
          <?php if ($_SESSION['role_id'] == 3) : ?>
            <li class="nav-item">
-             <a href="../pages/exam.php" class="nav-link">
+             <a id="exam-link" href="../pages/exam.php" class="nav-link">
                <i class="nav-icon fa fa-id-badge"></i>
                <p>
                  Exam
@@ -176,7 +174,7 @@
 
          <?php if ($_SESSION['role_id'] != 2) : ?>
            <li class="nav-item">
-             <a href="../pages/fees.php" class="nav-link">
+             <a id="fees-link" href="../pages/fees.php" class="nav-link">
                <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
                <p>
                  Fees
@@ -186,7 +184,7 @@
          <?php endif; ?>
 
          <li class="nav-item">
-           <a href="../pages/student_transport.php" class="nav-link">
+           <a id="student-transport-link" href="../pages/student_transport.php" class="nav-link">
              <i class="nav-icon fa fa-bus" aria-hidden="true"></i>
              <p>
                Transport
@@ -195,7 +193,7 @@
          </li>
 
          <li class="nav-item">
-           <a href="../pages/calendar.php" class="nav-link">
+           <a id="calendar-link" href="../pages/calendar.php" class="nav-link">
              <i class="nav-icon fa fa-calendar"></i>
              <p>
                Calendar
@@ -204,10 +202,10 @@
          </li>
 
          <li class="nav-item">
-           <a href="settings.php" class="nav-link">
+           <a id="settings-link" href="settings.php" class="nav-link">
              <i class="nav-icon  fa fa-cogs" aria-hidden="true"></i>
              <p>
-               settings
+               Settings
              </p>
            </a>
          </li>
@@ -217,6 +215,8 @@
    </div>
    <!-- /.sidebar -->
  </aside>
-
+ <script>
+   $('.nav-link').removeClass('active');
+ </script>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">

@@ -168,5 +168,6 @@ $re_class = mysqli_query($conn, $class);
         }
 
     });
+    $('#attendence-link').addClass('active');
 </script>
 <?php include("../includes/footer.php"); ?>

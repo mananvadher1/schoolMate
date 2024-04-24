@@ -33,4 +33,7 @@
         </table>
     </div>
 </div>
+<script>
+    $('#student-transport-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>

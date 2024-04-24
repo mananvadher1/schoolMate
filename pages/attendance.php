@@ -96,6 +96,7 @@
             }
         });
     }
+    $('#attendence-link').addClass('active');
 </script>
 <?php include("../includes/footer.php"); ?>
 <!-- data table -->

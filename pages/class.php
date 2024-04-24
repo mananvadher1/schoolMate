@@ -44,7 +44,9 @@
 
 
 
-
+<script>
+            $('#class-link').addClass('active');
+</script>
     <?php include("../includes/footer.php"); ?>
 <?php else : ?>
     <?php header("location: 404.php"); ?>

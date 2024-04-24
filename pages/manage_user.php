@@ -532,5 +532,6 @@
             // "pageLength": 1
         });
     }
+    $('#manage-users-link').addClass('active');
 </script>
 <?php include("../includes/footer.php"); ?>

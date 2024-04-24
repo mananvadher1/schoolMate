@@ -98,7 +98,7 @@
         <table class="table" id="myTable" width="100%">
             <thead>
                 <tr>
-                    <th scope="col">Area Id</th>
+                    <th scope="col">Sr No.</th>
                     <th scope="col">Area Name</th>
                     <th scope="col">Pincode</th>
                     <th scope="col">City</th>
@@ -199,5 +199,6 @@
             });
         });
     }
+    $('#manage-transport-link').addClass('active');
 </script>
 <?php include("../includes/footer.php"); ?>

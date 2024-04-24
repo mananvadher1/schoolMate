@@ -161,7 +161,7 @@ if ($_SESSION['role_id'] == 1) {
     $sql_dropdown = "SELECT * FROM `vehical`";
     $re_dropdown = mysqli_query($conn, $sql_dropdown);
     // sql for data table
-    $sql_dt = "SELECT * FROM `driver`";
+    $sql_dt = "SELECT d.*, v.vehical_no FROM driver d LEFT JOIN vehical v ON d.vehical_id = v.vehical_id";
     $re_dt = mysqli_query($conn, $sql_dt);
     $sno = 0;
 } else {

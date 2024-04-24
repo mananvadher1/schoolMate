@@ -89,7 +89,7 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="role_id">Vehical Id:</label>
+                        <label for="role_id">Vehical:</label>
                         <select class="form-control" name="vehical_id" id="vehical_id" required>
                             <?php
                             while ($row_dropdowm = mysqli_fetch_assoc($re_dropdown)) {
@@ -127,8 +127,8 @@
         <table class="table" id="myTable" width="100%">
             <thead>
                 <tr>
-                    <th scope="col">Driver Id</th>
-                    <th scope="col">Vechical Id</th>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">Vechical No</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Phone</th>
@@ -147,7 +147,7 @@
                     $sno = $sno + 1;
                     echo "<tr id=" . $row_dt['driver_id'] . ">
                     <td>" . $sno . "</td>
-                    <td>" . $row_dt['vehical_id'] . "</td>
+                    <td>" . $row_dt['vehical_no'] . "</td>
                     <td>" . $row_dt['fname'] . "</td>
                     <td>" . $row_dt['lname'] . "</td>
                     <td>" . $row_dt['phone_no'] . "</td>
@@ -243,5 +243,6 @@
             });
         });
     }
+    $('#manage-transport-link').addClass('active');
 </script>
 <?php include("../includes/footer.php"); ?>

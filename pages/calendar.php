@@ -94,6 +94,7 @@ include ("../includes/sidebar.php");
 
             calendar.render();
         });
+        $('#calendar-link').addClass('active');
     </script>
 
 

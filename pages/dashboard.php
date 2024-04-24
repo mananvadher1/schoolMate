@@ -103,5 +103,8 @@ p {
         <?php endif; ?>
     </div>
 </div>
-        </div>
+</div>
+<script>
+        $('#dashboard-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>

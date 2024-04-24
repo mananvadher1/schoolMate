@@ -163,11 +163,11 @@ include("../controller/fees_control.php"); ?>
                     <!-- <td>" . $row_dt['class_id'] . "</td> -->
                     <!-- <?php while ($row_dt = mysqli_fetch_assoc($re_dt)) {
                                 echo "<tr id=" . $row_dt['id'] . ">
-                    <th scope='row'>" . $row_dt['id'] . "</th>
-                    <td>" . $row_dt['fees_type'] . "</td>
-                    <td>" . $row_dt['rs'] . "</td>
-                    <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
-                    </tr>";
+                        <th scope='row'>" . $row_dt['id'] . "</th>
+                        <td>" . $row_dt['fees_type'] . "</td>
+                        <td>" . $row_dt['rs'] . "</td>
+                        <td><button onClick='editClick(" . $row_dt['id'] . ")' class='edit-button btn btn-sm btn-success' >Edit</button> 
+                        </tr>";
                             } ?> -->
                     <!-- <button onClick='deleteClick(" . $row_dt['id'] . ")' class='delete btn btn-sm btn-danger'>Delete</button></td> -->
                 </tbody>
@@ -274,4 +274,7 @@ include("../controller/fees_control.php"); ?>
         }
     </script>
 <?php endif; ?>
+<script>
+    $('#fees-link').addClass('active');
+</script>
 <?php include("../includes/footer.php"); ?>

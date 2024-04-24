@@ -288,6 +288,7 @@
             });
         });
     }
+    $('#manage-exam-link').addClass('active');
 </script>
 
 <?php include("../includes/footer.php"); ?>

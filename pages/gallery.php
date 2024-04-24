@@ -145,6 +145,7 @@
             ]
         });
     });
+    $('#gallery-link').addClass('active');
 </script>
 
 
